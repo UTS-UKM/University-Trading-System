@@ -12,6 +12,9 @@ class PagesController extends Controller
         //return view('pages.index', compact('title'));
         return view('pages.index')->with('title', $title);
     }
+    public function user_profile(){ 
+        return view('pages.user_profile');
+    }
 
     public function about() {
         $title = 'About us';

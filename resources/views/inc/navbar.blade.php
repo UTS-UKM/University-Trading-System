@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-inverse navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -22,6 +22,9 @@
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="/posts">Blog</a>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/user_profile">Profile</a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->
