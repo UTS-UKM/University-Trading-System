@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+
+        Validator::extend('email_domain', function($attribute, $value, $parameters, $validator) {
+        	$allowedEmailDomains = ['siswa.ukm.edu.my'];
+        	return in_array( explode('@', $parameters[0])[1] , $allowedEmailDomains);
+        });
     }
 
     /**
