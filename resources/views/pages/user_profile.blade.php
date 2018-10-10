@@ -6,6 +6,23 @@
 
                 </div>
 
+          <div class="col-lg-3">
+  
+            <h1 class="my-4">SWAP</h1>
+            <div class="list-group">
+              <a href="#" class="list-group-item">Electronic Devices</a>
+              <a href="#" class="list-group-item">Electronic Accessories</a>
+              <a href="#" class="list-group-item">TV & Home Appliances</a>
+              <a href="#" class="list-group-item">Health & Beauty</a>
+              <a href="#" class="list-group-item">Babies & Toys</a>
+              <a href="#" class="list-group-item">Category 3</a>
+              <a href="#" class="list-group-item">Category 1</a>
+              <a href="#" class="list-group-item">Category 2</a>
+              <a href="#" class="list-group-item">Category 3</a>
+            </div>
+            
+          </div>
+ <!-- 
                 <div class="row" style="margin-left: 50px">
                     <div class="col-md-2">
                         <h3>
@@ -38,6 +55,7 @@
                             </li>
                         </ul>
                     </div>
+                -->
                     <div class="col-md-10">
                 
 
