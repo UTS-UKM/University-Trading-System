@@ -1,21 +1,9 @@
 @extends('layouts.app')
 @section('content')
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div style="margin:50px;margin-left: 300px;"class="container-fluid">
                   
 
-                    <div class="row">
-                    <div class="col-md-2">
-                        <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded-circle" />
-                    </div>
-                    <div class="col-md-10">
-                        <h3>
-                            h3. Lorem ipsum dolor sit amet.
-                        </h3> 
-                        <button type="button" class="btn btn-success">
-                            Button
-                        </button>
-                    </div>
-                </div>
                 </div>
 
                 <div class="row" style="margin-left: 50px">
@@ -51,93 +39,45 @@
                         </ul>
                     </div>
                     <div class="col-md-10">
-                         <div style="margin:50px;"class="container-fluid">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" alt="Bootstrap Thumbnail First" src="https://www.layoutit.com/img/people-q-c-600-200-1.jpg" />
-                                    <div class="card-block">
-                                        <h5 class="card-title">
-                                            Card title
-                                        </h5>
-                                        <p class="card-text">
-                                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                        </p>
-                                        <p>
-                                            <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" alt="Bootstrap Thumbnail Second" src="https://www.layoutit.com/img/city-q-c-600-200-1.jpg" />
-                                    <div class="card-block">
-                                        <h5 class="card-title">
-                                            Card title
-                                        </h5>
-                                        <p class="card-text">
-                                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                        </p>
-                                        <p>
-                                            <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" alt="Bootstrap Thumbnail Third" src="https://www.layoutit.com/img/sports-q-c-600-200-1.jpg" />
-                                    <div class="card-block">
-                                        <h5 class="card-title">
-                                            Card title
-                                        </h5>
-                                        <p class="card-text">
-                                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                        </p>
-                                        <p>
-                                            <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                        </p>
-                                    </div>
-                                </div>
+                
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
-                        <nav>
-                            <ul style="margin-top: 50px; text-align: center;"class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Previous</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">5</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Update') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-        </div>
              
                     </div>
-                </div>
             </div>
         </div>
        </div> 
+           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+
 @endsection

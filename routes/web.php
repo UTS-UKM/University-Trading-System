@@ -28,7 +28,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
-
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 
