@@ -68,5 +68,15 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    protected function update(array $data)
+    {
+        
+        //return 123;
+        $data = Post::find($id);
+        $data->name = $request ->input('name');
+        $data -> save();
+
+        return redirect ('/user_profile')->with ('success', "Post Updated");
+    }
     }
 }

@@ -29,6 +29,9 @@ Route::get('/about', 'PagesController@about');
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/update', '\App\Http\Controllers\Auth\RegisterController@update');
+Route::get('/edit/user/{id}','UsersController@edit');
+Route::post('/edit/user/{id}','UsersController@update');
 
 
 
