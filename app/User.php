@@ -18,8 +18,7 @@ class User extends Authenticatable
     public function updateUser($data)
 {
         $user = $this->find($data['id']);
-        $user->user_id = auth()->user()->id;
-        $user->name = $data['user'];
+        $user->name = $data['name'];
         $user->save();
         return 1;
 }

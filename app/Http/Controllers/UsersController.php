@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 
-class PostsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+     public function index()
+    {
+        $users = user::where('id', auth()->user()->id)->get();
+        
+        return view('user.index',compact('users'));
+    }
    public function edit($id)
     {
         $users = User::where('user_id', auth()->user()->id)

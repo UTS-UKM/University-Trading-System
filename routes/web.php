@@ -32,7 +32,7 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/update', '\App\Http\Controllers\Auth\RegisterController@update');
 Route::get('/edit/user/{id}','UsersController@edit');
 Route::post('/edit/user/{id}','UsersController@update');
-
+Route::get('/users', 'UsersController@index');
 
 
 Route::resource('posts','PostsController');

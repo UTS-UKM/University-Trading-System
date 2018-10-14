@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2018 at 07:41 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Generation Time: Oct 14, 2018 at 05:57 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,64 +19,76 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lsapp`
+-- Database: `development`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2018_10_02_073230_create_posts_table', 1);
+CREATE TABLE `admin` (
+  `adminID` varchar(4) NOT NULL,
+  `adminPassword` varchar(255) NOT NULL,
+  `adminEmail` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Table structure for table `category`
 --
 
-CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `category` (
+  `categoryID` varchar(4) NOT NULL,
+  `categoryName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Table structure for table `favourite`
 --
 
-CREATE TABLE `posts` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `body` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `favourite` (
+  `itemID` varchar(4) NOT NULL,
+  `userID` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `posts`
+-- Table structure for table `item`
 --
 
-INSERT INTO `posts` (`id`, `title`, `body`, `created_at`, `updated_at`) VALUES
-(1, 'Post One', 'This is the post body', '2018-10-02 00:10:32', '2018-10-02 00:10:32'),
-(2, 'Post Two', 'This is post 2', '2018-10-02 00:12:31', '2018-10-02 00:12:31'),
-(3, 'Post three', 'this is post 3', '2018-10-04 20:30:18', '2018-10-04 20:30:18');
+CREATE TABLE `item` (
+  `itemID` varchar(4) NOT NULL,
+  `userID` varchar(4) NOT NULL,
+  `categoryID` varchar(4) NOT NULL,
+  `itemName` varchar(255) NOT NULL,
+  `itemPrice` varchar(255) NOT NULL,
+  `itemDescription` varchar(255) NOT NULL,
+  `itemPicture1` blob NOT NULL,
+  `itemPicture2` blob NOT NULL,
+  `itemPicture3` blob NOT NULL,
+  `itemPicture4` blob NOT NULL,
+  `itemStatus` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `swappingrequest`
+--
+
+CREATE TABLE `swappingrequest` (
+  `swappingRequestID` varchar(4) NOT NULL,
+  `buyerID` varchar(4) NOT NULL,
+  `sellerID` varchar(4) NOT NULL,
+  `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `itemID` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -85,73 +97,49 @@ INSERT INTO `posts` (`id`, `title`, `body`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Sue Teng', 'sueteng910@gmail.com', NULL, '$2y$10$NDc/iDs0b4KRfs6ymF3aIu9SLyDxQ2ySkZqEb1.5ckGZwdgp4hZ4a', NULL, '2018-10-07 18:34:05', '2018-10-07 18:34:05');
+  `userID` varchar(4) NOT NULL,
+  `userEmail` varchar(255) NOT NULL,
+  `userPassword` varchar(255) NOT NULL,
+  `userContact` varchar(255) NOT NULL,
+  `userProfilePic` blob NOT NULL,
+  `userAddress` varchar(255) NOT NULL,
+  `userBirthday` varchar(255) NOT NULL,
+  `userGender` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `migrations`
+-- Indexes for table `admin`
 --
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`adminID`);
 
 --
--- Indexes for table `password_resets`
+-- Indexes for table `category`
 --
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`categoryID`);
 
 --
--- Indexes for table `posts`
+-- Indexes for table `item`
 --
-ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `item`
+  ADD PRIMARY KEY (`itemID`);
+
+--
+-- Indexes for table `swappingrequest`
+--
+ALTER TABLE `swappingrequest`
+  ADD PRIMARY KEY (`swappingRequestID`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `posts`
---
-ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  ADD PRIMARY KEY (`userID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -56,7 +56,9 @@
                 -->
 
                 <div style="margin-top: 70px;"class="card-body">
-                    <form method="POST" action="{{action('/UsersController@edit', $id)}}">
+                   <?php $id=auth()->user()->id 
+                   ?> 
+                    <form method="POST" action="{{action('UsersController@update', $id)}}">
                         @csrf
                         <h1></h1>
 
