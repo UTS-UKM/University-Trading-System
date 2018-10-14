@@ -40,6 +40,19 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="gender" type="text" class="form-control mdb-select md-form colorful-select dropdown-primary" name="gender" required autofocus>
+                                       <option value="" disabled selected>Choose your gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="N/A">I don't prefer to specify</option>
+  
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
