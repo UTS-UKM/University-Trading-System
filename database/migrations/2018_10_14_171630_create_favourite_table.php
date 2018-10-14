@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSwappingRequestTable extends Migration
+class CreateFavouriteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,18 @@ class CreateSwappingRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('swapping_request', function (Blueprint $table) {
+        Schema::create('favourite', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('item_id');
-            $table->unsignedInteger('buyer_id');
-            $table->unsignedInteger('seller_id');
-           
+            
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
-        Schema::table('swapping_request', function (Blueprint $table) {
+        Schema::table('favourite', function (Blueprint $table) {
         
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('item_id')->references('id')->on('item')->onDelete('cascade');
-            $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
 
         });
 
@@ -39,6 +37,6 @@ class CreateSwappingRequestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('swapping_request');
+        Schema::dropIfExists('favourite');
     }
 }

@@ -15,8 +15,8 @@ class CreateItemTable extends Migration
     {
         Schema::create('item', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('user_id');
             $table->string('item_name');
             $table->float('item_price', 8, 2);	
             $table->mediumText('item_description');
@@ -27,6 +27,15 @@ class CreateItemTable extends Migration
             $table->string('item_status');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
+
+        Schema::table('item', function (Blueprint $table) {
+        
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+
+        });
+
 
     }
 
