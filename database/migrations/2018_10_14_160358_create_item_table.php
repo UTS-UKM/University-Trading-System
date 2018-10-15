@@ -21,10 +21,10 @@ class CreateItemTable extends Migration
             $table->float('item_price', 8, 2);	
             $table->mediumText('item_description');
             $table->string('item_pic_1');
-            $table->string('item_pic_2');
-            $table->string('item_pic_3');
-            $table->string('item_pic_4');
-            $table->string('item_status');
+            $table->string('item_pic_2')->nullable();
+            $table->string('item_pic_3')->nullable();
+            $table->string('item_pic_4')->nullable();
+            $table->string('item_status')->default('available');
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
