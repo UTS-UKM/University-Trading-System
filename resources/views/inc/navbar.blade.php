@@ -64,6 +64,9 @@
           <li class="signup-btn"><a href="/register">Sign Up</a></li>
           <li class="login-btn"><a href="/login">Log In</a></li>
           @endif
+          @if (Auth::check())
+          <li><a href="product/create">Add product</a></li>
+          @endif
           <ul class="nav navbar-nav navbar-right">
             <li>
           <form class="navbar-form" role="search">
@@ -73,13 +76,13 @@
           </li>
           <li>
           @if (Auth::check()) 
+          
           <div class="dropdown">
             <button class="dropbtn">
                      <a href="#"> <i style="color:white;"class="material-icons">person</i> </a>
             </button>
             <div class="dropdown-content">
               <a href="{{ __('user_profile') }}">Profile</a>
-              <a href="{{ __('product/create') }}">Add Product</a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 
