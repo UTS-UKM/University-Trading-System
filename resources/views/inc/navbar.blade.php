@@ -75,7 +75,7 @@
                      <a href="#"> <i style="color:white;"class="material-icons">person</i> </a>
             </button>
             <div class="dropdown-content">
-              <a href="{{ __('user_profile') }}">Profile</a>
+              <a href="{{ __('user_profile') }}">{{Auth::user()->name}} </a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 

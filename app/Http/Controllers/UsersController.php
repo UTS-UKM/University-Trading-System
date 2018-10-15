@@ -43,7 +43,7 @@ class UsersController extends Controller
         $data['id'] = $id;
         $users->updateUser($data);
 
-        return redirect('/home')->with('success', 'New support ticket has been updated!!');
+        return redirect('/user_profile');
     }
 
 }
