@@ -9,7 +9,10 @@
     background-color: inherit;
     font-family: inherit;
     margin: 0;
+    position: fixed;
 }
+
+
 
 .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: red;
@@ -76,6 +79,7 @@
             </button>
             <div class="dropdown-content">
               <a href="{{ __('user_profile') }}">Profile</a>
+              <a href="{{ __('product/create') }}">Add Product</a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 
