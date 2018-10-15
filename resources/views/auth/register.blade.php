@@ -50,6 +50,12 @@
                                         <option value="N/A">I don't prefer to specify</option>
   
                                 </select>
+
+                                @if ($errors->has('gender'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
