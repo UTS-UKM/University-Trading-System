@@ -9,7 +9,10 @@
     background-color: inherit;
     font-family: inherit;
     margin: 0;
+    position: fixed;
 }
+
+
 
 .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: red;
@@ -61,6 +64,9 @@
           <li class="signup-btn"><a href="/register">Sign Up</a></li>
           <li class="login-btn"><a href="/login">Log In</a></li>
           @endif
+          @if (Auth::check())
+          <li><a href="product/create">Add product</a></li>
+          @endif
           <ul class="nav navbar-nav navbar-right">
             <li>
           <form class="navbar-form" role="search">
@@ -70,6 +76,7 @@
           </li>
           <li>
           @if (Auth::check()) 
+          
           <div class="dropdown">
             <button class="dropbtn">
                      <a href="#"> <i style="color:white;"class="material-icons">person</i> </a>

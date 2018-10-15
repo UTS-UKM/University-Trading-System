@@ -22,7 +22,7 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
 });
 
 */
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index')->name('index');
 
 
 Route::get('/about', 'PagesController@about');
@@ -38,4 +38,8 @@ Route::get('/users', 'UsersController@index');
 Route::resource('posts','PostsController');
 Auth::routes();
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('product','ProductsController');
+Route::resource('category','CategoriesController');

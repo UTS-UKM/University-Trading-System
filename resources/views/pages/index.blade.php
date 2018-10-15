@@ -125,6 +125,7 @@
           <div class="numbertext">1 / 3</div>
           <img src="https://placeimg.com/870/400/arch" style="width:100%">
           <div class="text">Caption Text</div>
+          
         </div>
         
         <div class="mySlides fade">
