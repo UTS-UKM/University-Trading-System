@@ -30,7 +30,8 @@
 
         
        
-          
+          <?php $id=auth()->user()->id 
+                   ?>  
             
             {!! Form::open(['route' => 'product.store', 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
 
@@ -59,6 +60,7 @@
                     {{ Form::label('CategoryID', 'Categories') }}
                     {{ Form::select('CategoryID', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
                 </div>
+                <input type="hidden" id="UserID" name="UserID" value="{{$id}}">
     <style>
         input[type=button], input[type=submit], input[type=reset] {
     background-color: #4CAF50;
