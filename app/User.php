@@ -15,8 +15,15 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function updateUser($data)
+{
+        $user = $this->find($data['id']);
+        $user->name = $data['name'];
+        $user->save();
+        return 1;
+}
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'gender',
     ];
 
     /**
