@@ -41,18 +41,18 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $formInput=$request->except('image');
+        $formInput=$request->except('product_pic_1');
         //        validation
                 $this->validate($request,[
                     
-                    'image'=>'image|mimes:png,jpg,jpeg|max:10000'
+                    'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
                 ]);
         //        image upload
-                $image=$request->image;
+                $image=$request->product_pic_1;
                 if($image){
                     $imageName=$image->getClientOriginalName();
                     $image->move('images',$imageName);
-                    $formInput['image']=$imageName;
+                    $formInput['product_pic_1']=$imageName;
                 }
                 Product::create($formInput);
                 return redirect()->route('index');

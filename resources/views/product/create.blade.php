@@ -35,19 +35,19 @@
             {!! Form::open(['route' => 'product.store', 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
 
             <div class="form-group">
-                {{ Form::label('ItemName', 'Name') }}
-                {{ Form::text('ItemName', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
+                {{ Form::label('product_name', 'Name') }}
+                {{ Form::text('product_name', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
             </div>
 
             <div class="form-group">
-                {{ Form::label('ItemDescription', 'Description') }}
-                {{ Form::text('ItemDescription', null, array('class' => 'form-control')) }}
+                {{ Form::label('product_description', 'Description') }}
+                {{ Form::text('product_description', null, array('class' => 'form-control')) }}
 
   
             </div>
             <div class="form-group">
-                {{ Form::label('ItemPrice', 'Price') }}
-                {{ Form::text('ItemPrice', null, array('class' => 'form-control')) }}
+                {{ Form::label('product_price', 'Price') }}
+                {{ Form::text('product_price', null, array('class' => 'form-control')) }}
             </div>
 
             <div class="form-group">
@@ -56,8 +56,8 @@
             </div>
 
             <div class="form-group">
-                    {{ Form::label('CategoryID', 'Categories') }}
-                    {{ Form::select('CategoryID', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+                    {{ Form::label('name', 'Categories') }}
+                    {{ Form::select('name', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
                 </div>
 
                  <?php $id=auth()->user()->id 
@@ -80,8 +80,8 @@
         
 
             <div class="form-group">
-                {{ Form::label('image', 'image') }}
-                {{ Form::file('image',array('class' => 'form-control')) }}
+                {{ Form::label('product_pic_1', 'image') }}
+                {{ Form::file('product_pic_1',array('class' => 'form-control')) }}
             </div>
 <center>
             {{ Form::submit('Create', array('class' => 'btn btn-default')) }}
