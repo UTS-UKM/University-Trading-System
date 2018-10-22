@@ -16,7 +16,7 @@ class CreateFavouriteTable extends Migration
         Schema::create('favourite', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('item_id');
+            $table->unsignedInteger('product_id');
             
             $table->timestamps();
         });
@@ -24,7 +24,7 @@ class CreateFavouriteTable extends Migration
         Schema::table('favourite', function (Blueprint $table) {
         
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('item_id')->references('id')->on('item')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
         });
 
