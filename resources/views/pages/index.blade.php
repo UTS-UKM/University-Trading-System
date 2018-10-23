@@ -179,94 +179,72 @@
 <br>
 <br>
 <br>
-<<<<<<< HEAD
 
-                  <ul class="container">
-                      @forelse($products as $product)
-                      <li class="row">
-                  
-                  
-                         <div class="col-md-8">
-                           
-                            <div><img src="{{ asset('images/' . $product->image) }}" alt="{{$product->image}}" ></div>
-                        
-                          <h4>Item Name:{{$product->ItemName}}</h4>
-                          <h4>Price:RM {{$product->ItemPrice}}</h4>
-                          <h4>Description:{{$product->ItemDescription}}</h4>
-                     
-                          
 
-                          @empty
+                
+                      
 
-        <h3>No products</h3>
 
-    @endforelse
-=======
-<?php for($i = 1; $i <= 6; $i++) { ?>
+                @forelse($products as $product)
+                <div class="row">
+
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="/images/no-image.jpg" alt="" style="width: 100%;"></a>
-                        <div class="favs-div">
-                          <input type="checkbox" id="checkbox<?php echo $i; ?>" />
-                          <label for="checkbox<?php echo $i; ?>">
-                            <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
-                              <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
-                                <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2"/>
-                                <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5"/>
-
-                                <g id="grp7" opacity="0" transform="translate(7 6)">
-                                  <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2"/>
-                                  <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2"/>
-                                </g>
-
-                                <g id="grp6" opacity="0" transform="translate(0 28)">
-                                  <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2"/>
-                                  <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2"/>
-                                </g>
-
-                                <g id="grp3" opacity="0" transform="translate(52 28)">
-                                  <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2"/>
-                                  <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2"/>
-                                </g>
-
-                                <g id="grp2" opacity="0" transform="translate(44 6)">
-                                  <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2"/>
-                                  <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2"/>
-                                </g>
-
-                                <g id="grp5" opacity="0" transform="translate(14 50)">
-                                  <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2"/>
-                                  <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2"/>
-                                </g>
-
-                                <g id="grp4" opacity="0" transform="translate(35 50)">
-                                  <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2"/>
-                                  <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2"/>
-                                </g>
-
-                                <g id="grp1" opacity="0" transform="translate(24)">
-                                  <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2"/>
-                                  <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2"/>
-                                </g>
-                              </g>
-                            </svg>
-                          </label>
-                        </div>
-                        <div class="card-body">
-                          <h4 class="card-title">
-                            <a href="#">Item One</a>
-                          </h4>
-                          <h5>$24.99</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                           
+                            <div><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
+                              max-height: 80%;"></div>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                          <h4>Item Name:{{$product->product_name}}</h4>
+                          <h4>Price:RM {{$product->product_price}}</h4>
+                          <h4>Description:{{$product->product_description}}</h4>
+                        
                         </div>
                         <div class="card-footer">
                           <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                         </div>
                       </div>
                     </div>
-                  <?php } ?>
+                          
+
+                          @empty
+
+        <h3>No products</h3>
+
+        
+
+    @endforelse
+               
             
->>>>>>> master
+                </div>
+                <!DOCTYPE html>
+                <!DOCTYPE html>
+                <html>
+                <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                .footer {
+                   position:fixed ;
+                   left: 0;
+                   bottom: 0;
+                   width: 100%;
+                   background-color: Black;
+                   color: white;
+                   text-align: center;
+                }
+                </style>
+                </head>
+                <body>
+                
+                
+                
+                <div class="footer">
+                  <p>UNIVERSITY TRADING SYSTEMS</p>
+                </div>
+                
+                </body>
+                </html> 
+                
 
           
 @endsection
