@@ -36,3 +36,12 @@ Route::resource('posts','PostsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('home');
+
+// Password reset link request routes...
+//Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
+//Route::post('passwords/email', 'Auth\ResetPasswordController@postEmail');
+
+// Password reset routes...
+//Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@getReset');
+//Route::post('passwords/reset', 'Auth\ResetPasswordController@postReset');
