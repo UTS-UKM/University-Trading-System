@@ -34,9 +34,14 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::resource('posts','PostsController');
 Auth::routes();
+Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
+Route::get('/', 'PagesController@index')->middleware('auth','customer');
+ 
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'AdminController@index')->name('home');
+//Route::get('/admin', 'AdminController@index')->name('home');
 
 // Password reset link request routes...
 //Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
