@@ -35,7 +35,7 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('posts','PostsController');
 Auth::routes();
 Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
-Route::get('/', 'PagesController@index')->middleware('auth','customer');
+Route::get('/customer', 'PagesController@index')->middleware('auth','customer');
  
 
 

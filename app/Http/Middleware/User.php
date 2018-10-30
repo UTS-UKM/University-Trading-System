@@ -19,7 +19,7 @@ class User
             return $next($request);
         }
         else if (Auth::check() && Auth::user()->role == 'admin') {
-            return redirect('/admin');
+            return '/admin';
         }
     }
 }
