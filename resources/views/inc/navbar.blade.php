@@ -9,7 +9,6 @@
     background-color: inherit;
     font-family: inherit;
     margin: 0;
-    position: fixed;
 }
 
 
@@ -28,6 +27,7 @@
 }
 
 .dropdown-content a {
+  margin-right: 100px;
     float: none;
     color: black;
     padding: 12px 16px;
@@ -82,7 +82,7 @@
                      <a href="#"> <i style="color:white;"class="material-icons">person</i> </a>
             </button>
             <div class="dropdown-content">
-              <a href="{{ __('user_profile') }}">Profile</a>
+              <a href="{{ __('/user_profile') }}">{{Auth::user()->name}} </a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 
