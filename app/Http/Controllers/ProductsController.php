@@ -8,19 +8,19 @@ use App\User;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
-
+use DB;
 
 class ProductsController extends Controller
 {
+    public function index(){
+       
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+ 
 
     /**
      * Show the form for creating a new resource.
@@ -41,18 +41,22 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $formInput=$request->except('image');
+        $formInput=$request->except('product_pic_1');
         //        validation
                 $this->validate($request,[
                     
-                    'image'=>'image|mimes:png,jpg,jpeg|max:10000'
+                    'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
                 ]);
         //        image upload
-                $image=$request->image;
+                $query = DB::table('products')->orderBy('created_at', 'desc')->first();
+                $maxpid= $query->id;
+                $newpid= $maxpid + 1;
+              
+                $image=$request->product_pic_1;
                 if($image){
-                    $imageName=$image->getClientOriginalName();
+                    $imageName=$newpid . "_1";
                     $image->move('images',$imageName);
-                    $formInput['image']=$imageName;
+                    $formInput['product_pic_1']=$imageName;
                 }
                 Product::create($formInput);
                 return redirect()->route('index');

@@ -21,44 +21,52 @@
     border-radius: 4px;
     background-color: #f1f1f1;
    
-}
+
 
 
 
 }
 </style>
 
-        
        
-         
+      <?php 
+      $data = DB::table('products')->orderBy('created_at', 'desc')->first();
+      $maxpid= $data->id;
+      $newpid= $maxpid + 1;
+      echo "Product ID: " . $newpid;
+      ?> 
             
-            {!! Form::open(['route' => 'product.store', 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
+    {{-- 
+              <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
 
+            --}}
+            {!! Form::open(['route' => array('product.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
+      
             <div class="form-group">
-                {{ Form::label('ItemName', 'Name') }}
-                {{ Form::text('ItemName', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
+                    {{ Form::label('name', 'Categories') }}
+                    {{ Form::select('name', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+                </div>
+            <div class="form-group">
+                {{ Form::label('product_name', 'Name') }}
+                {{ Form::text('product_name', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
             </div>
+            
 
-            <div class="form-group">
-                {{ Form::label('ItemDescription', 'Description') }}
-                {{ Form::text('ItemDescription', null, array('class' => 'form-control')) }}
+            <div class="form-group" >
+                {{ Form::label('product_description', 'Description' ) }}
+                {{ Form::text('product_description', null, array('class' => 'form-control','style'=>'height:200px' )) }}
+               
 
   
             </div>
             <div class="form-group">
-                {{ Form::label('ItemPrice', 'Price') }}
-                {{ Form::text('ItemPrice', null, array('class' => 'form-control')) }}
+                {{ Form::label('product_price', 'Price') }}
+                {{ Form::text('product_price', null, array('class' => 'form-control')) }}
             </div>
 
-            <div class="form-group">
-                {{ Form::label('ItemStatus', 'Status') }}
-                {{ Form::select('ItemStatus', [ 'Available' => 'Available','Not Available'=>'Not Available','In Process'=>'In process'], null, ['class' => 'form-control','placeholder'=>'Select Status']) }}
-            </div>
+         
 
-            <div class="form-group">
-                    {{ Form::label('CategoryID', 'Categories') }}
-                    {{ Form::select('CategoryID', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
-                </div>
+         
 
                  <?php $id=auth()->user()->id 
                    ?>  
@@ -66,22 +74,27 @@
 
                 
     <style>
-        input[type=button], input[type=submit], input[type=reset] {
-    background-color: #4CAF50;
+        input[type=button], input[type=submit], input[type=reset] 
+.button {
+    background-color: #008CBA; /* Green */
     border: none;
     color: white;
-    padding: 16px 32px;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
 }
 </style>
 
         
 
             <div class="form-group">
-                {{ Form::label('image', 'image') }}
-                {{ Form::file('image',array('class' => 'form-control')) }}
+                {{ Form::label('product_pic_1', 'image') }}
+                {{ Form::file('product_pic_1',array('class' => 'form-control')) }}
             </div>
 <center>
             {{ Form::submit('Create', array('class' => 'btn btn-default')) }}

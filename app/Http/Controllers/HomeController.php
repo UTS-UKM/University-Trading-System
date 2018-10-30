@@ -25,4 +25,16 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function showProduct()
+    {
+        $products = Products::all();
+        return view('product.store',compact('$products'));
+    }
+
+    public function show($slug)
+    {
+        $products = Products::where('slug',$slug)->first();
+        return view('store.show',compact('products'));
+    }
 }

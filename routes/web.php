@@ -37,9 +37,25 @@ Route::get('/users', 'UsersController@index');
 
 Route::resource('posts','PostsController');
 Auth::routes();
+Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
+Route::get('/customer', 'PagesController@index')->middleware('auth','customer');
+ 
+
+
 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/admin', 'AdminController@index')->name('home');
+
+// Password reset link request routes...
+//Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
+//Route::post('passwords/email', 'Auth\ResetPasswordController@postEmail');
+
+// Password reset routes...
+//Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@getReset');
+//Route::post('passwords/reset', 'Auth\ResetPasswordController@postReset');
+
 Route::resource('product','ProductsController');
 Route::resource('category','CategoriesController');

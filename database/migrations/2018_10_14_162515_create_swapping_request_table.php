@@ -15,7 +15,7 @@ class CreateSwappingRequestTable extends Migration
     {
         Schema::create('swapping_request', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('item_id');
+            $table->unsignedInteger('product_id');
             $table->unsignedInteger('buyer_id');
             $table->unsignedInteger('seller_id');
            
@@ -24,7 +24,7 @@ class CreateSwappingRequestTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::table('swapping_request', function (Blueprint $table) {
         
-            $table->foreign('item_id')->references('id')->on('item')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
 
