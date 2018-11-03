@@ -56,7 +56,7 @@
                 -->
 
                         <h1>
-                            Hi {{Auth::user()->name}}
+                           Hi {{Auth::user()->name}}
                         </h1>
                 <div style=""class="card-body">
                    <?php $id=auth()->user()->id; 

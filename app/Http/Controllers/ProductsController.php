@@ -49,11 +49,16 @@ class ProductsController extends Controller
                 ]);
         //        image upload
                 $query = DB::table('products')->orderBy('created_at', 'desc')->first();
+                if(!empty($query)){
                 $maxpid= $query->id;
                 $newpid= $maxpid + 1;
+            }
               
                 $image=$request->product_pic_1;
                 if($image){
+                    if (!isset($newpid)) {
+                        $newpid=1;
+                    }
                     $imageName=$newpid . "_1";
                     $image->move('images',$imageName);
                     $formInput['product_pic_1']=$imageName;
