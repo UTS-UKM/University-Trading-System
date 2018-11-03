@@ -37,7 +37,8 @@ Route::get('/users', 'UsersController@index');
 
 Route::resource('posts','PostsController');
 Auth::routes();
-Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
+//Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
+Route::get('/admin', 'PagesController@admin');
 Route::get('/customer', 'PagesController@index')->middleware('auth','customer');
  
 

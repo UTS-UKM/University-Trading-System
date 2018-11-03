@@ -88,6 +88,11 @@
           </div> 
           @endif
             </li>
+          @if (Auth::check()) 
+            @if (Auth::user()->role == "admin") 
+            <li><a href="/admin">Admin area</a></li>
+            @endif
+          @endif
         </ul>
        
       

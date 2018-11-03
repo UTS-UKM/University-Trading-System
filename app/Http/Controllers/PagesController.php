@@ -23,6 +23,9 @@ class PagesController extends Controller
     public function user_profile(){ 
         return view('pages.user_profile');
     }
+    public function admin(){ 
+        return view('admin.index');
+    }
 
     public function about() {
         $title = 'About us';
