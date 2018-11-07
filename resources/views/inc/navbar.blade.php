@@ -84,6 +84,7 @@
           @if (Auth::check()) 
             @if (Auth::user()->role == "admin") 
             <li><a href="/admin">Admin Page</a></li>
+
             @endif
           @endif
         </ul>
