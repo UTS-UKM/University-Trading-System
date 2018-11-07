@@ -9,7 +9,7 @@ use DB;
 class UsersController extends Controller
 {
 
-
+  
 
 }
 

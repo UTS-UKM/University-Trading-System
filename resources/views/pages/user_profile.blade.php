@@ -18,42 +18,6 @@
             </div>
             
           </div>
- <!-- 
-                <div class="row" style="margin-left: 50px">
-                    <div class="col-md-2">
-                        <h3>
-                            h3. Lorem ipsum dolor sit amet.
-                        </h3>
-                        <ul>
-                            <li class="list-item">
-                                Lorem ipsum dolor sit amet
-                            </li>
-                            <li class="list-item">
-                                Consectetur adipiscing elit
-                            </li>
-                            <li class="list-item">
-                                Integer molestie lorem at massa
-                            </li>
-                            <li class="list-item">
-                                Facilisis in pretium nisl aliquet
-                            </li>
-                            <li class="list-item">
-                                Nulla volutpat aliquam velit
-                            </li>
-                            <li class="list-item">
-                                Faucibus porta lacus fringilla vel
-                            </li>
-                            <li class="list-item">
-                                Aenean sit amet erat nunc
-                            </li>
-                            <li class="list-item">
-                                Eget porttitor lorem
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-10">
-                
-                -->
 
                         <h1>
                            Hi {{Auth::user()->name}}
@@ -124,12 +88,7 @@
                                 @endif
                             </div>
 
-{{--
-                            <label style="margin-top:10px;"for="image" class="col-md-6 col-form-label text-md-right">{{ __('Image') }}</label>
-                            <div class="col-md-6">
-                            <input name="image" class="col-md-6 col-form-label text-md-right" type="file">
-                        </div>
---}}
+
 
                             <div style="margin-top:10px;"class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
