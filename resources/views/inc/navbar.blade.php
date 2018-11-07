@@ -10,13 +10,9 @@
     font-family: inherit;
     margin: 0;
 }
-
-
-
 .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: red;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -25,7 +21,6 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-
 .dropdown-content a {
   margin-right: 100px;
     float: none;
@@ -35,11 +30,9 @@
     display: block;
     text-align: left;
 }
-
 .dropdown-content a:hover {
     background-color: #ddd;
 }
-
 .dropdown:hover .dropdown-content {
     display: block;
 }</style>
@@ -88,6 +81,11 @@
           </div> 
           @endif
             </li>
+          @if (Auth::check()) 
+            @if (Auth::user()->role == "admin") 
+            <li><a href="/admin">Admin Page</a></li>
+            @endif
+          @endif
         </ul>
        
       
