@@ -7,6 +7,16 @@ use App\Http\Controllers\Controller;
 
 class CategoriesController extends Controller
 {
+
+    public function addCategories(){
+
+        return view('admin.categories.add_categories');
+    }
+
+    public function viewCategories(){
+        return view('admin.categories.view_categories');
+    }
+
     /**
      * Display a listing of the resource.
      *

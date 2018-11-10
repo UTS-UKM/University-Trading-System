@@ -28,11 +28,22 @@
 }
 </style>
 
-        
        
-         
+      <?php 
+      $data = DB::table('products')->orderBy('created_at', 'desc')->first();
+      if(!empty($data)){
+      $maxpid= $data->id;
+      $newpid= $maxpid + 1;
+      echo "Product ID: " . $newpid;
+  }
+      ?> 
             
-            {!! Form::open(['route' => 'product.store', 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
+    {{-- 
+              <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
+
+            --}}
+            {!! Form::open(['route' => array('product.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
+      
             <div class="form-group">
                     {{ Form::label('name', 'Categories') }}
                     {{ Form::select('name', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
@@ -61,7 +72,7 @@
 
                  <?php $id=auth()->user()->id 
                    ?>  
-                <input type="hidden" id="UserID" name="UserID" value="{{$id}}">
+                <input type="hidden" id="user_id" name="user_id" value="{{$id}}">
 
                 
     <style>

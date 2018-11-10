@@ -9,15 +9,10 @@
     background-color: inherit;
     font-family: inherit;
     margin: 0;
-    position: fixed;
 }
-
-
-
 .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: red;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -26,8 +21,8 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-
 .dropdown-content a {
+  margin-right: 100px;
     float: none;
     color: black;
     padding: 12px 16px;
@@ -35,11 +30,9 @@
     display: block;
     text-align: left;
 }
-
 .dropdown-content a:hover {
     background-color: #ddd;
 }
-
 .dropdown:hover .dropdown-content {
     display: block;
 }</style>
@@ -82,12 +75,18 @@
                      <a href="#"> <i style="color:white;"class="material-icons">person</i> </a>
             </button>
             <div class="dropdown-content">
-              <a href="{{ __('user_profile') }}">Profile</a>
+              <a href="{{ __('/user_profile') }}">{{Auth::user()->name}} </a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 
           @endif
             </li>
+          @if (Auth::check()) 
+            @if (Auth::user()->role == "admin") 
+            <li><a href="/admin">Admin Page</a></li>
+
+            @endif
+          @endif
         </ul>
        
       
