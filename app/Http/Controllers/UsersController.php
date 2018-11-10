@@ -67,7 +67,7 @@ class UsersController extends Controller
         $data['id'] = $id; 
         $users->updateUser($data);
 
-        return redirect('/user_profile');
+        return redirect('/home');
     }
 
 }
