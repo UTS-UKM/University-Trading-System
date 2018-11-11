@@ -44,32 +44,42 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          
         </button>
         <a class="navbar-brand" href="/"><b>UNIVERSITY TRADING SYSTEM</b></a>
       </div>
+
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/services">Service</a></li>
+
           @if (!Auth::check())
-          <li class="signup-btn"><a href="/register">Sign Up</a></li>
-          <li class="login-btn"><a href="/login">Log In</a></li>
+            <li class="signup-btn"><a href="/register">Sign Up</a></li>
+            <li class="login-btn"><a href="/login">Log In</a></li>
           @endif
+
           @if (Auth::check())
-          <li><a href="product/create">Add product</a></li>
+            <li><a href="product/create">Add product</a></li>
           @endif
+          
           <ul class="nav navbar-nav navbar-right">
+
+          @if (Auth::check()) 
+            @if (Auth::user()->role == "admin") 
+              <li><a href="/admin">Admin Page</a></li>
+            @endif
+          @endif
+
             <li>
-          <form class="navbar-form" role="search">
-              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </form>
-          </li>
+              <form class="navbar-form" role="search">
+                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </form>
+            </li>
+
           <li>
           @if (Auth::check()) 
-          
           <div class="dropdown">
             <button class="dropbtn">
                      <a href="#"> <i style="color:white;"class="material-icons">person</i> </a>
@@ -80,13 +90,9 @@
             </div>
           </div> 
           @endif
-            </li>
-          @if (Auth::check()) 
-            @if (Auth::user()->role == "admin") 
-            <li><a href="/admin">Admin Page</a></li>
+          </li>
 
-            @endif
-          @endif
+         
         </ul>
        
       
