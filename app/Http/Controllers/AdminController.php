@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 use App\Admin;
 use DB;
 
-class UsersController extends Controller
+class AdminController extends Controller
 {
+        public function approve(){
+
+            return view('admin.approval.approve');
+    }
+
 
   
 
