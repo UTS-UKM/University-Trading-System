@@ -2,10 +2,9 @@
 
 
 {{-- @section('content')
-<h1>Hello Admin</h1>
+
 @endsection --}}
 
-{{-- @extends('layouts.adminLayout.admin_design') --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,17 +76,14 @@ function resetMenu() {
 
 {{-- end try --}}
 @section('content')
-
-
- 
     
     <!--Action boxes-->
       <div class="container-fluid">
         <div class="quick-actions_homepage">
           <ul class="quick-actions">
-           <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>
+            <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>
             <li class="bg_lg"> <a href="charts.html"> <i class="icon-signal"></i> Products</a> </li>
-            <li class="bg_lb"> <a href="tables.html"> <i class="icon-th"></i> Users</a> </li>
+            <li class="bg_lb"> <a href="{{ url('admin/approve') }}"> <i class="icon-th"></i> Swap Request</a> </li>
           </ul>
         </div>
     <!--End-Action boxes-->    
