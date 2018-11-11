@@ -36,6 +36,7 @@ Route::get ('admin/dashboard','PagesController@dashboard');
 
 Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
 Route::match(['get','post'],'/admin/view-categories','CategoriesController@viewCategories');
+Route::match(['get','post'],'/admin/approve', 'AdminController@Approve');
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/admin', 'AdminController@index')->name('home');
