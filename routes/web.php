@@ -39,6 +39,12 @@ Route::match(['get','post'],'/admin/view-categories','CategoriesController@viewC
 Route::match(['get','post'],'/admin/approve', 'AdminController@Approve');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('approve', function () {
+    $swap = DB::table('swapping_request')->get();
+    return view ('approve', ['swap' => $swap]);
+});
+
 //Route::get('/admin', 'AdminController@index')->name('home');
 // Password reset link request routes...
 //Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
