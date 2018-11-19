@@ -4,19 +4,11 @@
 
 @section('content')
 
-
-
-
-
-
-
-
-<<<<<<< HEAD
 <h1>ADD PRODUCTS </h1>
 	
               
          
-=======
+
        
       <?php 
       $data = DB::table('products')->orderBy('created_at', 'desc')->first();
@@ -24,18 +16,17 @@
       $newpid= $maxpid + 1;
       echo "Product ID: " . $newpid;
       ?> 
->>>>>>> master
-            
-    {{-- 
+
               <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
 
-            --}}
+            
             {!! Form::open(['route' => array('product.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
       
             <div class="form-group">
-                    {{ Form::label('name', 'Categories') }}
-                    {{ Form::select('name', $categories, null, ['class' => 'form-control','required','placeholder'=>'Select Category']) }}
+                    {{ Form::label('category_id', 'Categories') }}
+                    {{ Form::select('category_id',$categories, null, ['class' => 'form-control','required','placeholder'=>'Select Category']) }}
                 </div>
+                
             <div class="form-group">
                 {{ Form::label('product_name', 'Name') }}
                 {{ Form::text('product_name', null, array('class' => 'form-control','required'=>'','minlength'=>'5','placeholder' => 'Name')) }}
@@ -60,7 +51,9 @@
 
                  <?php $id=auth()->user()->id 
                    ?>  
+                   
                 <input type="hidden" id="UserID" name="UserID" value="{{$id}}">
+         
 
                 
     <style>

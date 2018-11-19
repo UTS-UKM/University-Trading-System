@@ -32,7 +32,7 @@ class ProductsController extends Controller
         $categories=Category::pluck('name','id');
         return view('product.create',compact('categories'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -49,6 +49,7 @@ class ProductsController extends Controller
         'product_price'=>'required',
         'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
     ]);
+    
         //        image upload
                 $query = DB::table('products')->orderBy('created_at', 'desc')->first();
                 $maxpid= $query->id;

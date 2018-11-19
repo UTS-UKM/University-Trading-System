@@ -188,10 +188,10 @@
                 @forelse($products as $product)
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-5">
                       <div class="card h-100">
                            
-                            <div><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
+                            <div><img class="col-lg-20" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
                               max-height: 80%;"></div>
                             <div class="card-body">
                                 <h4 class="card-title">
