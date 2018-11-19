@@ -18,8 +18,8 @@
                 <th>{{$data->id}}</th>
                 <th>{{$data->product_id}}</th>
                 <th>{{$data->buyer_id}}</th>
-                <th>{{$data-seller_id}}</th>
-                <th>{{$data-status}}</th>
+                <th>{{$data->seller_id}}</th>
+                <th>{{$data->status}}</th>
                 <th class="text-center">Action</th>
             </tr>
         @endforeach
