@@ -22,9 +22,9 @@
     
     <div class="quick-actions_homepage">
         <ul class="quick-actions">
-          <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>View Category </a> </li>
-          <li class="bg_lo"> <a href="{{ url('admin/delete-categories') }}"> <i class="icon-dashboard"></i>Delete Category </a> </li>
-          <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
+          <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-dashboard"></i>View Product </a> </li>
+          <li class="bg_lg"> <a href="{{ url('admin/delete-products') }}"> <i class="icon-dashboard"></i>Delete Product </a> </li>
+          <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
           <li class="bg_lb"> <a href="tables.html"> <i class="icon-th"></i> Users</a> </li>
           <li class="bg_ly span3"> <a href="{{ url('admin/') }}"> <i class="icon-th"></i>Admin Dashboard</a> </li>
         </ul>
@@ -32,44 +32,72 @@
 
   <!--End-Action boxes-->  
 
-    <center><b><h1>Add Category</h1></b></center>
+  <center><b><h1>Add Product</h1></b></center>
  
 
-    <div class="row">
-        <div class="col-md-5 col-md-offset-4">
+  <div class="row">
+      <div class="col-md-5 col-md-offset-4">
 
-            <style>
-                input[type=text]:focus {
-    border: 3px solid #555;
+          <style>
+              input[type=text]:focus {
+  border: 3px solid #555;
 
-    select {
-    width: 100%;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #f1f1f1;
+  select {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+ 
+
+
 
 
 }
 </style>
 
-       
-      <?php 
-      $data = DB::table('categories')->orderBy('created_at', 'desc')->first();
-   
-      ?> 
+     
+    <?php 
+    $data = DB::table('products')->orderBy('created_at', 'desc')->first();
+    if(!empty($data)){
+    $maxpid= $data->id;
+    $newpid= $maxpid + 1;
+    echo "Product ID: " . $newpid;
+}
+    ?> 
             
     {{-- 
               <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
 
             --}}
-            {!! Form::open(['route' => array('category.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
- 
+            {!! Form::open(['route' => array('product.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
+      
             <div class="form-group">
-                {{ Form::label('categories_name', 'Name') }}
-                {{ Form::text('categories_name', null, array('class' => 'form-control','style'=>'height:100px','required'=>'','minlength'=>'5')) }}
+                    {{ Form::label('name', 'Categories') }}
+                    {{ Form::select('name', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+                </div>
+            <div class="form-group">
+                {{ Form::label('product_name', 'Name') }}
+                {{ Form::text('product_name', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
             </div>
-       
+            
+
+            <div class="form-group" >
+                {{ Form::label('product_description', 'Description' ) }}
+                {{ Form::text('product_description', null, array('class' => 'form-control','style'=>'height:200px' )) }}
+               
+
+  
+            </div>
+            <div class="form-group">
+                {{ Form::label('product_price', 'Price') }}
+                {{ Form::text('product_price', null, array('class' => 'form-control')) }}
+            </div>
+
+         
+
+         
+
                  <?php $id=auth()->user()->id 
                    ?>  
                 <input type="hidden" id="user_id" name="user_id" value="{{$id}}">
@@ -91,6 +119,13 @@
 }
 }
 </style>
+
+        
+
+            <div class="form-group">
+                {{ Form::label('product_pic_1', 'image') }}
+                {{ Form::file('product_pic_1',array('class' => 'form-control')) }}
+            </div>
 
 <center>
             {{ Form::submit('Create', array('class' => 'btn btn-default')) }}

@@ -8,8 +8,14 @@ use App\Http\Controllers\Controller;
 class CategoriesController extends Controller
 {
 
-    public function addCategories(){
+    public function addCategories(Request $request){
+        if($request->isMethod('post')) {
+            $data = $request->all();
 
+            $category = new Category;
+            $category->name = $data['categories_name'];
+            $category->save();
+        }
         return view('admin.categories.add_categories');
     }
 
@@ -45,8 +51,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+            
+            }
 
     /**
      * Display the specified resource.

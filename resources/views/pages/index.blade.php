@@ -180,11 +180,6 @@
 <br>
 <br>
 
-
-                
-                      
-
-
                 @forelse($products as $product)
                 <div class="row">
 

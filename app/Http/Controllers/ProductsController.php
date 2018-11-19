@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use Auth;
 use App\User;
 use App\Category;
 use App\Product;
@@ -12,6 +13,21 @@ use DB;
 
 class ProductsController extends Controller
 {
+
+    public function addProducts(Request $request){
+        if($request->isMethod('post')) {
+            $data = $request->all();
+
+            $products = new Products;
+            $$products->name = $data['products_name'];
+            $$products->save();
+        }
+        return view('admin.products.add_products');
+    }
+
+    public function viewProducts(){
+        return view('admin.products.view_products');
+    }
     public function index(){
        
     }
@@ -111,4 +127,6 @@ class ProductsController extends Controller
     {
         //
     }
+
+   
 }
