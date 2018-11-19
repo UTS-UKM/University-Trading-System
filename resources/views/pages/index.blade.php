@@ -11,18 +11,18 @@
             <h1 class="my-4">Categories</h1>
         
             <div class="list-group">
-              <a href="#" class="list-group-item">Electronic Devices</a>
-              <a href="#" class="list-group-item">Electronic Accessories</a>
-              <a href="#" class="list-group-item">TV & Home Appliances</a>
-              <a href="#" class="list-group-item">Health & Beauty</a>
-              <a href="#" class="list-group-item">Babies & Toys</a>
-              <a href="#" class="list-group-item">Groceries & Pets</a>
-              <a href="#" class="list-group-item">Home & Lifestyle</a>
-              <a href="#" class="list-group-item">Women's Fashion</a>
-              <a href="#" class="list-group-item">Men's Fashion</a>
-              <a href="#" class="list-group-item">Automotive & Motorcycles</a>
-              <a href="#" class="list-group-item">Fashion Accessories</a>
-              <a href="#" class="list-group-item">Sports & Travel</a>
+              <a href="/category1" class="list-group-item">Electronic Devices</a>
+              <a href="/category2" class="list-group-item">Electronic Accessories</a>
+              <a href="/category3" class="list-group-item">TV & Home Appliances</a>
+              <a href="/category4" class="list-group-item">Health & Beauty</a>
+              <a href="/category5" class="list-group-item">Babies & Toys</a>
+              <a href="/category6" class="list-group-item">Groceries & Pets</a>
+              <a href="/category7" class="list-group-item">Home & Lifestyle</a>
+              <a href="/category8" class="list-group-item">Women's Fashion</a>
+              <a href="/category9" class="list-group-item">Men's Fashion</a>
+              <a href="/category10" class="list-group-item">Automotive & Motorcycles</a>
+              <a href="/category11" class="list-group-item">Fashion Accessories</a>
+              <a href="/category12" class="list-group-item">Sports & Travel</a>
             </div>
             
   
@@ -198,6 +198,7 @@
                           <h4>Item Name:{{$product->product_name}}</h4>
                           <h4>Price:RM {{$product->product_price}}</h4>
                           <h4>Description:{{$product->product_description}}</h4>
+                          
                         
                         </div>
                         <div class="card-footer">

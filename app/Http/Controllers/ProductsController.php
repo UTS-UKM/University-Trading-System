@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Category;
 use App\Product;
+use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use DB;
 
@@ -14,6 +15,68 @@ class ProductsController extends Controller
 {
     public function index(){
        
+    }
+
+    public function category1()
+    {
+      
+        $products = Product::all();// returns only 1
+        return view('categories.category1',compact('products'));
+    }
+    public function category2()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category2',compact('products'));
+    }
+    public function category3()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category3',compact('products'));
+    }
+    public function category4()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category4',compact('products'));
+    }
+    public function category5()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category5',compact('products'));
+    }
+    public function category6()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category6',compact('products'));
+    }
+    public function category7()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category7',compact('products'));
+    }
+    public function category8()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category8',compact('products'));
+    }
+    public function category9()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category9',compact('products'));
+    }
+    public function category10()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category10',compact('products'));
+    }
+    public function category11()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category11',compact('products'));
+    }
+    public function category12()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category12',compact('products'));
     }
     /**
      * Display a listing of the resource.
