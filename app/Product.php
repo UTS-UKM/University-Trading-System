@@ -7,7 +7,7 @@ use DB;
 
 class Product extends Model
 {
-    protected $fillable=['product_name', 'user_id', 'product_price','product_description','product_pic_1'];
+    protected $fillable=['product_name','category_id','user_id','product_price','product_description','product_pic_1'];
     //
     public function category()
     {

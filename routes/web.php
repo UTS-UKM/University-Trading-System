@@ -18,6 +18,22 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
 });
 */
 Route::get('/', 'PagesController@index')->name('index');
+
+Route::get('/category1','ProductsController@category1');
+Route::get('/category2','CategoriesController@category2');
+Route::get('/category3','CategoriesController@category3');
+Route::get('/category4','CategoriesController@category4');
+Route::get('/category5','CategoriesController@category5');
+Route::get('/category6','CategoriesController@category6');
+Route::get('/category7','CategoriesController@category7');
+Route::get('/category8','CategoriesController@category8');
+Route::get('/category9','CategoriesController@category9');
+Route::get('/category10','CategoriesController@category10');
+Route::get('/category11','CategoriesController@category11');
+Route::get('/category12','CategoriesController@category12');
+
+
+
 Route::get('/about', 'PagesController@about');
 Route::get('/user/ViewRequests', 'PagesController@ViewRequests');
 Route::get('/user_profile', 'PagesController@user_profile');

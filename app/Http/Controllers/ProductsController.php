@@ -8,6 +8,7 @@ use Auth;
 use App\User;
 use App\Category;
 use App\Product;
+use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use DB;
 
@@ -45,6 +46,68 @@ class ProductsController extends Controller
     public function index() {
 
     }
+
+    public function category1()
+    {
+      
+        $products = Product::all();// returns only 1
+        return view('categories.category1',compact('products'));
+    }
+    public function category2()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category2',compact('products'));
+    }
+    public function category3()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category3',compact('products'));
+    }
+    public function category4()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category4',compact('products'));
+    }
+    public function category5()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category5',compact('products'));
+    }
+    public function category6()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category6',compact('products'));
+    }
+    public function category7()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category7',compact('products'));
+    }
+    public function category8()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category8',compact('products'));
+    }
+    public function category9()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category9',compact('products'));
+    }
+    public function category10()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category10',compact('products'));
+    }
+    public function category11()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category11',compact('products'));
+    }
+    public function category12()
+    {
+        $products = Product::all();// returns only 1
+        return view('categories.category12',compact('products'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +125,7 @@ class ProductsController extends Controller
         $categories=Category::pluck('name','id');
         return view('product.create',compact('categories'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -72,11 +135,14 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $formInput=$request->except('product_pic_1');
-        //        validation
-                $this->validate($request,[
-                    
-                    'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
-                ]);
+       //        validation
+       $this->validate($request,[
+        'product_name'=>'required',
+        'product_description'=>'required',
+        'product_price'=>'required',
+        'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
+    ]);
+    
         //        image upload
                 $query = DB::table('products')->orderBy('created_at', 'desc')->first();
                 if(!empty($query)){
