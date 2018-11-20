@@ -20,8 +20,9 @@
                 <th>{{$data->buyer_id}}</th>
                 <th>{{$data->seller_id}}</th>
                 <th>{{$data->status}}</th>
-                <th><button type="submit" name="edit" value="Approve" class="btn btn-info btn-xs" onClick="return validate()"><i class="glyphicon glyphicon-ok"></i> Approve</button>
-                <button type="submit" name="edit" value="Reject" class="btn btn-danger btn-xs" onClick="return validate()"><i class="glyphicon glyphicon-remove"></i> Reject</button></th>
+                <th><button type="submit" name="edit" value="Approve" class="btn btn-info btn-xs" onClick="return validate()"><i class="glyphicon glyphicon-ok"></i> {{ __('Approve') }}</button>
+                    <button type="submit" name="edit" value="Reject" class="btn btn-danger btn-xs" onClick="return validate()"><i class="glyphicon glyphicon-remove"></i>  {{ __('Reject') }}</button></th>
+               
             </tr>
         @endforeach
     </table>
