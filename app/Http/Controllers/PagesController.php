@@ -18,7 +18,8 @@ class PagesController extends Controller
         return view('pages.user_profile');
     }
     public function admin(){ 
-        return view('admin.index');
+        $products=Product::orderBy('id', 'desc')->get();
+        return view('admin.index',compact('products'));
 
     }
       
