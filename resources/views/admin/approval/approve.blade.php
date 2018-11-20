@@ -11,7 +11,7 @@
                 <td>Buyer ID</td>
                 <td>Seller ID</td>
                 <td>Status</td>
-                <td class="text-center">Action</td>
+                <td>Action</td>
             </tr>
         @foreach($swap as $key => $data)
             <tr>
@@ -20,7 +20,8 @@
                 <th>{{$data->buyer_id}}</th>
                 <th>{{$data->seller_id}}</th>
                 <th>{{$data->status}}</th>
-                <th class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-ok"></span> Approve</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Reject</a></th>
+                <th><button type="submit" name="edit" value="Approve" class="btn btn-info btn-xs" onClick="return validate()"><i class="glyphicon glyphicon-ok"></i> Approve</button>
+                <button type="submit" name="edit" value="Reject" class="btn btn-danger btn-xs" onClick="return validate()"><i class="glyphicon glyphicon-remove"></i> Reject</button></th>
             </tr>
         @endforeach
     </table>
