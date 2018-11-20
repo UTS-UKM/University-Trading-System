@@ -18,8 +18,7 @@ class CreateSwappingRequestTable extends Migration
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('buyer_id');
             $table->unsignedInteger('seller_id');
-            $table->unsignedInteger('status');
-           
+            $table->unsignedInteger('status')->default('Pending');
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
