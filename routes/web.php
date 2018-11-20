@@ -41,6 +41,11 @@ Route::get ('/admin/view-categories','CategoriesController@viewCategories');
 // Products Route (Admin)
 Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
 Route::get ('/admin/view-products','ProductsController@viewProducts');
+Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
+Route::get('editproducts/{id}','ProductsController@editproducts');
+
+// Users Route (Admin)
+Route::get ('/admin/view-user','UsersController@viewUser');
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/admin', 'AdminController@index')->name('home');

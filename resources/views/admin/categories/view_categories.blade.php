@@ -34,8 +34,14 @@
   
        <center> <h1 class="my-4">Categories</h1></center>
      
-       <div class="list-group">
-    
+       <script>var numposts =5; var showpostdate = true; var showpostsummary = false; var numchars = 100; </script>
+
+       {{-- @foreach($categories as $key => $data)
+              {{$data->id}}
+              {{$data->name}}
+              <a href="{{url('editcategories')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></a>
+              <a href="{{url('deletecategories')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
+             --}}
                 <a href="" class="list-group-item">Electronic Devices</a>
                 <a href="#" class="list-group-item">Electronic Accessories</a>
                 <a href="#" class="list-group-item">TV & Home Appliances</a>

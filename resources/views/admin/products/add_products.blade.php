@@ -66,10 +66,6 @@
 }
     ?> 
             
-    {{-- 
-              <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
-
-            --}}
             {!! Form::open(['route' => array('product.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
       
             <div class="form-group">

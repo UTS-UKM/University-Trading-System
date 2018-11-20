@@ -20,6 +20,7 @@ class CategoriesController extends Controller
     }
 
     public function viewCategories(){
+        $categories=Categories::all();
         return view('admin.categories.view_categories');
     }
 

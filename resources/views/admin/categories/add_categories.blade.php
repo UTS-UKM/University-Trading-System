@@ -58,11 +58,7 @@
       $data = DB::table('categories')->orderBy('created_at', 'desc')->first();
    
       ?> 
-            
-    {{-- 
-              <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
-
-            --}}
+ 
             {!! Form::open(['route' => array('category.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
  
             <div class="form-group">
