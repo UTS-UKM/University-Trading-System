@@ -212,6 +212,8 @@
                     <div class="col-lg-5">
                       <div class="card h-100">
                            
+                            <div><a href="{{route('product',[$product->id], false) }}"><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
+                              max-height: 80%;"></a></div>
                             <div><img class="col-lg-20" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
                               max-height: 80%;"></div>
                             <div class="card-body">
