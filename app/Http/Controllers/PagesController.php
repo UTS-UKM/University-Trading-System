@@ -22,6 +22,10 @@ class PagesController extends Controller
         return view('admin.index',compact('products'));
 
     }
+    public function ViewRequests(){ 
+        return view('user.Requests');
+
+    }
       
     public function about() {
         $title = 'About us';
