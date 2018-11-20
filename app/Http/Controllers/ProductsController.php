@@ -9,6 +9,9 @@ use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use DB;
+use Intervention\Image\ImageManagerStatic as Image;
+
+
 
 class ProductsController extends Controller
 {
@@ -48,6 +51,7 @@ class ProductsController extends Controller
                     'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
                 ]);
         //        image upload
+        
                 $query = DB::table('products')->orderBy('created_at', 'desc')->first();
                 $maxpid= $query->id;
                 $newpid= $maxpid + 1;
@@ -56,6 +60,7 @@ class ProductsController extends Controller
                 if($image){
                     $imageName=$newpid . "_1";
                     $image->move('images',$imageName);
+                   
                     $formInput['product_pic_1']=$imageName;
                 }
                 Product::create($formInput);
@@ -71,6 +76,10 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+        $product = Product::find( $id );
+
+   	return view( 'product/detail' )
+   		->with( 'product', $product );
     }
 
     /**
@@ -105,5 +114,11 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function product($id = nulll)    
+    {
+        $productDetails = Product::where('id', $id)->first();
+        return view('product.detail')->with(compact('productDetails'));
+
     }
 }

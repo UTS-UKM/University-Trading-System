@@ -191,8 +191,8 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
                            
-                            <div><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
-                              max-height: 80%;"></div>
+                            <div><a href="{{route('product',[$product->id], false) }}"><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
+                              max-height: 80%;"></a></div>
                             <div class="card-body">
                                 <h4 class="card-title">
                           <h4>Item Name:{{$product->product_name}}</h4>
