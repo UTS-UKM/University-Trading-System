@@ -45,6 +45,7 @@ Route::get('approve', function () {
     return view ('approve', ['swap' => $swap]);
 });
 
+
 //Route::get('/admin', 'AdminController@index')->name('home');
 // Password reset link request routes...
 //Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
