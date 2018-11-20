@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Product extends Model
 {
@@ -15,5 +16,9 @@ class Product extends Model
     public function images()
     {
     	return $this->hasMany(ProductImage::class);
+    }
+    public function userProducts()
+    {
+         return $userProducts = DB::table('products')->where('user_id', auth()->id())->get();
     }
 }

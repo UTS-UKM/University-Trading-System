@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use Auth;
 use App\User;
 use App\Category;
 use App\Product;
@@ -13,8 +14,37 @@ use DB;
 
 class ProductsController extends Controller
 {
-    public function index(){
-       
+
+    public function addProducts(Request $request){
+        if($request->isMethod('post')) {
+            $data = $request->all();
+
+            $products = new Products;
+            $$products->name = $data['product_name'];
+            $$products->save();
+        }
+        return view('admin.products.add_products');
+    }
+
+    public function viewProducts(){
+        $products=Product::all();
+        return view('admin.products.view_products',compact('products'));
+    }
+
+    public function deleteproducts($id){
+        $data = DB::table('products')->where('id',$id)->delete();
+        session::flash('message','Products deleted successfully!!!');
+        return redirect()->back()->with('message','Products deleted successfully');
+      } 
+
+      public function editproducts($id){
+        $data = DB::table('products')->where('id',$id)->first();
+        $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
+        return view ('backend.updates.post',['data'=>$data,'menus'=>$menus]);
+      } 
+  
+    public function index() {
+
     }
 
     public function category1()
@@ -115,11 +145,16 @@ class ProductsController extends Controller
     
         //        image upload
                 $query = DB::table('products')->orderBy('created_at', 'desc')->first();
+                if(!empty($query)){
                 $maxpid= $query->id;
                 $newpid= $maxpid + 1;
+            }
               
                 $image=$request->product_pic_1;
                 if($image){
+                    if (!isset($newpid)) {
+                        $newpid=1;
+                    }
                     $imageName=$newpid . "_1";
                     $image->move('images',$imageName);
                     $formInput['product_pic_1']=$imageName;
@@ -172,4 +207,6 @@ class ProductsController extends Controller
     {
         //
     }
+
+   
 }

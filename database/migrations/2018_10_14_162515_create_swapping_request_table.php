@@ -16,6 +16,7 @@ class CreateSwappingRequestTable extends Migration
         Schema::create('swapping_request', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('swappedProduct_id');
             $table->unsignedInteger('buyer_id');
             $table->unsignedInteger('seller_id');
            

@@ -19,26 +19,11 @@ class UsersController extends Controller
         
         return view('user.index',compact('users'));
     }
-        /*
-     public function store(Request $request)
-    {
-        $formInput=$request->except('image');
-        //        validation
-                $this->validate($request,[
-                    
-                    'image'=>'image|mimes:png,jpg,jpeg|max:10000'
-                ]);
-        //        image upload
-                $image=$request->image;
-                if($image){
-                    $imageName="test";
-                    $image->move('images',$imageName);
-                    $formInput['image']=$imageName;
-                }
-                User::create($formInput);
-                return redirect()->route('user_profile');
-            }
-                */
+
+    public function viewUser(){
+        $user=User::all();
+        return view('user.view_user',compact('user'));
+    }
 
    public function edit($id)
     {
