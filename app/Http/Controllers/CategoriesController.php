@@ -4,18 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
+use DB;
 
-class CategoriesController extends Controller
+class CategoriesController extends ProductsController
 {
+
+    public function addCategories(Request $request){
+        if($request->isMethod('post')) {
+            $data = $request->all();
+
+            $category = new Category;
+            $category->name = $data['categories_name'];
+            $category->save();
+        }
+        return view('admin.categories.add_categories');
+    }
+
+    public function viewCategories(){
+        $categories=Categories::all();
+        return view('admin.categories.view_categories');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -35,8 +51,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+            
+            }
 
     /**
      * Display the specified resource.

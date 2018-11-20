@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->date('user_birthday')->nullable();
             $table->mediumText('user_address')->nullable();
             $table->string('avatar')->default('user.jpg');
-            $table->string('role')->default('customer');
+            $table->string('role')->default('admin');
             $table->rememberToken();
             $table->timestamps();
         });
