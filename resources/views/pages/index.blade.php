@@ -42,7 +42,6 @@
         body {font-family: Verdana, sans-serif;}
         .mySlides {display: none;}
         img { float:top; }
-
         
         
         
@@ -125,6 +124,7 @@
           <div class="numbertext">1 / 3</div>
           <img src="https://placeimg.com/870/400/arch" style="width:100%">
           <div class="text">Caption Text</div>
+          
         </div>
         
         <div class="mySlides fade">
@@ -179,15 +179,45 @@
 <br>
 <br>
 <br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="{{ route('product.fav') }}">My Wishlist</a></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                @forelse($products as $product)
+                <div class="row">
+
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/220x140" alt=""></a>
-                        <div class="card-body">
-                          <h4 class="card-title">
-                            <a href="#">Item One</a>
-                          </h4>
-                          <h5>$24.99</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                           
+                            <div><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
+                              max-height: 80%;"></div>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                         
+                                @if(!$product->favouritedBy(Auth::user()))
+                        <span class="pull-right">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('product-fav-form').submit();">Add to Favourites</a>
+
+                            <form id="product-fav-form" class="hidden" action="{{ route('product.fav.store', $product) }}" method="POST">
+                                {{ csrf_field() }}
+                            </form>
+                        </span>
+                        @endif
+
+                          <h4>Item Name:{{$product->product_name}}</h4>
+                          <h4>Price:RM {{$product->product_price}}</h4>
+                          <h4>Description:{{$product->product_description}}</h4>
+                        
                         </div>
                         <div class="card-footer">
                           <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -195,91 +225,46 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/220x140" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Item One</a>
-                                </h4>
-                                <h5>$24.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                              </div>
-                              <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                              </div>
-                            </div>
-                          </div>
+                          
 
-                          <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
-                                  <a href="#"><img class="card-img-top" src="http://placehold.it/220x140" alt=""></a>
-                                  <div class="card-body">
-                                    <h4 class="card-title">
-                                      <a href="#">Item One</a>
-                                    </h4>
-                                    <h5>$24.99</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                  </div>
-                                </div>
-                              </div>
-                              <br>
-                              <br>
-                              <br>
-                              <div class="col-lg-4 col-md-6 mb-4">
-                                    <div class="card h-100">
-                                      <a href="#"><img class="card-img-top" src="http://placehold.it/220x140" alt=""></a>
-                                      <div class="card-body">
-                                        <h4 class="card-title">
-                                          <a href="#">Item One</a>
-                                        </h4>
-                                        <h5>$24.99</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                      </div>
-                                      <div class="card-footer">
-                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                      </div>
-                                    </div>
-                                  </div>
+                          @empty
+        <h3>No products</h3>
 
-                                  <div class="col-lg-4 col-md-6 mb-4">
-                                        <div class="card h-100">
-                                          <a href="#"><img class="card-img-top" src="http://placehold.it/220x140" alt=""></a>
-                                          <div class="card-body">
-                                            <h4 class="card-title">
-                                              <a href="#">Item One</a>
-                                            </h4>
-                                            <h5>$24.99</h5>
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                          </div>
-                                          <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                          </div>
-                                        </div>
-                                      </div>
+        
 
-                                      <div class="col-lg-4 col-md-6 mb-4">
-                                            <div class="card h-100">
-                                              <a href="#"><img class="card-img-top" src="http://placehold.it/220x140" alt=""></a>
-                                              <div class="card-body">
-                                                <h4 class="card-title">
-                                                  <a href="#">Item One</a>
-                                                </h4>
-                                                <h5>$24.99</h5>
-                                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                                              </div>
-                                              <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                              </div>
-                                            </div>
-                                          </div>
-  
+    @endforelse
+               
             
+                </div>
+                <!DOCTYPE html>
+                <!DOCTYPE html>
+                <html>
+                <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                .footer {
+                   position:fixed ;
+                   left: 0;
+                   bottom: 0;
+                   width: 100%;
+                   background-color: Black;
+                   color: white;
+                   text-align: center;
+                }
+                </style>
+                </head>
+                <body>
+                
+                
+                
+                <div class="footer">
+                  <p>UNIVERSITY TRADING SYSTEMS</p>
+                </div>
+                
+                </body>
+                </html> 
+                
 
           
 @endsection
  
-

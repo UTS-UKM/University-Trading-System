@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users|email_domain:' . $data['email'] . '',
             'password' => 'required|string|min:6|confirmed',
+            'gender'=>'required|string' 
         ]);
     }
 
@@ -66,17 +67,9 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'gender' => $data['gender'],
             'password' => Hash::make($data['password']),
-        ]);
-    protected function update(array $data)
-    {
-        
-        //return 123;
-        $data = Post::find($id);
-        $data->name = $request ->input('name');
-        $data -> save();
 
-        return redirect ('/user_profile')->with ('success', "Post Updated");
-    }
+        ]);
     }
 }
