@@ -22,7 +22,6 @@
     z-index: 1;
 }
 .dropdown-content a {
-  margin-right: 100px;
     float: none;
     color: black;
     padding: 12px 16px;
@@ -76,6 +75,7 @@
             </button>
             <div class="dropdown-content">
               <a href="{{ __('/user_profile') }}">{{Auth::user()->name}} </a>
+              <a href="{{ url('/user/ViewRequests') }}">View Requests</a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 

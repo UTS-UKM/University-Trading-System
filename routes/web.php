@@ -41,6 +41,7 @@ Route::get('deleteusers/{id}','UsersController@deleteusers');
 
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/about', 'PagesController@about');
+Route::get('/user/ViewRequests', 'PagesController@ViewRequests');
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -49,6 +50,7 @@ Route::get('/edit/user/{id}','UsersController@edit');
 Route::post('/edit/user/{id}','UsersController@update');
 Route::get('/users', 'UsersController@index');
 Route::resource('posts','PostsController');
+Route::resource('/product/sendswappingrequest', '\App\Http\Controllers\SwappingRequestController');
 Auth::routes();
 //Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
 Route::get('/admin', 'PagesController@admin');
