@@ -35,7 +35,7 @@ Route::get('/category12','CategoriesController@category12');
 
 
 Route::get('/about', 'PagesController@about');
-Route::get('/user/ViewRequests', 'PagesController@ViewRequests');
+Route::get('/user/ViewRequests', 'SwappingRequestController@index');
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -73,10 +73,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Password reset routes...
 //Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@getReset');
 //Route::post('passwords/reset', 'Auth\ResetPasswordController@postReset');
-<<<<<<< HEAD
-
+/*
 Route::resource('product','ProductsController');
 Route::resource('category','CategoriesController');
+*/
 
 Route::resource('product','ProductsController')->except([
     'show'

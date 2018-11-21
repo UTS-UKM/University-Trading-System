@@ -4,10 +4,23 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 class SwappingRequest extends Model
 {
+    public $table = "swapping_request";
 
+    public function index(){
+        $result =DB::table('swapping_request')->where('id',auth()->user()->id)->get(); 
+        return $result;
+
+    }
+
+    public function create($data){
+            $requests = new SwappingRequest;
+            $requests->buyer_id = $data['buyer_id'];
+            $requests->save();
+
+    }
     public function updateSwappingRequest($data)
     {
-        $SwappingRequest = $this->find($data['id']); 
+        $SwappingRequest =  new SwappingRequest();
         $SwappingRequest->product_id = $data['product_id'];
         $SwappingRequest->offeredProduct_id = $data['offeredProduct_id'];
         $SwappingRequest->buyer_id = $data['buyer_id'];

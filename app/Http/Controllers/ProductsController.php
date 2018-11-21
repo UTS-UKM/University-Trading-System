@@ -36,7 +36,7 @@ class ProductsController extends Controller
 
     public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
-        session::flash('message','Products deleted successfully!!!');
+//        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
 
@@ -148,7 +148,7 @@ class ProductsController extends Controller
     
         //        image upload
         
-                $query = DB::table('products')->orderBy('created_at', 'desc')->first();
+                $query = DB::table('products')->orderBy('id', 'desc')->first();
                 if(!empty($query)){
                 $maxpid= $query->id;
                 $newpid= $maxpid + 1;
@@ -216,10 +216,11 @@ class ProductsController extends Controller
     {
         //
     }
-    public function product($id = nulll)    
+    public function product($id)    
     {
         $productDetails = Product::where('id', $id)->first();
-        return view('product.detail')->with(compact('productDetails'));
+        $productUser = DB::table('products')->where('user_id', auth()->user()->id)->get();
+        return view('product.detail')->with(compact('productDetails'))->with(compact('productUser'));
 
     }
 }

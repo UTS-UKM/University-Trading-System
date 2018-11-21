@@ -122,7 +122,9 @@
         
         </body>
         </html> 
-        <div class="col-sm-9 padding-right">
+        <?php 
+        ?>
+       <div class="col-sm-9 padding-right">
             <div class="col-lg-4">
                 <div class="carousel-inner">
                     <div class="item active">
@@ -142,10 +144,10 @@
                          <span>
                                 <span>RM{{$productDetails->product_price}}</span>
                                 <br>
-                                <button type="button" class="btn btn-fefault cart">
-                                <i class="fa fa-shopping-cart"></i>
-                                SWAP
-                                </button>
+
+                          @if (Auth::check())
+                          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">send request to buyer</button>
+                          @endif
                             </span>
                             <p><b>Availability:</b> In Stock</p>
                         <a href="test"><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
@@ -175,8 +177,102 @@
              </div>
 </div>
 
-    
-                
+
+               <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Send Swapping Request</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <div class="form-group">
+                          <label for="sel1">Select A Product</label>
+                          @if (Auth::check())
+                          <?php
+                          $user_id=Auth::user()->id;
+                          ?>
+                          @endif
+
+
+{{--            {!! Form::open(['route' => array('/product/sendswappingrequest'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!} --}}
+                          
+
+              <form method="POST"style="margin-left:50px;margin-right:50px;" action="/product/sendswappingrequest">
+                        @csrf
+                           
+
+            <?php 
+
+
+            ?>
+            {{--
+            <div class="form-group">
+                    {{ Form::label('name', 'Categories') }}
+                    {{ Form::select('name', productName, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+                </div>
+                --}}
+                      <div class="form-group">
+
+                          <select class="form-control" id="ProductsList">
+
+                              @forelse($productUser as $products)
+                             <?php
+                            $productUser = DB::table('products')->where('user_id', auth()->user()->id)->get();
+                            $productName = $products->product_name; 
+                             ?> 
+                            <option>
+                              {{$productName}}
+                            </option>
+
+                               @empty
+                              <h3>No products</h3>
+
+    @endforelse
+                              <?php 
+                            $offeredProduct = $products->id;
+                            $wantedProduct = $productDetails->id;
+                            $buyerID = auth()->user()->id;
+                            $sellerID = $productDetails->user_id;
+                            ?>
+                <input type="hidden" id="product_id" name="product_id" value="{{$wantedProduct}}">
+                <input type="hidden" id="offeredProduct_id" name="offeredProduct_id" value="{{$offeredProduct}}">
+                <input type="hidden" id="buyer_id" name="buyer_id" value="{{$buyerID}}">
+                <input type="hidden" id="seller_id" name="seller_id" value="{{$sellerID}}">
+
+
+
+
+
+                            
+                          </select>
+                        </div>
+                         <h4>Offered Item ID: <?php echo $offeredProduct ?></h4>
+                            <h4>Wanted Item ID: <?php echo $wantedProduct ?></h4>
+                            <h4>Buyer User ID: <?php echo $buyerID ?></h4>
+                            <h4>Seller User ID: <?php echo $sellerID ?></h4>
+
+
+            {{ Form::submit('Create', array('class' => 'btn btn-default')) }}
+            {!! Form::close() !!}
+
+                         
+                        </div>
+                        </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
+                {{-- END OF MODAL --}}
+            
                 
 
           
