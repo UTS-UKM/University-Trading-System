@@ -45,6 +45,14 @@ Route::get('approve', function () {
     return view ('approve', ['swap' => $swap]);
 });
 
+Route::post('approve', function () {
+    dd(request()->get('status'));
+});
+
+Route::post('approve', function () {
+    DB::table('swapping_request')->insert(request()->only('status'));
+});
+
 
 //Route::get('/admin', 'AdminController@index')->name('home');
 // Password reset link request routes...
