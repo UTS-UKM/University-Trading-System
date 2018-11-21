@@ -22,6 +22,7 @@ class Product extends Model
     // {
     // 	return $this->hasMany(ProductImage::class);
     // }
+    //iyiyiy
 
     public function favourites()
     {
