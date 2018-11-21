@@ -14,16 +14,16 @@ use DB;
 class ProductsController extends Controller
 {
 
-    public function addProducts(Request $request){
-        if($request->isMethod('post')) {
-            $data = $request->all();
+    // public function addProducts(Request $request){
+    //     if($request->isMethod('post')) {
+    //         $data = $request->all();
 
-            $products = new Products;
-            $$products->name = $data['product_name'];
-            $$products->save();
-        }
-        return view('admin.products.add_products');
-    }
+    //         $products = new Products;
+    //         $$products->name = $data['product_name'];
+    //         $$products->save();
+    //     }
+    //     return view('admin.products.add_products');
+    // }
 
     public function viewProducts(){
         $products=Product::all();
@@ -32,14 +32,15 @@ class ProductsController extends Controller
 
     public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
-        session::flash('message','Products deleted successfully!!!');
+        // session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
 
       public function editproducts($id){
         $data = DB::table('products')->where('id',$id)->first();
-        $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
-        return view ('backend.updates.post',['data'=>$data,'menus'=>$menus]);
+        // $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
+        // return view ('admin.products.edit_products',['data'=>$data,'menus'=>$menus]);
+        return view('admin.products.edit_products',compact('products'));
       } 
   
     public function index() {

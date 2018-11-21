@@ -80,7 +80,7 @@ function resetMenu() {
           <ul class="quick-actions">
            <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>
             <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
-            <li class="bg_lb"> <a href="{{ url('user/view-user') }}"> <i class="icon-th"></i> Users</a> </li>
+            <li class="bg_lb"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
           </ul>
         </div>
     <!--End-Action boxes-->    
@@ -98,8 +98,10 @@ function resetMenu() {
                           <th><strong>ID</strong></th>
                           <th><strong>Name</strong></th>
                           <th><strong>Price</strong></th>
+                          {{-- <th><strong>Availability</strong></th> --}}
                           <th><strong>Description</strong></th>
                           <th><strong>Image</strong></th>
+                        
                          
                         </tr>
                       </thead>
@@ -109,9 +111,11 @@ function resetMenu() {
                   
                   <th>{{$data->id}}</th>
                   <th>{{$data->product_name}}</th>
-                  <th>{{$data->product_price}}</th>     
+                  <th>{{$data->product_price}}</th>   
+                  {{-- <th>{{$data->product_price}}</th>  --}}
                   <th>{{$data->product_description}}</th>
                   <th><img src="/images/{{$data->product_pic_1}}"  style="width:200px;height:200px;"></th>
+            
                   </tr>
                 @endforeach
                       </tbody>

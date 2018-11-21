@@ -13,16 +13,29 @@ class CategoriesController extends Controller
             $data = $request->all();
 
             $category = new Category;
-            $category->name = $data['categories_name'];
+            $category->name = $data['name'];
             $category->save();
         }
         return view('admin.categories.add_categories');
     }
 
     public function viewCategories(){
-        $categories=Categories::all();
-        return view('admin.categories.view_categories');
+        $category=Category::all();
+        return view('admin.categories.view_categories',compact('category'));
     }
+
+    public function deleteCategories($id){
+        $data = DB::table('categories')->where('id',$id)->delete();
+        // session::flash('message','Products deleted successfully!!!');
+        return redirect()->back()->with('message','Products deleted successfully');
+      } 
+
+      public function editCategories($id){
+        $data = DB::table('categories')->where('id',$id)->first();
+        $menus = DB::table('categories')->where('id','!=',$data->category)->get();
+        return view ('admin.categories.edit_categories',['data'=>$data,'menus'=>$menus]);
+      } 
+
 
     /**
      * Display a listing of the resource.

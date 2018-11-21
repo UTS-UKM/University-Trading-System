@@ -17,6 +17,28 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
     return 'This is user '.$name.' with an id of '.$id;
 });
 */
+
+// Categories Route (Admin)
+Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
+Route::get ('/admin/view-categories','CategoriesController@viewCategories');
+Route::get('deletecategories/{id}','CategoriesController@deletecategories');
+Route::get('editcategories/{id}','CategoriesController@editcategories');
+
+// Products Route (Admin EDIT)
+// Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
+Route::get ('/admin/view-products','ProductsController@viewProducts');
+Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
+// Route::get('/admin/edit-products/{id}','ProductsController@editproducts');
+// Route::get('/admin/edit-products/{id}', function($id) {
+//     return view('admin.products.edit-products', [
+//         'data' =>App\product::where('id', $id)->get()
+//     ])
+//     }
+
+// Users Route (Admin SETTLE)
+Route::get ('/admin/view-users','UsersController@viewUsers');
+Route::get('deleteusers/{id}','UsersController@deleteusers');
+
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/about', 'PagesController@about');
 Route::get('/user_profile', 'PagesController@user_profile');
@@ -34,26 +56,6 @@ Route::get('/customer', 'PagesController@index')->middleware('auth','customer');
 
 Route::get ('admin/dashboard','PagesController@dashboard');
 
-// Categories Route (Admin)
-Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
-Route::get ('/admin/view-categories','CategoriesController@viewCategories');
-
-// Products Route (Admin)
-Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
-Route::get ('/admin/view-products','ProductsController@viewProducts');
-Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
-Route::get('editproducts/{id}','ProductsController@editproducts');
-
-// Users Route (Admin)
-Route::get ('/admin/view-user','UsersController@viewUser');
-
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/admin', 'AdminController@index')->name('home');
-// Password reset link request routes...
-//Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
-//Route::post('passwords/email', 'Auth\ResetPasswordController@postEmail');
-// Password reset routes...
-//Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@getReset');
-//Route::post('passwords/reset', 'Auth\ResetPasswordController@postReset');
 Route::resource('product','ProductsController');
 Route::resource('category','CategoriesController');
