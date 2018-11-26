@@ -1,8 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
-
 use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
@@ -12,45 +9,34 @@ use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use DB;
 use Intervention\Image\ImageManagerStatic as Image;
-
-
-
 class ProductsController extends Controller
 {
-
-    // public function addProducts(Request $request){
-    //     if($request->isMethod('post')) {
-    //         $data = $request->all();
-
-    //         $products = new Products;
-    //         $$products->name = $data['product_name'];
-    //         $$products->save();
-    //     }
-    //     return view('admin.products.add_products');
-    // }
-
+    public function addProducts(Request $request){
+        if($request->isMethod('post')) {
+            $data = $request->all();
+            $products = new Products;
+            $$products->name = $data['product_name'];
+            $$products->save();
+        }
+        return view('admin.products.add_products');
+    }
     public function viewProducts(){
         $products=Product::all();
         return view('admin.products.view_products',compact('products'));
     }
-
     public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
-        // session::flash('message','Products deleted successfully!!!');
+//        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
-
       public function editproducts($id){
         $data = DB::table('products')->where('id',$id)->first();
-        // $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
-        // return view ('admin.products.edit_products',['data'=>$data,'menus'=>$menus]);
-        return view('admin.products.edit_products',compact('products'));
+        $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
+        return view ('backend.updates.post',['data'=>$data,'menus'=>$menus]);
       } 
   
     public function index() {
-
     }
-
     public function category1()
     {
       
@@ -118,7 +104,6 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
  
-
     /**
      * Show the form for creating a new resource.
      *
@@ -168,7 +153,6 @@ class ProductsController extends Controller
                 Product::create($formInput);
                 return redirect()->route('index');
             }
-
     /**
      * Display the specified resource.
      *
@@ -179,11 +163,9 @@ class ProductsController extends Controller
     {
         //
         $product = Product::find( $id );
-
    	return view( 'product/detail' )
    		->with( 'product', $product );
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -194,7 +176,6 @@ class ProductsController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -206,7 +187,6 @@ class ProductsController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -222,6 +202,5 @@ class ProductsController extends Controller
         $productDetails = Product::where('id', $id)->first();
         $productUser = DB::table('products')->where('user_id', auth()->user()->id)->get();
         return view('product.detail')->with(compact('productDetails'))->with(compact('productUser'));
-
     }
 }

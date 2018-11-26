@@ -14,6 +14,10 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function viewUsers(){
+        $users=User::all();
+        return view('admin.users.view_users',compact('users'));
+    }
 
     public function deleteusers($id){
         $data = DB::table('users')->where('id',$id)->delete();
@@ -29,10 +33,7 @@ class UsersController extends Controller
     }
 
 
-    public function viewUsers(){
-        $users=User::all();
-        return view('admin.users.view_users',compact('users'));
-    }
+
 
    public function edit($id)
     {

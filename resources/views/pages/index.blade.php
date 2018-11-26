@@ -181,20 +181,14 @@
 <br>
 
                 <?php
-
-
                        class ProductLoopVariables{
                        private $product_id = 'default Value';
-
                          public function setVariables($product_id){
                            $this->product_id = $product_id;
-
                        }
                           public function getProductId(){
                             return $this->product_id;
                           }
-
-
                     }
                ?> 
                       
@@ -203,7 +197,6 @@
                 @forelse($products as $product)
                 <?php
                      $product_id = $product->id;
-
                      $ProductLoopVariables = new ProductLoopVariables();
                       $ProductLoopVariables->setVariables($product_id);
                   ?>
@@ -278,4 +271,3 @@
 
           
 @endsection
- 

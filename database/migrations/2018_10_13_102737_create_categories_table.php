@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateCategoriesTable extends Migration
 {
     /**
@@ -21,10 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->tinyInteger('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
-
     });
-
     DB::table('categories')->insert(array(
         array('id'=>'1', 'name'=>'Electronic Devices'),
         array('id'=>'2', 'name'=>'Electronic Accessories'),
@@ -38,13 +33,10 @@ class CreateCategoriesTable extends Migration
         array('id'=>'10', 'name'=>'Automotive & Motorcycles'),
         array('id'=>'11', 'name'=>'Fashion Accessories'),
         array('id'=>'12', 'name'=>'Sports & Travel'),
-
     ));
     DB::statement("ALTER TABLE ".DB::getTablePrefix()."categories CHANGE created_at created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL");
     DB::statement("ALTER TABLE ".DB::getTablePrefix()."categories CHANGE updated_at updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL");
 }
-
-
     /**
      * Reverse the migrations.
      *
@@ -54,8 +46,6 @@ class CreateCategoriesTable extends Migration
     {
         Schema::dropIfExists('categories');
     }
-
    
          
     }
-
