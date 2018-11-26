@@ -39,6 +39,8 @@
         <html>
         <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        </head>
         <style>
         * {box-sizing: border-box;}
         body {font-family: Verdana, sans-serif;}
@@ -114,99 +116,14 @@
         @media only screen and (max-width: 300px) {
           .text {font-size: 11px}
         }
-        </style>
-        </head>
-        <body>
-    
-   
-        <div class="slideshow-container">
-        
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <img src="https://placeimg.com/870/400/arch" style="width:100%">
-          <div class="text">Caption Text</div>
-          
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <img src="https://placeimg.com/870/400/nature" style="width:100%">
-          <div class="text">Caption Two</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <img src="https://placeimg.com/870/400/tech" style="width:100%">
-          <div class="text">Caption Three</div>
-        </div>
-        
-        </div>
-        <br>
-        
-        <div style="text-align:center">
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-        </div>
-        
-        <script>
-        var slideIndex = 0;
-        showSlides();
-        
-        function showSlides() {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-               slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-        </script>
-        
-        </body>
-        </html> 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<!DOCTYPE html>
-<html>
-<head>
-
-    <link rel="stylesheet" type="text/css" href="{{url('assets/css/bootstrap.min.css')}}"/>
-    <script src="{{url('assets/js/components/bootstrap.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    
-</head>
-<body>
-
-  <style>
     .slider-item{
     border: 1px solid #E1E1E1;
     border-radius: 5px;
     background: #FFF;
 }
 .slider-item .slider-image img{
-    margin: 0 auto;
+    margin: 0;
     width: 100%;
 }
 .slider-item .slider-main-detail{
@@ -251,27 +168,81 @@
     margin-top: 20px;
 }
 .btn-info,.btn-info:visited,.btn-info:hover{
-	background-color: #21BBD8;
-	border-color: #21BBD8;
+  background-color: #21BBD8;
+  border-color: #21BBD8;
 }
 .btn-info{
-	margin-left:5px;
+  margin-left:5px;
 }
 .slider-main-detail:hover{
-	background-color: #dbeeee !important;
+  background-color: #dbeeee !important;
 }
 .AddCart{
-	margin: 0px;
-	padding:5px;
-	border-radius:2px;
-	margin-right:10px;
+  margin: 0px;
+  padding:5px;
+  border-radius:2px;
+  margin-right:10px;
 }
 .review {
-	margin-bottom: 5px;
-	padding-top:5px;
+  margin-bottom: 5px;
+  padding-top:5px;
 }
-</style>
-    <div class="container">
+
+                .footer {
+                   margin-top:50px;
+                   position:fixed ;
+                   left: 0;
+                   bottom: 0;
+                   width: 100%;
+                   background-color: Black;
+                   color: white;
+                   text-align: center;
+                }
+        </style>
+        <body>
+    
+   
+        <div class="slideshow-container">
+        
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="https://placeimg.com/870/400/arch" style="width:100%">
+          <div class="text">Caption Text</div>
+          
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="https://placeimg.com/870/400/nature" style="width:100%">
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="https://placeimg.com/870/400/tech" style="width:100%">
+          <div class="text">Caption Three</div>
+        </div>
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+        </div>
+        
+        
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    
+
+    <div class="container" style="margin-bottom:50px;">
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <h3>New Products</h3>
@@ -283,7 +254,6 @@
             </div>
         </div>
         
-                @forelse($products as $product)
 
                 <div class="row">
 
@@ -291,6 +261,7 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="row">
+                @forelse($products as $product)
                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                         <div class="slider-item">
                                             <div class="slider-image">
@@ -323,6 +294,14 @@
                   </div>
               </div>
           </div>
+
+                          @empty
+
+        <h3>No products</h3>
+
+        
+
+    @endforelse
                                 </div>
                             </div>
                         </div>
@@ -332,49 +311,53 @@
                         
                     
 
-                          @empty
-
-        <h3>No products</h3>
-
-        
-
-    @endforelse
 
 
 
 
                 </div>
-</body>
-</html>
-
-                <!DOCTYPE html>
-                <!DOCTYPE html>
-                <html>
-                <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <style>
-                .footer {
-                   position:fixed ;
-                   left: 0;
-                   bottom: 0;
-                   width: 100%;
-                   background-color: Black;
-                   color: white;
-                   text-align: center;
-                }
-                </style>
-                </head>
-                <body>
                 
                 
                 
                 <div class="footer">
                   <p>UNIVERSITY TRADING SYSTEMS</p>
                 </div>
+
+
+        <script>
+        var slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+               slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+        </script>
+
+
+    <link rel="stylesheet" type="text/css" href="{{url('assets/css/bootstrap.min.css')}}"/>
+    <script src="{{url('assets/js/components/bootstrap.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
                 
-                <script>
-                  onclick="serieName=this.dataset.serieName;document.querySelector('#myModal input#product_id').value = serieName;return true;"
-              </script>
                 </body>
                 </html> 
                 
