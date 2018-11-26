@@ -20,17 +20,17 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
 Route::get('/', 'PagesController@index')->name('index');
 
 Route::get('/category1','ProductsController@category1');
-Route::get('/category2','CategoriesController@category2');
-Route::get('/category3','CategoriesController@category3');
-Route::get('/category4','CategoriesController@category4');
-Route::get('/category5','CategoriesController@category5');
-Route::get('/category6','CategoriesController@category6');
-Route::get('/category7','CategoriesController@category7');
-Route::get('/category8','CategoriesController@category8');
-Route::get('/category9','CategoriesController@category9');
-Route::get('/category10','CategoriesController@category10');
-Route::get('/category11','CategoriesController@category11');
-Route::get('/category12','CategoriesController@category12');
+Route::get('/category2','ProductsController@category2');
+Route::get('/category3','ProductsController@category3');
+Route::get('/category4','ProductsController@category4');
+Route::get('/category5','ProductsController@category5');
+Route::get('/category6','ProductsController@category6');
+Route::get('/category7','ProductsController@category7');
+Route::get('/category8','ProductsController@category8');
+Route::get('/category9','ProductsController@category9');
+Route::get('/category10','ProductsController@category10');
+Route::get('/category11','ProductsController@category11');
+Route::get('/category12','ProductsController@category12');
 
 
 
