@@ -28,12 +28,7 @@ Route::get('editcategories/{id}','CategoriesController@editcategories');
 // Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
 Route::get ('/admin/view-products','ProductsController@viewProducts');
 Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
-// Route::get('/admin/edit-products/{id}','ProductsController@editproducts');
-// Route::get('/admin/edit-products/{id}', function($id) {
-//     return view('admin.products.edit-products', [
-//         'data' =>App\product::where('id', $id)->get()
-//     ])
-//     }
+Route::get('/admin/edit-products/{id}','ProductsController@editproducts');
 
 // Users Route (Admin SETTLE)
 Route::get ('/admin/view-users','UsersController@viewUsers');
@@ -41,7 +36,6 @@ Route::get('deleteusers/{id}','UsersController@deleteusers');
 
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/about', 'PagesController@about');
-Route::get('/user/ViewRequests', 'PagesController@ViewRequests');
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -50,7 +44,6 @@ Route::get('/edit/user/{id}','UsersController@edit');
 Route::post('/edit/user/{id}','UsersController@update');
 Route::get('/users', 'UsersController@index');
 Route::resource('posts','PostsController');
-Route::resource('/product/sendswappingrequest', '\App\Http\Controllers\SwappingRequestController');
 Auth::routes();
 //Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
 Route::get('/admin', 'PagesController@admin');
