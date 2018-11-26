@@ -57,7 +57,7 @@
           <li class="login-btn"><a href="/login">Log In</a></li>
           @endif
           @if (Auth::check())
-          <li><a href="product/create">Add product</a></li>
+          <li><a href="/product/create">Add product</a></li>
           @endif
           <ul class="nav navbar-nav navbar-right">
             <li>

@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
+
 use DB;
 
 class Product extends Model
@@ -21,6 +23,14 @@ class Product extends Model
     {
          return $userProducts = DB::table('products')->where('user_id', auth()->id())->get();
     }
+    public function productDetail($id)
+
+    {
+
+        return $productDetails = Product::where('id', $id)->get();
+
+     }
+    
 }
 
 

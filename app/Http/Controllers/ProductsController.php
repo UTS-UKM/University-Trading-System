@@ -11,6 +11,9 @@ use App\Product;
 use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use DB;
+use Intervention\Image\ImageManagerStatic as Image;
+
+
 
 class ProductsController extends Controller
 {
@@ -33,7 +36,7 @@ class ProductsController extends Controller
 
     public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
-        session::flash('message','Products deleted successfully!!!');
+//        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
 
@@ -146,7 +149,8 @@ class ProductsController extends Controller
     ]);
     
         //        image upload
-                $query = DB::table('products')->orderBy('created_at', 'desc')->first();
+        
+                $query = DB::table('products')->orderBy('id', 'desc')->first();
                 if(!empty($query)){
                 $maxpid= $query->id;
                 $newpid= $maxpid + 1;
@@ -159,6 +163,7 @@ class ProductsController extends Controller
                     }
                     $imageName=$newpid . "_1";
                     $image->move('images',$imageName);
+                   
                     $formInput['product_pic_1']=$imageName;
                 }
                 Product::create($formInput);
@@ -174,6 +179,10 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+        $product = Product::find( $id );
+
+   	return view( 'product/detail' )
+   		->with( 'product', $product );
     }
 
     /**
@@ -209,6 +218,11 @@ class ProductsController extends Controller
     {
         //
     }
+    public function product($id)    
+    {
+        $productDetails = Product::where('id', $id)->first();
+        $productUser = DB::table('products')->where('user_id', auth()->user()->id)->get();
+        return view('product.detail')->with(compact('productDetails'))->with(compact('productUser'));
 
-   
+    }
 }
