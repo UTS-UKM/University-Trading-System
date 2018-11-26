@@ -19,18 +19,25 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
 });
 */
 Route::get('/', 'PagesController@index')->name('index');
+
+
+// Users Route (Admin SETTLE)
+Route::get ('/admin/view-users','UsersController@viewUsers');
+Route::get('deleteusers/{id}','UsersController@deleteusers');
+
 // Categories Route (Admin)
 Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
 Route::get ('/admin/view-categories','CategoriesController@viewCategories');
+Route::get('deletecategories/{id}','CategoriesController@deletecategories');
+Route::get('editcategories/{id}','CategoriesController@editcategories');
 
-// Products Route (Admin)
-Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
+// Products Route (Admin EDIT)
+// Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
 Route::get ('/admin/view-products','ProductsController@viewProducts');
 Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
-Route::get('editproducts/{id}','ProductsController@editproducts');
+Route::get('/admin/edit-products','ProductsController@editproducts');
 
-// Users Route (Admin)
-Route::get ('/admin/view-user','UsersController@viewUser');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

@@ -14,25 +14,27 @@ class ProductsController extends Controller
     public function addProducts(Request $request){
         if($request->isMethod('post')) {
             $data = $request->all();
-            $products = new Products;
+            $products = new Product;
             $$products->name = $data['product_name'];
             $$products->save();
         }
         return view('admin.products.add_products');
     }
+    
     public function viewProducts(){
         $products=Product::all();
         return view('admin.products.view_products',compact('products'));
     }
-    public function deleteproducts($id){
+
+    public function deleteProducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
 //        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
-      public function editproducts($id){
+      public function editProducts($id){
         $data = DB::table('products')->where('id',$id)->first();
         $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
-        return view ('backend.updates.post',['data'=>$data,'menus'=>$menus]);
+        return view ('admin.products.edit_products',['data'=>$data,'menus'=>$menus]);
       } 
   
     public function index() {

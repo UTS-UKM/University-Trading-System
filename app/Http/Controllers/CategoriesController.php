@@ -2,23 +2,38 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Category;
 use App\Product;
 use DB;
 class CategoriesController extends ProductsController
 {
+
+    public function viewCategories(){
+        $categories =Category::all();
+        return view('admin.categories.view_categories ',compact('categories'));
+    }
+    
     public function addCategories(Request $request){
         if($request->isMethod('post')) {
             $data = $request->all();
-            $category = new Category;
-            $category->name = $data['categories_name'];
-            $category->save();
+            $categories = new Category;
+            $$categories ->name = $data['name'];
+            $$categories ->save();
         }
         return view('admin.categories.add_categories');
     }
-    public function viewCategories(){
-        $categories=Categories::all();
-        return view('admin.categories.view_categories');
-    }
+    
+
+    public function deleteCategories($id){
+        $data = DB::table('categories')->where('id',$id)->delete();
+//        session::flash('message','Products deleted successfully!!!');
+        return redirect()->back()->with('message','Category deleted successfully');
+      } 
+      public function editcategories($id){
+        $data = DB::table('categories ')->where('id',$id)->first();
+        $menus = DB::table('categories ')->where('category_id','!=',$data->category)->get();
+        return view ('admin.categories .edit_categories ',['data'=>$data,'menus'=>$menus]);
+      } 
     /**
      * Display a listing of the resource.
      *

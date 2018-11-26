@@ -23,16 +23,17 @@
     <!--Action boxes-->
             <div class="quick-actions_homepage">
               <ul class="quick-actions">
-                <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
-                <li class="bg_lb"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
-                <li class="bg_ly span3"> <a href="{{ url('admin/') }}"> <i class="icon-th"></i>Admin Dashboard</a> </li>
+                <li class="bg_lg span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-th"></i>Back</a> </li>
+                <li class="bg_lo span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
+                <li class="bg_lb span3"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
+            
               </ul>
             </div>
         <!--End-Action boxes-->  
 
         <div style="height:-webkit-fill-available" class="col-md-12"
   
-       <center> <h1 class="my-4">Products</h1></center>
+       <center> <h1 class="my-4">Edit Product</h1></center>
   
        <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed">

@@ -23,8 +23,8 @@
     <!--Action boxes-->
     <div class="quick-actions_homepage">
         <ul class="quick-actions">
-          <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
-          <li class="bg_lb"> <a href="{{ url('admin/view-products') }}"> <i class="icon-th"></i> Product</a> </li>
+          <li class="bg_lo span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
+          <li class="bg_lb span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-th"></i> Product</a> </li>
           <li class="bg_ly span3"> <a href="{{ url('admin/') }}"> <i class="icon-th"></i>Admin Dashboard</a> </li>
         </ul>
       </div>

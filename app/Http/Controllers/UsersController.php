@@ -1,18 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use DB;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function viewUsers(){
         $users=User::all();
@@ -31,8 +25,12 @@ class UsersController extends Controller
         
         return view('users.index',compact('users'));
     }
-
-
+   
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
    public function edit($id)
