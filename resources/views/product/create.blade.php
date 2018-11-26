@@ -4,6 +4,10 @@
 
 @section('content')
 
+<h1>ADD PRODUCTS </h1>
+	
+              
+         
             <style>
                 input[type=text]:focus {
                 border: 3px solid #555;
@@ -41,40 +45,40 @@
 
        
       <?php 
-      $data = DB::table('products')->orderBy('created_at', 'desc')->first();
+      $data = DB::table('products')->orderBy('id', 'desc')->first();
       if(!empty($data)){
       $maxpid= $data->id;
       $newpid= $maxpid + 1;
       echo "Product ID: " . $newpid;
   }
       ?> 
-            
-    {{-- 
+
               <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
 
-            --}}
+            
             {!! Form::open(['route' => array('product.store'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
       
             <div class="form-group">
-                    {{ Form::label('name', 'Categories') }}
-                    {{ Form::select('name', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+                    {{ Form::label('category_id', 'Categories') }}
+                    {{ Form::select('category_id',$categories, null, ['class' => 'form-control','required','placeholder'=>'Select Category']) }}
                 </div>
+                
             <div class="form-group">
                 {{ Form::label('product_name', 'Name') }}
-                {{ Form::text('product_name', null, array('class' => 'form-control','required'=>'','minlength'=>'5')) }}
+                {{ Form::text('product_name', null, array('class' => 'form-control','required'=>'','minlength'=>'5','placeholder' => 'Name')) }}
             </div>
             
 
             <div class="form-group" >
                 {{ Form::label('product_description', 'Description' ) }}
-                {{ Form::text('product_description', null, array('class' => 'form-control','style'=>'height:200px' )) }}
+                {{ Form::textarea('product_description', null, array('class' => 'form-control','required'=>'','minlength'=>'5' )) }}
                
 
   
             </div>
             <div class="form-group">
                 {{ Form::label('product_price', 'Price') }}
-                {{ Form::text('product_price', null, array('class' => 'form-control')) }}
+                {{ Form::text('product_price', null, array('class' => 'form-control','required'=>'','minlength'=>'1','placeholder' => 'RM')) }}
             </div>
 
          
@@ -83,6 +87,8 @@
 
                  <?php $id=auth()->user()->id 
                    ?>  
+                   
+         
                 <input type="hidden" id="user_id" name="user_id" value="{{$id}}">
 
                 
@@ -106,6 +112,7 @@
 }
 }
 </style>
+
 
 
 @endsection

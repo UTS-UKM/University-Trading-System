@@ -11,18 +11,18 @@
             <h1 class="my-4">Categories</h1>
         
             <div class="list-group">
-              <a href="#" class="list-group-item">Electronic Devices</a>
-              <a href="#" class="list-group-item">Electronic Accessories</a>
-              <a href="#" class="list-group-item">TV & Home Appliances</a>
-              <a href="#" class="list-group-item">Health & Beauty</a>
-              <a href="#" class="list-group-item">Babies & Toys</a>
-              <a href="#" class="list-group-item">Groceries & Pets</a>
-              <a href="#" class="list-group-item">Home & Lifestyle</a>
-              <a href="#" class="list-group-item">Women's Fashion</a>
-              <a href="#" class="list-group-item">Men's Fashion</a>
-              <a href="#" class="list-group-item">Automotive & Motorcycles</a>
-              <a href="#" class="list-group-item">Fashion Accessories</a>
-              <a href="#" class="list-group-item">Sports & Travel</a>
+              <a href="/category1" class="list-group-item">Electronic Devices</a>
+              <a href="/category2" class="list-group-item">Electronic Accessories</a>
+              <a href="/category3" class="list-group-item">TV & Home Appliances</a>
+              <a href="/category4" class="list-group-item">Health & Beauty</a>
+              <a href="/category5" class="list-group-item">Babies & Toys</a>
+              <a href="/category6" class="list-group-item">Groceries & Pets</a>
+              <a href="/category7" class="list-group-item">Home & Lifestyle</a>
+              <a href="/category8" class="list-group-item">Women's Fashion</a>
+              <a href="/category9" class="list-group-item">Men's Fashion</a>
+              <a href="/category10" class="list-group-item">Automotive & Motorcycles</a>
+              <a href="/category11" class="list-group-item">Fashion Accessories</a>
+              <a href="/category12" class="list-group-item">Sports & Travel</a>
             </div>
             
   
@@ -209,21 +209,18 @@
                   ?>
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-5">
                       <div class="card h-100">
                            
-                            <div><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
-                              max-height: 80%;"></div>
+                            <div><a href="{{route('product',[$product->id], false) }}"><img class="card-img-top" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 50%;
+                              max-height: 50%;"></a></div>
                             <div class="card-body">
                                 <h4 class="card-title">
                           <h4>Item Name:{{$product->product_name}}</h4>
                           <h4>Price:RM {{$product->product_price}}</h4>
                           <h4>ID {{$product_id}}</h4>
                           <h4>Description:{{$product->product_description}}</h4>
-                          @if (Auth::check())
-                          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-serie-name="<?= $product_id ?>" data-target="#myModal">send request to buyer</button>
-                          <a href="#mymodal" data-serie-name="<?= $product_id ?>"> test </a>
-                          @endif
+                        
 
                         </div>
                         <div class="card-footer">
@@ -245,80 +242,7 @@
 
 
 
-               <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                  <div class="modal-dialog">
-                  
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Send Swapping Request</h4>
-                      </div>
-                      <div class="modal-body">
-                        <div class="form-group">
-                          <label for="sel1">Select A Product</label>
-                          @if (Auth::check())
-                          <?php
-                          $user_id=Auth::user()->id;
-                          ?>
-                          @endif
 
-                              @forelse($product->userProducts() as $products)
-
-{{--            {!! Form::open(['route' => array('/product/sendswappingrequest'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!} --}}
-
-              <form method="POST"style="margin-left:50px;margin-right:50px;" action="/product/sendswappingrequest">
-                        @csrf
-
-            <?php 
-            $productName = $products->product_name; 
-            $offeredProduct_id = $product_id;
-            $wantedProduct_id = $ProductLoopVariables->getProductId();
-            ?>
-            {{--
-            <div class="form-group">
-                    {{ Form::label('name', 'Categories') }}
-                    {{ Form::select('name', productName, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
-                </div>
-                --}}
-                      <div class="form-group">
-                          <h4>ID: {{$product_id}}</h4>
-                          <h4>OfferedProduct_id: {{$offeredProduct_id}}</h4>
-                          <h4>wanterProductId: {{$wantedProduct_id}}</h4>
-
-                          {{$product->product_name}}
-                          <select class="form-control" id="ProductsList">
-                            <option>
-                              {{$productName}}
-                            </option>
-
-
-
-
-                               @empty
-                              <h3>No products</h3>
-
-                             @endforelse
-                            
-                          </select>
-                        </div>
-
-                <input type="hidden" id="product_id" name="product_id" value="">
-            {{ Form::submit('Create', array('class' => 'btn btn-default')) }}
-            {!! Form::close() !!}
-                        </div>
-                        </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-
-                {{-- END OF MODAL --}}
-            
                 </div>
                
                 <!DOCTYPE html>

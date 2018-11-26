@@ -16,9 +16,10 @@ class CreateSwappingRequestTable extends Migration
         Schema::create('swapping_request', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('product_id');
-            $table->unsignedInteger('swappedProduct_id');
+            $table->unsignedInteger('offeredProduct_id');
             $table->unsignedInteger('buyer_id');
             $table->unsignedInteger('seller_id');
+            $table->string('status')->default('pending');
            
             $table->timestamps();
         });
@@ -26,6 +27,7 @@ class CreateSwappingRequestTable extends Migration
         Schema::table('swapping_request', function (Blueprint $table) {
         
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('offeredProduct_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
 

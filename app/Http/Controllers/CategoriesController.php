@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
+use DB;
 
-class CategoriesController extends Controller
+class CategoriesController extends ProductsController
 {
 
     public function addCategories(Request $request){
@@ -42,10 +44,7 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+    
 
     /**
      * Show the form for creating a new resource.
