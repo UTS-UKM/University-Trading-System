@@ -8,13 +8,49 @@
 	
               
          
+            <style>
+                input[type=text]:focus {
+                border: 3px solid #555;
+            }
+
+                select {
+                width: 100%;
+                padding: 16px 20px;
+                border: none;
+                border-radius: 4px;
+                background-color: #f1f1f1;
+                  } 
+                  
+            input[type=button], input[type=submit], input[type=reset] 
+            .button {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+
+                }
+</style>
+    <center><b><h1>Add Product</h1></b></center>
+ 
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+
 
        
       <?php 
       $data = DB::table('products')->orderBy('created_at', 'desc')->first();
+      if(!empty($data)){
       $maxpid= $data->id;
       $newpid= $maxpid + 1;
       echo "Product ID: " . $newpid;
+  }
       ?> 
 
               <form method="POST" action="{{action('ProductsController@store', $newpid)}}" accept-charset="UTF-8" data-parsley-validate="" enctype="multipart/form-data">
@@ -51,27 +87,15 @@
 
                  <?php $id=auth()->user()->id 
                    ?>  
+<<<<<<< HEAD
                    
                 <input type="hidden" id="UserID" name="UserID" value="{{$id}}">
          
+=======
+                <input type="hidden" id="user_id" name="user_id" value="{{$id}}">
+>>>>>>> master
 
                 
-    <style>
-        input[type=button], input[type=submit], input[type=reset] 
-.button {
-    background-color: #008CBA; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-}
-</style>
 
         
 
@@ -88,6 +112,10 @@
         </div>
     </div>
 
+    <style>
+}
+}
+</style>
 
 
 

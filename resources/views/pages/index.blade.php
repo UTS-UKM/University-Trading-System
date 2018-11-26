@@ -284,6 +284,7 @@
         </div>
         
                 @forelse($products as $product)
+
                 <div class="row">
 
                     <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel" data-type="multi">
@@ -336,7 +337,16 @@
         
 
     @endforelse
+
+
+
+
                
+
+
+
+
+                           
             
                 </div>
 </body>
@@ -367,6 +377,9 @@
                   <p>UNIVERSITY TRADING SYSTEMS</p>
                 </div>
                 
+                <script>
+                  onclick="serieName=this.dataset.serieName;document.querySelector('#myModal input#product_id').value = serieName;return true;"
+              </script>
                 </body>
                 </html> 
                 
