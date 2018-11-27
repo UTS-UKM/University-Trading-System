@@ -11,31 +11,43 @@ use DB;
 use Intervention\Image\ImageManagerStatic as Image;
 class ProductsController extends Controller
 {
-    public function addProducts(Request $request){
-        if($request->isMethod('post')) {
-            $data = $request->all();
-            $products = new Product;
-            $$products->name = $data['product_name'];
-            $$products->save();
-        }
-        return view('admin.products.add_products');
-    }
+    // public function addProducts(Request $request){
+    //     if($request->isMethod('post')) {
+    //         $data = $request->all();
+    //         $products = new Product;
+    //         $$products->name = $data['product_name'];
+    //         $$products->save();
+    //     }
+    //     return view('admin.products.add_products');
+    // }
     
     public function viewProducts(){
         $products=Product::all();
         return view('admin.products.view_products',compact('products'));
     }
 
-    public function deleteProducts($id){
+    public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
 //        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
-      public function editProducts($id){
-        $data = DB::table('products')->where('id',$id)->first();
-        $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
-        return view ('admin.products.edit_products',['data'=>$data,'menus'=>$menus]);
-      } 
+      
+      public function editProducts($products_id)
+      {
+          $products = new Product();
+          $data = $this->validate($request, [
+              'id'=>'required',
+              'user_id'=>'required',
+              'product_name'=>'required',
+              'product_price'=>'required',
+              'product_description'=>'required',
+              'product_status'=>'required',
+          ]);
+          $data['id'] = $id; 
+          $products->editProducts($data);
+  
+          return redirect('admin.products.view_products');
+      }
   
     public function index() {
     }

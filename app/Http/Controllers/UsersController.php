@@ -13,6 +13,7 @@ class UsersController extends Controller
         return view('admin.users.view_users',compact('users'));
     }
 
+
     public function deleteusers($id){
         $data = DB::table('users')->where('id',$id)->delete();
         // session::flash('message','Products deleted successfully!!!');

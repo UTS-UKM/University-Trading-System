@@ -12,6 +12,7 @@ class CategoriesController extends ProductsController
         $categories =Category::all();
         return view('admin.categories.view_categories ',compact('categories'));
     }
+
     
     public function addCategories(Request $request){
         if($request->isMethod('post')) {
@@ -29,10 +30,9 @@ class CategoriesController extends ProductsController
 //        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Category deleted successfully');
       } 
-      public function editcategories($id){
-        $data = DB::table('categories ')->where('id',$id)->first();
-        $menus = DB::table('categories ')->where('category_id','!=',$data->category)->get();
-        return view ('admin.categories .edit_categories ',['data'=>$data,'menus'=>$menus]);
+      public function editCategories(){
+        $categories =Category::all();
+        return view('admin.categories.edit_categories ',compact('categories'));
       } 
     /**
      * Display a listing of the resource.

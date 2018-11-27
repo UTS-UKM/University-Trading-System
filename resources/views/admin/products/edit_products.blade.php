@@ -31,7 +31,6 @@
             </div>
         <!--End-Action boxes-->  
 
-        <div style="height:-webkit-fill-available" class="col-md-12"
   
        <center> <h1 class="my-4">Edit Product</h1></center>
   

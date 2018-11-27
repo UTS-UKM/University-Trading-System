@@ -86,8 +86,7 @@ function resetMenu() {
     <!--End-Action boxes-->    
     
       </div>
-      
-      <div style="height:-webkit-fill-available" class="col-md-12"
+
   
       <center> <h1 class="my-4">Newest Products</h1></center>
  

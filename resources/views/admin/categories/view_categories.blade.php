@@ -30,34 +30,56 @@
             </div>
         <!--End-Action boxes-->  
 
-        <div style="height:-webkit-fill-available" class="col-md-12"
+   
   
-       <center> <h1 class="my-4">Categories</h1></center>
-  
-       <div class="table-responsive">
-        <table class="table table-striped table-hover table-condensed">
-          <thead>
-            <tr>
-              <th><strong>ID</strong></th>
-              <th><strong>Name</strong></th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
+       <center> <h1 class="my-4">Categories</h1>
+        
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-condensed">
 
-              @foreach($categories as $key => $data)
-            <tr>
-              <th>{{$data->id}}</th>
-              <th>{{$data->name}}</th>
-              <th><a href="{{url('editcategories')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></a></th>
-              <th><a href="{{url('deletecategories')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></th>
+            <thead>
               
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
+              <tr>
+                <th> <font size="+1"><strong>Name</strong></font></th>
+                <th> <font size="+1">Delete</font></th>
+                <th> <font size="+1">Edit</font></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              
+              <tr>
+                <td> 
+                   <li><a href="/category1">Electronic Devices</a></li>
+                   <li><a href="/category2">Electronic Accessories</a></li>
+                   <li><a href="/category3">TV & Home Appliances</a></li>
+                   <li><a href="/category4">Health & Beauty</a></li>
+                   <li><a href="/category5">Babies & Toys</a></li>
+                   <li><a href="/category6">Groceries & Pets</a></li>
+                   <li><a href="/category7">Home & Lifestyle</a></li>
+                   <li><a href="/category8">Women's Fashion</a></li>
+                   <li><a href="/category9">Men's Fashion</a></li>
+                   <li><a href="/category10">Automotive & Motorcycles</a>
+                   <li><a href="/category11">Fashion Accessories</a></li>
+                   <li><a href="/category12">Sports & Travel</a></li>
+                </td>
+
+                <th>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                  <li><a href="{{url('deletecategories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></li>
+                </th>
+                <th><a href="{{ url('admin/edit-categories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> </a></th>
+              </tr>
+            </tbody>
+          </table>
+  </div>
+       </center>
 
       <!DOCTYPE html>
       <html>
