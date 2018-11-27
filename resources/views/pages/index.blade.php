@@ -295,7 +295,6 @@
                                         <div class="slider-item">
                                             <div class="slider-image">
                            
-
                             <img class="img-responsive" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}">
                               </div>
                               <div class="slider-main-detail">
@@ -303,7 +302,6 @@
                                       <div class="product-detail">
                           <h5>{{$product->product_name}}</h5>
                           <h5 class="detail-price">RM {{$product->product_price}}</h5>
-
                         </div>
                       </div>
                       <div class="cart-section">
@@ -343,6 +341,13 @@
 
 
 
+               
+
+
+
+
+                           
+            
                 </div>
 </body>
 </html>
