@@ -285,7 +285,7 @@
                                   <i class="fa fa-star-o" aria-hidden="true"></i>
                               </div>
                               <div class="col-md-6 col-sm-12 col-xs-6">
-                                  <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
+                                  <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Swap</a>
                               </div>
                           </div>
                       </div>
