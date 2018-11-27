@@ -97,10 +97,10 @@ function resetMenu() {
                           <th><strong>ID</strong></th>
                           <th><strong>Name</strong></th>
                           <th><strong>Price</strong></th>
-                          {{-- <th><strong>Availability</strong></th> --}}
+                          <th><strong>Category</strong></th>
                           <th><strong>Description</strong></th>
                           <th><strong>Image</strong></th>
-                        
+                          
                          
                         </tr>
                       </thead>
@@ -110,8 +110,8 @@ function resetMenu() {
                   
                   <th>{{$data->id}}</th>
                   <th>{{$data->product_name}}</th>
-                  <th>{{$data->product_price}}</th>   
-                  {{-- <th>{{$data->product_price}}</th>  --}}
+                  <th>{{$data->product_price}}</th>  
+                  <td>{{$data->category_id}}</td>
                   <th>{{$data->product_description}}</th>
                   <th><img src="/images/{{$data->product_pic_1}}"  style="width:200px;height:200px;"></th>
             

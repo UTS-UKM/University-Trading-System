@@ -24,10 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Categories Route (Admin)
 Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
 Route::get ('/admin/view-categories','CategoriesController@viewCategories');
-Route::get('deletecategories/{id}','CategoriesController@deletecategories');
+Route::get('deleteCategories/{id}','CategoriesController@deleteCategories');
 Route::get('/admin/edit-categories','CategoriesController@editCategories');
 
 // Users Route (Admin)
+Route::get ('/admin/view-products','ProductsController@viewProducts');
 Route::get ('/admin/view-users','UsersController@viewUsers');
 Route::get('deleteusers/{id}','UsersController@deleteusers');
 

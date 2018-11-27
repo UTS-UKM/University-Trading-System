@@ -7,7 +7,8 @@ use DB;
 
 class UsersController extends Controller
 {
-
+   
+    
     public function viewUsers(){
         $users=User::all();
         return view('admin.users.view_users',compact('users'));

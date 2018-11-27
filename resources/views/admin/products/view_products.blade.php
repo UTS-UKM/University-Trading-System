@@ -40,6 +40,7 @@
                 <td><strong>Name</strong></td>
                 <td><strong>Price (RM)</strong></td>
                 <td><strong>Status</strong></td>
+                <td><strong>Category</strong></td>
                 <td><strong>Description</strong></td>
                 <td><strong>Image</strong></td>
                 <td>Edit</th>
@@ -53,7 +54,8 @@
                 <td>{{$data->id}}</td>
                 <td>{{$data->product_name}}</td>
                 <td>{{$data->product_price}}</td>
-                <td>{{$data->product_status}}</td>          
+                <td>{{$data->product_status}}</td>
+                <td>{{$data->category_id}}</td>    
                 <td>{{$data->product_description}}</td>
                 <td><img src="/images/{{$data->product_pic_1}}"  style="width:200px;height:200px;"></td>
                 <td><a href="{{url('admin/edit-products') }}" class="btn btn-default btn-sm"> <i class="glyphicon glyphicon-edit"></i> </a> </td>
