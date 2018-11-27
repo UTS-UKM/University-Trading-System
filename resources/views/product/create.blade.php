@@ -87,13 +87,7 @@
 
                  <?php $id=auth()->user()->id 
                    ?>  
-<<<<<<< HEAD
-                   
-                <input type="hidden" id="UserID" name="UserID" value="{{$id}}">
-         
-=======
                 <input type="hidden" id="user_id" name="user_id" value="{{$id}}">
->>>>>>> master
 
                 
 

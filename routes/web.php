@@ -73,10 +73,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Password reset routes...
 //Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@getReset');
 //Route::post('passwords/reset', 'Auth\ResetPasswordController@postReset');
-<<<<<<< HEAD
 
-Route::resource('product','ProductsController');
-Route::resource('category','CategoriesController');
 
 Route::resource('product','ProductsController')->except([
     'show'
