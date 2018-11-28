@@ -169,7 +169,9 @@
             setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
         </script>
-        
+
+           <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '69b66d1b-874c-4679-8011-94cc14b4d349', f: true }); done = true; } }; })();</script>
+
         </body>
         </html> 
 <br>
@@ -236,8 +238,7 @@
                 </style>
                 </head>
                 <body>
-                
-                
+
                 
                 <div class="footer">
                   <p>UNIVERSITY TRADING SYSTEMS</p>
