@@ -220,9 +220,24 @@ class ProductsController extends Controller
     }
     public function product($id)    
     {
+
+    $query = DB::table('products')->orderBy('id', 'desc')->first();
+    if(!empty($query)){
         $productDetails = Product::where('id', $id)->first();
+        if(Auth::check()){
         $productUser = DB::table('products')->where('user_id', auth()->user()->id)->get();
+    }
+
+
+    $newProductClicks = $productDetails->clicks + 1;
+        DB::table('products')
+       ->where('id', $id)
+       ->update([
+           'clicks' => DB::raw($newProductClicks),
+       ]);
+
         return view('product.detail')->with(compact('productDetails'))->with(compact('productUser'));
+    }
 
     }
 }

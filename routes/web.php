@@ -81,7 +81,10 @@ Route::resource('category','CategoriesController');
 Route::resource('product','ProductsController')->except([
     'show'
 ]);;
-Route::get('product/{id}','ProductsController@product')->name('product');
+Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
+Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');
+Route::get('/admin/view-swapping-requests', 'PagesController@admin_swapping_request');
+Route::get('/product/{id}','ProductsController@product')->name('product');
 Route::resource('category','CategoriesController');
 
 //Product details display

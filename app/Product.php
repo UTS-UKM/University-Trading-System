@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
+use App\User;
 use DB;
 
 class Product extends Model
@@ -23,6 +23,11 @@ class Product extends Model
     {
          return $userProducts = DB::table('products')->where('user_id', auth()->id())->get();
     }
+       public function favouritedBy(User $user)
+       {
+            return $this->favourites->contains($user);
+       }
+ 
     public function productDetail($id)
 
     {

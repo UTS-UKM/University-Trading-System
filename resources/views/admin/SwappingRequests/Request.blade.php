@@ -20,8 +20,8 @@
       <td>{{$result->created_at}}</td>
       <td>{{$result->status}}</td>
       <td>
-      	<a href="/user/swappingRequest/approve/{{$result->id}}" class="btn btn-primary">Approve</a>
-      	<a href="/user/swappingRequest/reject/{{$result->id}}"style="margin-left:15px"class="btn btn-danger">reject</a></td>
+      	<a href="/admin/swappingRequest/approve/{{$result->id}}" class="btn btn-primary">Approve</a>
+      	<a href="/admin/swappingRequest/reject/{{$result->id}}"style="margin-left:15px"class="btn btn-danger">reject</a></td>
     </tr>
     @empty
     	<h3>No Swapping Requests found</h3>

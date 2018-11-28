@@ -17,14 +17,15 @@ class CreateProductsTable extends Migration
             $table->increments('id');
 	    $table->unsignedInteger('category_id')->nullable();
 	    $table->unsignedInteger('user_id')->nullable();
-            $table->string('product_name');
-            $table->float('product_price', 8, 2);	
-            $table->mediumText('product_description');
-            $table->string('product_pic_1');
+            $table->string('product_name')->nullable();
+            $table->float('product_price', 8, 2)->nullable();
+            $table->mediumText('product_description')->nullable();
+            $table->string('product_pic_1')->nullable();
             $table->string('product_pic_2')->nullable();
             $table->string('product_pic_3')->nullable();
             $table->string('product_pic_4')->nullable();
             $table->string('product_status')->default('available');
+            $table->integer('clicks')->nullable();
             $table->timestamps();
         });
 

@@ -177,6 +177,7 @@
              </div>
 </div>
 
+                          @if (Auth::check())
 
                <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
@@ -192,11 +193,9 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label for="sel1">Select A Product</label>
-                          @if (Auth::check())
                           <?php
                           $user_id=Auth::user()->id;
                           ?>
-                          @endif
 
 
 {{--            {!! Form::open(['route' => array('/product/sendswappingrequest'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!} --}}
@@ -273,6 +272,7 @@
 
                 {{-- END OF MODAL --}}
             
+                          @endif
                 
 
           

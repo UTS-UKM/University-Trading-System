@@ -39,7 +39,7 @@
         <html>
         <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         </head>
         <style>
         * {box-sizing: border-box;}
@@ -177,7 +177,7 @@
 .slider-main-detail:hover{
   background-color: #dbeeee !important;
 }
-.AddCart{
+.ViewProduct{
   margin: 0px;
   padding:5px;
   border-radius:2px;
@@ -265,6 +265,23 @@
                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                         <div class="slider-item">
                                             <div class="slider-image">
+                                              <?php
+                                              $currentUser=Auth::user();
+
+                                               ?>
+
+{{--
+                    @if(!$product->favouritedBy($currentUser))
+                        <span class="pull-right">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('product-fav-form').submit();">Add to Favourites</a>
+
+                            <form id="product-fav-form" class="hidden" action="{{ route('product.fav.store', $product) }}" method="POST">
+                                {{ csrf_field() }}
+                            </form>
+                        </span>
+                        @endif
+                        --}}
+
                            
 
                             <img class="img-responsive" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}">
@@ -273,6 +290,7 @@
                                   <div class="slider-detail">
                                       <div class="product-detail">
                           <h5>{{$product->product_name}}</h5>
+
                           <h5 class="detail-price">RM {{$product->product_price}}</h5>
 
                         </div>
@@ -287,7 +305,7 @@
                                   <i class="fa fa-star-o" aria-hidden="true"></i>
                               </div>
                               <div class="col-md-6 col-sm-12 col-xs-6">
-                                  <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
+                                  <a href="/product/{{$product->id}}" class="ViewProduct btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> View Product</a>
                               </div>
                           </div>
                       </div>

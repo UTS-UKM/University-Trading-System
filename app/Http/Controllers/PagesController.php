@@ -17,6 +17,10 @@ class PagesController extends Controller
     public function user_profile(){ 
         return view('pages.user_profile');
     }
+    public function admin_swapping_request(){ 
+        return view('admin.SwappingRequests.Request');
+
+    }
     public function admin(){ 
         $products=Product::orderBy('id', 'desc')->get();
         return view('admin.index',compact('products'));

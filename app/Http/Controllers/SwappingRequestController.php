@@ -32,7 +32,7 @@ class SwappingRequestController extends Controller
                 $swappingRequest->seller_id = $request ->input('seller_id');
                 $swappingRequest -> save();
 
-                return redirect ('/home')->with ('success', "Post Created");
+                return redirect ('/home')->with ('success', "SwappingRequest Created");
     }
 	public function create(){
             $requests = new SwappingRequest;
@@ -40,6 +40,43 @@ class SwappingRequestController extends Controller
             $$requests->save();
 
 	}
+
+    public function adminApprove($id){
+
+        DB::table('swapping_request')
+       ->where('id', $id)
+       ->update([
+           'status' => DB::raw("'Approved by Admin'"),
+       ]);
+       return redirect ('/user/ViewRequests');
+    }
+    public function adminReject($id){
+
+        DB::table('swapping_request')
+       ->where('id', $id)
+       ->update([
+           'status' => DB::raw("'Rejected By Admin'"),
+       ]);
+       return redirect ('/user/ViewRequests');
+    }
+    public function approve($id){
+
+        DB::table('swapping_request')
+       ->where('id', $id)
+       ->update([
+           'status' => DB::raw("'Approved by seller, Waiting for Admin Approval of Transaction'"),
+       ]);
+       return redirect ('/user/ViewRequests');
+    }
+    public function reject($id){
+
+        DB::table('swapping_request')
+       ->where('id', $id)
+       ->update([
+           'status' => DB::raw("'Rejected By Seller'"),
+       ]);
+       return redirect ('/user/ViewRequests');
+    }
 
 }
  ?>
