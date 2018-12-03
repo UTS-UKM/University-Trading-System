@@ -33,12 +33,38 @@ class ProductsController extends Controller
         $products=Product::all();
         return view('admin.products.view_products',compact('products'));
     }
+    public function viewPopularProducts()   {
+        
+        return view('user.ViewProducts');
+
+    }
+    public function userViewProducts()  {
+        $product = Product::where('user_id', Auth::user()->id)->get();
+        
+        $products = Product::where('user_id', Auth::user()->id)->orderBy("id")->pluck('product_name');
+        
+        $click = Product::select(DB::raw("SUM(clicks) as count"))->where('user_id', Auth::user()->id)
+        ->orderBy("id")
+        ->groupBy(DB::raw("product_name"))
+        ->get()->toArray();
+         $click = array_column($click, 'count');
+
+         
+    
+
+
+        //$product = Product::where('user_id', auth()->user()->id)->get();
+        //$categories = 
+        return view('user.ViewProducts')->with(compact('product'))->with(compact('products'))->with('click',json_encode($click,JSON_NUMERIC_CHECK));
+
+    }
 
     public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
 //        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
+      
 
       public function editproducts($id){
         $data = DB::table('products')->where('id',$id)->first();

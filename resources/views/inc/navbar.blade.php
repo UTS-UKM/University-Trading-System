@@ -76,6 +76,7 @@
             <div class="dropdown-content">
               <a href="{{ __('/user_profile') }}">{{Auth::user()->name}} </a>
               <a href="{{ url('/user/ViewRequests') }}">View Requests</a>
+              <a href="{{ url('/user/ViewProducts') }}">View Product</a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 

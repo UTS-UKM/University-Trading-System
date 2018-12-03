@@ -11,6 +11,10 @@ class Product extends Model
 {
     protected $fillable=['product_name','category_id','user_id','product_price','product_description','product_pic_1'];
     //
+
+    public function user()    {
+         return $this->belongsTo('App\User');
+    }
     public function category()
     {
         return $this->belongsTo(Category::class);

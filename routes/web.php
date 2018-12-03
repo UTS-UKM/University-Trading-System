@@ -36,6 +36,8 @@ Route::get('/category12','ProductsController@category12');
 
 Route::get('/about', 'PagesController@about');
 Route::get('/user/ViewRequests', 'SwappingRequestController@index');
+Route::get('/user/ViewProducts', 'ProductsController@userViewProducts');
+
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
