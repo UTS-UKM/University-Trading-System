@@ -284,7 +284,7 @@
 
                            
 
-                            <img class="img-responsive" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}">
+                            <img class="img-responsive" src="{{ asset('images/' . $product->id . '_1') }}" alt="{{$product->product_pic_1}}">
                               </div>
                               <div class="slider-main-detail">
                                   <div class="slider-detail">
@@ -315,7 +315,7 @@
 
                           @empty
 
-        <h3>No products</h3>
+        <h3 style="margin-left:100px;">No products</h3>
 
         
 

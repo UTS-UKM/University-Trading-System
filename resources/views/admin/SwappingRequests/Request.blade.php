@@ -20,6 +20,7 @@
       <td>{{$result->created_at}}</td>
       <td>{{$result->status}}</td>
       <td>
+      	{{-- NOT FULLY SECURE, CAN BE INPUTTED INTO URL WITHOUT CONFIRMATION IF ADMIN --}}
       	<a href="/admin/swappingRequest/approve/{{$result->id}}" class="btn btn-primary">Approve</a>
       	<a href="/admin/swappingRequest/reject/{{$result->id}}"style="margin-left:15px"class="btn btn-danger">reject</a></td>
     </tr>

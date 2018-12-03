@@ -10,6 +10,7 @@ use App\Category;
 use App\Product;
 use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use DB;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -181,16 +182,16 @@ class ProductsController extends Controller
                 $maxpid= $query->id;
                 $newpid= $maxpid + 1;
             }
-              
                 $image=$request->product_pic_1;
                 if($image){
                     if (!isset($newpid)) {
                         $newpid=1;
                     }
                     $imageName=$newpid . "_1";
-                    $image->move('images',$imageName);
+                    Image::make(Input::file('product_pic_1'))->resize(268, 268)->save('images/' . $imageName); 
+//                    $image->move('images',$imageName);
                    
-                    $formInput['product_pic_1']=$imageName;
+ //                   $formInput['product_pic_1']=$imageName;
                 }
                 Product::create($formInput);
                 return redirect()->route('index');

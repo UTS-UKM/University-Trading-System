@@ -39,11 +39,6 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
     
-        DB::table('products')->insert(array(
-            array('id'=>'1', 'product_name'=>'testing','product_price'=>'122','product_description'=>'testing','product_pic_1'=>'1'),
-           
-    
-        ));
         DB::statement("ALTER TABLE ".DB::getTablePrefix()."products CHANGE created_at created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL");
         DB::statement("ALTER TABLE ".DB::getTablePrefix()."products CHANGE updated_at updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL");
     }); }
