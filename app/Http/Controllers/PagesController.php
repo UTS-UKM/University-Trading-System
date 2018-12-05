@@ -18,10 +18,6 @@ class PagesController extends Controller
     public function user_profile(){ 
         return view('pages.user_profile');
     }
-    public function admin_swapping_request(){ 
-        return view('admin.SwappingRequests.Request');
-
-    }
     public function admin(){ 
         $productname = Product::orderBy('clicks', 'desc')
         ->limit(10)

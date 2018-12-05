@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Http\Request;
+use Auth;
 use App\User;
 use DB;
 
@@ -27,9 +28,15 @@ class Product extends Model
     {
          return $userProducts = DB::table('products')->where('user_id', auth()->id())->get();
     }
-       public function favouritedBy(User $user)
+        public function favourites()
+    {
+    return $this->morphToMany(User::class, 'favouriteables');
+    }
+       public function favouritedBy($product_id)
        {
-            return $this->favourites->contains($user);
+        $user_id = auth()->user()->id;
+        return Favourite::where('user_id', '=', $user_id)->where('favouriteables_id', '=', $product_id)->exists();
+
        }
  
     public function productDetail($id)

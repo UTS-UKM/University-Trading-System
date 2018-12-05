@@ -77,6 +77,7 @@
               <a href="{{ __('/user_profile') }}">{{Auth::user()->name}} </a>
               <a href="{{ url('/user/ViewRequests') }}">View Requests</a>
               <a href="{{ url('/user/ViewProducts') }}">View Product</a>
+              <a href="/user/ViewFav/{{Auth::user()->id}}">Favourite List</a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 

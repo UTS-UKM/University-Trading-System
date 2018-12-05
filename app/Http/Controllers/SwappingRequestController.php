@@ -11,7 +11,7 @@ use DB;
 class SwappingRequestController extends Controller
 {
     public function index(){
-        $SwappingRequest =DB::table('swapping_request')->where('id',auth()->user()->id)->get(); 
+        $SwappingRequest =DB::table('swapping_request')->where('seller_id',auth()->user()->id)->get(); 
 
         return view('user.Requests')->with(compact('SwappingRequest'));
 
@@ -40,6 +40,11 @@ class SwappingRequestController extends Controller
             $$requests->save();
 
 	}
+    public function admin_swapping_request(){ 
+        $SwappingRequest =DB::table('swapping_request')->where('status', "!=", 'Rejected by seller')->get(); 
+        return view('admin.SwappingRequests.Request')->with(compact('SwappingRequest'));
+
+    }
 
     public function adminApprove($id){
 
@@ -48,7 +53,7 @@ class SwappingRequestController extends Controller
        ->update([
            'status' => DB::raw("'Approved by Admin'"),
        ]);
-       return redirect ('/user/ViewRequests');
+       return redirect ('/admin/view-swapping-requests');
     }
     public function adminReject($id){
 
@@ -57,7 +62,7 @@ class SwappingRequestController extends Controller
        ->update([
            'status' => DB::raw("'Rejected By Admin'"),
        ]);
-       return redirect ('/user/ViewRequests');
+       return redirect ('/admin/view-swapping-requests');
     }
     public function approve($id){
 

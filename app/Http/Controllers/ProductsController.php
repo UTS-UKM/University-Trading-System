@@ -8,7 +8,6 @@ use Auth;
 use App\User;
 use App\Category;
 use App\Product;
-use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use DB;

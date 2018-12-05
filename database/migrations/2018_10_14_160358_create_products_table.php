@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('product_pic_4')->nullable();
             $table->string('product_status')->default('available');
             $table->integer('clicks')->nullable();
+            $table->integer('favourited')->nullable();
             $table->timestamps();
         });
 
