@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Auth;
-use App\User;
-use App\Category;
-use App\Product;
+use App\{User, Category, Product};
 use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -73,7 +71,11 @@ class ProductsController extends Controller
         return view ('backend.updates.post',['data'=>$data,'menus'=>$menus]);
       } 
   
-    public function index() {
+    public function index(Request $request) {
+
+        $products = $request->user()->favouriteProducts()->paginate(5);
+ 
+	    return view('fav', compact('products'));
 
     }
 
@@ -164,8 +166,13 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
+
+        $request->user()->favouriteProducts()->syncWithoutDetaching([$product->id]);
+ 
+	    return back();
+
         $formInput=$request->except('product_pic_1');
        //        validation
        $this->validate($request,[
@@ -208,7 +215,7 @@ class ProductsController extends Controller
         //
         $product = Product::find( $id );
 
-   	return view( 'product/detail' )
+   	    return view( 'product/detail' )
    		->with( 'product', $product );
     }
 
@@ -241,9 +248,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Product $product)
     {
-        //
+        $request->user()->favouriteProducts()->detach($product);
+ 
+	    return back();
     }
     public function product($id)    
     {
@@ -254,7 +263,6 @@ class ProductsController extends Controller
         if(Auth::check()){
         $productUser = DB::table('products')->where('user_id', auth()->user()->id)->get();
     }
-
 
     $newProductClicks = $productDetails->clicks + 1;
         DB::table('products')

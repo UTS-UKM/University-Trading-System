@@ -43,10 +43,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-        public function favouriteProducts(){
-    return $this->morphedByMany(Product::class, 'favouriteable')
-                ->withPivot(['created_at'])
-                ->orderBy('pivot_created_at', 'desc');}
+    
+    public function favouriteProducts()
+    {
+        return $this->morphedByMany(Product::class, 'favouriteable')
+                    ->withPivot(['created_at'])
+                    ->orderBy('pivot_created_at', 'desc');
+    }
+
 
 }
 

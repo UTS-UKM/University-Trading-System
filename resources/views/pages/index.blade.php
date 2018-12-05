@@ -254,6 +254,18 @@
             </div>
         </div>
         
+        <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="{{ route('product.fav') }}">My Wishlist</a></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <div class="row">
 
@@ -270,8 +282,22 @@
 
                                                ?>
 
-{{--
-                    @if(!$product->favouritedBy($currentUser))
+
+                    
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+ 
+                        @if(!$product->favouritedBy(Auth::user()))
                         <span class="pull-right">
                             <a href="#" onclick="event.preventDefault(); document.getElementById('product-fav-form').submit();">Add to Favourites</a>
 
@@ -280,10 +306,7 @@
                             </form>
                         </span>
                         @endif
-                        --}}
-
-                           
-
+                    
                             <img class="img-responsive" src="{{ asset('images/' . $product->id . '_1') }}" alt="{{$product->product_pic_1}}">
                               </div>
                               <div class="slider-main-detail">

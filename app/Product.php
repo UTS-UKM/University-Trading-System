@@ -27,14 +27,20 @@ class Product extends Model
     {
          return $userProducts = DB::table('products')->where('user_id', auth()->id())->get();
     }
-       public function favouritedBy(User $user)
-       {
-            return $this->favourites->contains($user);
-       }
- 
-    public function productDetail($id)
 
+    public function favourites()
     {
+    	return $this->morphToMany(User::class, 'favouriteable');
+    }
+
+
+    public function favouritedBy(User $user)
+    {
+    	return $this->favourites->contains($user);
+    }
+
+     
+    public function productDetail($id){
 
         return $productDetails = Product::where('id', $id)->get();
 

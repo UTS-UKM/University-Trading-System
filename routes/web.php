@@ -90,3 +90,10 @@ Route::get('/product/{id}','ProductsController@product')->name('product');
 Route::resource('category','CategoriesController');
 
 //Product details display
+
+//Favourite
+Route::get('/products/favourites', 'ProductsController@index')->name('product.fav');
+Route::get('/products/{product}', 'ProductsController@show')->name('product.show');
+Route::post('/products/{product}/favourites', 'ProductsController@store')->name('product.fav.store');	
+Route::delete('/products/{product}/favourites', 'ProductsController@destroy')->name('product.fav.destroy');
+
