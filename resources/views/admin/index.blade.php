@@ -14,6 +14,7 @@
 <link href="font-awesome/{{ asset('fonts/backend_fonts/css/font-awesome.css') }}" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
 
     @yield('content')
@@ -65,11 +66,64 @@ function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script>
+    
+var year = <?php echo $productname; ?>;
+var data_click = <?php echo $click; ?>;
+
+
+var barChartData = {
+    labels: year,
+    datasets: [{
+        label: 'Click',
+        backgroundColor: "rgba(220,220,220,0.5)",
+        data: data_click,
+        
+    },]
+};
+
+
+window.onload = function() {
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            scales: {
+                yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                            }
+                        }]
+                },
+            
+            elements: {
+                
+
+                rectangle: {
+                    borderWidth: 2,
+                    borderColor: 'rgb(0, 255, 0)',
+                    borderSkipped: 'bottom'
+                }
+            },
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Product Clicks '
+            }
+        }
+    });
+
+
+};
+</script>
 </body>
 </html>
 
 {{-- end try --}}
 @section('content')
+
 
 
  
@@ -84,12 +138,19 @@ function resetMenu() {
             <li class="bg_lb"> <a href="{{ url('/admin/view-swapping-requests') }}"> <i class="icon-th"></i> Swapping Request</a> </li>
           </ul>
         </div>
-    <!--End-Action boxes-->    
+    <!--End-Action boxes-->  
+      
     
       </div>
-      
-      <div style="height:-webkit-fill-available" class="col-md-12"
-  
+      <div>Overview</div>
+                <div >
+                    <canvas id="canvas" height="180" width="400"></canvas>
+                </div>
+            </div>
+
+      <div style="height:-webkit-fill-available" class="col-md-12">
+
+             
       <center> <h1 class="my-4">Newest Products</h1></center>
  
       <div class="table-responsive">
