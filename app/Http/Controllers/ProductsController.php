@@ -1,8 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
-
 use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
@@ -12,23 +9,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use DB;
 use Intervention\Image\ImageManagerStatic as Image;
-
-
-
 class ProductsController extends Controller
 {
-
-    public function addProducts(Request $request){
-        if($request->isMethod('post')) {
-            $data = $request->all();
-
-            $products = new Products;
-            $$products->name = $data['product_name'];
-            $$products->save();
-        }
-        return view('admin.products.add_products');
-    }
-
+    // public function addProducts(Request $request){
+    //     if($request->isMethod('post')) {
+    //         $data = $request->all();
+    //         $products = new Product;
+    //         $$products->name = $data['product_name'];
+    //         $$products->save();
+    //     }
+    //     return view('admin.products.add_products');
+    // }
+    
     public function viewProducts(){
         $products=Product::all();
         return view('admin.products.view_products',compact('products'));
@@ -65,17 +57,25 @@ class ProductsController extends Controller
         return redirect()->back()->with('message','Products deleted successfully');
       } 
       
-
-      public function editproducts($id){
-        $data = DB::table('products')->where('id',$id)->first();
-        $menus = DB::table('products')->where('category_id','!=',$data->category)->get();
-        return view ('backend.updates.post',['data'=>$data,'menus'=>$menus]);
-      } 
+      public function editProducts($products_id)
+      {
+          $products = new Product();
+          $data = $this->validate($request, [
+              'id'=>'required',
+              'user_id'=>'required',
+              'product_name'=>'required',
+              'product_price'=>'required',
+              'product_description'=>'required',
+              'product_status'=>'required',
+          ]);
+          $data['id'] = $id; 
+          $products->editProducts($data);
+  
+          return redirect('admin.products.view_products');
+      }
   
     public function index() {
-
     }
-
     public function category1()
     {
       
@@ -145,7 +145,6 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
  
-
     /**
      * Show the form for creating a new resource.
      *
@@ -195,7 +194,6 @@ class ProductsController extends Controller
                 Product::create($formInput);
                 return redirect()->route('index');
             }
-
     /**
      * Display the specified resource.
      *
@@ -206,11 +204,9 @@ class ProductsController extends Controller
     {
         //
         $product = Product::find( $id );
-
    	return view( 'product/detail' )
    		->with( 'product', $product );
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -221,7 +217,6 @@ class ProductsController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -233,7 +228,6 @@ class ProductsController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

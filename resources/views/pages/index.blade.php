@@ -2,7 +2,6 @@
 
 @section('content')
     
-
 <div class="container">
 
         <div class="row">
@@ -75,10 +74,10 @@
 <br>
 <br>
     
-
-      @yield('Productslider')
                 
          @include('inc.productSlider')
+
+
                 
                 
                 <div class="footer">
@@ -107,8 +106,6 @@
             setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
         </script>
-
-
     <link rel="stylesheet" type="text/css" href="{{url('assets/css/bootstrap.min.css')}}"/>
     <script src="{{url('assets/js/components/bootstrap.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -119,10 +116,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
+    <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '69b66d1b-874c-4679-8011-94cc14b4d349', f: true }); done = true; } }; })();</script>
                 
                 </html> 
                 
 
           
 @endsection
- 

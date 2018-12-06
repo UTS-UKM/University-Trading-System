@@ -21,19 +21,17 @@
  
 
     <!--Action boxes-->
-            <div class="quick-actions_homepage">
-              <ul class="quick-actions">
-                <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-dashboard"></i>Product </a> </li>
-                <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
-                <li class="bg_lb"> <a href="{{ url('user/view-user') }}"> <i class="icon-th"></i> Users</a> </li>
-                <li class="bg_ly span3"> <a href="{{ url('admin/') }}"> <i class="icon-th"></i>Admin Dashboard</a> </li>
-              </ul>
-            </div>
+    <div class="quick-actions_homepage">
+        <ul class="quick-actions">
+          <li class="bg_lo span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
+          <li class="bg_lb span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-th"></i> Product</a> </li>
+          <li class="bg_ly span3"> <a href="{{ url('admin/') }}"> <i class="icon-th"></i>Admin Dashboard</a> </li>
+        </ul>
+      </div>
         <!--End-Action boxes-->  
 
-        <div style="height:-webkit-fill-available" class="col-md-12"
   
-       <center> <h1 class="my-4">Category</h1></center>
+       <center> <h1 class="my-4">User</h1></center>
   
        <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed">
@@ -47,13 +45,12 @@
               <th><strong>Birthday</strong></th>
               <th><strong>Address</strong></th>
               <th><strong>Role</strong></th>
-              <th>Edit</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
 
-              @foreach($user as $key => $data)
+              @foreach($users as $key => $data)
             <tr>
               <th>{{$data->id}}</th>
               <th>{{$data->name}}</th>
@@ -63,8 +60,7 @@
               <th>{{$data->user_birthday}}</th>
               <th>{{$data->user_address}}</th>
               <th>{{$data->role}}</th>
-              <th><a href="{{url('edituser')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></a></th>
-              <th><a href="{{url('deleteuser')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></th>
+              <th><a href="{{url('deleteusers')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></th>
               
             </tr>
             @endforeach

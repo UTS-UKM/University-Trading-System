@@ -40,11 +40,8 @@ class Product extends Model
        }
  
     public function productDetail($id)
-
     {
-
         return $productDetails = Product::where('id', $id)->get();
-
      }
     
 }

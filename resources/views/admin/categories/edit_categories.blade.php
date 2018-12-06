@@ -18,41 +18,42 @@
 
 @section('content')
 
- 
 
-    <!--Action boxes-->
-            <div class="quick-actions_homepage">
-              <ul class="quick-actions">
-                <li class="bg_lg span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-th"></i>Back</a> </li>
-                <li class="bg_lo span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
-                <li class="bg_lb span3"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
-            
-              </ul>
-            </div>
-        <!--End-Action boxes-->  
-
+   
   
-       <center> <h1 class="my-4">Edit Product</h1></center>
-  
-       <div class="table-responsive">
-        <table class="table table-striped table-hover table-condensed">
-          <thead>
-            <tr>
-              <th><strong>ID</strong></th>
-              <th><strong>Name</strong></th>
-              <th><strong>Price</strong></th>
-              <th><strong>Description</strong></th>
-              <th><strong>Image</strong></th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
+       <center> <h1 class="my-4">Edit Categories</h1>
 
-      
-          </tbody>
-        </table>
-      </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-condensed">
+              <thead>
+                <tr>
+                  <td><strong>ID</strong></td>
+                  <td><strong>Name</strong></td>
+                 
+                </tr>
+              </thead>
+              <tbody>
+    
+                  @foreach($categories as $key => $data)
+                <tr>
+                  <div contenteditable>
+                  <td>{{$data->id}}</td>
+                  <td>{{$data->name}}</td>
+                  
+                  </div>
+                </tr>
+                @endforeach
+              </tbody>
+           
+          
+
+
+  <div style="margin-top:10px;"class="col-md-6 offset-md-4">
+        <button type="submit" class="btn btn-primary">
+            {{ __('Update') }}
+        </button>
+    </div> </table>
+</div>
 
       <!DOCTYPE html>
       <html>

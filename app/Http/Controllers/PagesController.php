@@ -23,6 +23,10 @@ class PagesController extends Controller
         ->limit(10)
         ->pluck('product_name')
         ;
+        $productFavourite=Product::orderBy('clicks', 'desc')
+        ->limit(10)
+        ->pluck('favourited')
+        ;
 
         $products=Product::orderBy('id', 'desc')->get();
 
@@ -33,7 +37,7 @@ class PagesController extends Controller
         ->get()->toArray();
          $click = array_column($click, 'count');
 
-        return view('admin.index')->with(compact('products'))->with(compact('productname'))->with('click',json_encode($click,JSON_NUMERIC_CHECK));
+        return view('admin.index')->with(compact('products'))->with(compact('productFavourite'))->with(compact('productname'))->with('click',json_encode($click,JSON_NUMERIC_CHECK));
 
     }
     public function ViewRequests(){ 
