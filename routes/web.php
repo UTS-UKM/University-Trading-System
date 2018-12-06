@@ -85,6 +85,18 @@ Route::resource('category','CategoriesController');
 Route::resource('product','ProductsController')->except([
     'show'
 ]);;
+<<<<<<< HEAD
+=======
+
+Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
+Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');
+Route::get('/admin/view-swapping-requests', 'SwappingRequestController@admin_swapping_request');
+Route::get('/admin/swappingRequest/approve/{id}', 'SwappingRequestController@adminApprove');
+Route::get('/admin/swappingRequest/reject/{id}', 'SwappingRequestController@adminReject');
+
+Route::get('/product/{id}','ProductsController@product')->name('product');
+Route::resource('category','CategoriesController');
+>>>>>>> master
 
 Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
 Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');
@@ -98,7 +110,6 @@ Route::resource('category','CategoriesController');
 
 
 
-
 // Favorite
 
 Route::get('/favourite/addToFavourite/{product_id}', 'FavouriteController@store');
@@ -108,4 +119,5 @@ Route::get('/products/favourites', 'ProductsController@index')->name('product.fa
 Route::get('/products/{product}', 'ProductsController@show')->name('product.show');
 Route::post('/products/{product}/favourites', 'ProductsController@store')->name('product.fav.store');	
 Route::delete('/products/{product}/favourites', 'ProductsController@destroy')->name('product.fav.destroy');
+<<<<<<< HEAD
 */
