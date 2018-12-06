@@ -10,13 +10,7 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-        public function approve(){
-            $swap = DB::select('select * from swapping_request');
-            return view('admin.approval.approve',['swap'=>$swap]);
-        }
-       
-
-         
+  //
 }
 
  ?>

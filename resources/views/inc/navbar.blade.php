@@ -22,7 +22,6 @@
     z-index: 1;
 }
 .dropdown-content a {
-  margin-right: 100px;
     float: none;
     color: black;
     padding: 12px 16px;
@@ -60,7 +59,7 @@
           @endif
 
           @if (Auth::check())
-            <li><a href="product/create">Add product</a></li>
+          <li><a href="/product/create">Add product</a></li>
           @endif
           
           <ul class="nav navbar-nav navbar-right">
@@ -86,6 +85,9 @@
             </button>
             <div class="dropdown-content">
               <a href="{{ __('/user_profile') }}">{{Auth::user()->name}} </a>
+              <a href="{{ url('/user/ViewRequests') }}">View Requests</a>
+              <a href="{{ url('/user/ViewProducts') }}">View Product</a>
+              <a href="/user/ViewFav/{{Auth::user()->id}}">Favourite List</a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 
@@ -97,6 +99,8 @@
        
       
     </div>
+    
+    <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '69b66d1b-874c-4679-8011-94cc14b4d349', f: true }); done = true; } }; })();</script>
   
     
   </nav>

@@ -1,4 +1,2 @@
-
-vendor/composer/autoload_classmap.php
-*.php
-*.php
+.env
+public/images/

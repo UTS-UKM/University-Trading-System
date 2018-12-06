@@ -1,19 +1,143 @@
 <?php
-
 namespace App\Http\Controllers;
-
-
 use App\Http\Controllers\Controller;
+use Auth;
 use App\User;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use DB;
-
+use Intervention\Image\ImageManagerStatic as Image;
 class ProductsController extends Controller
 {
-    public function index(){
-       
+    // public function addProducts(Request $request){
+    //     if($request->isMethod('post')) {
+    //         $data = $request->all();
+    //         $products = new Product;
+    //         $$products->name = $data['product_name'];
+    //         $$products->save();
+    //     }
+    //     return view('admin.products.add_products');
+    // }
+    
+    public function viewProducts(){
+        $products=Product::all();
+        return view('admin.products.view_products',compact('products'));
+    }
+    public function viewPopularProducts()   {
+        
+        return view('user.ViewProducts');
+
+    }
+    public function userViewProducts()  {
+        $product = Product::where('user_id', Auth::user()->id)->get();
+        
+        $products = Product::where('user_id', Auth::user()->id)->orderBy("id")->pluck('product_name');
+        
+        $click = Product::select(DB::raw("SUM(clicks) as count"))->where('user_id', Auth::user()->id)
+        ->orderBy("id")
+        ->groupBy(DB::raw("product_name"))
+        ->get()->toArray();
+         $click = array_column($click, 'count');
+
+         
+    
+
+
+        //$product = Product::where('user_id', auth()->user()->id)->get();
+        //$categories = 
+        return view('user.ViewProducts')->with(compact('product'))->with(compact('products'))->with('click',json_encode($click,JSON_NUMERIC_CHECK));
+
+    }
+
+    public function deleteproducts($id){
+        $data = DB::table('products')->where('id',$id)->delete();
+//        session::flash('message','Products deleted successfully!!!');
+        return redirect()->back()->with('message','Products deleted successfully');
+      } 
+      
+      public function editProducts($products_id)
+      {
+          $products = new Product();
+          $data = $this->validate($request, [
+              'id'=>'required',
+              'user_id'=>'required',
+              'product_name'=>'required',
+              'product_price'=>'required',
+              'product_description'=>'required',
+              'product_status'=>'required',
+          ]);
+          $data['id'] = $id; 
+          $products->editProducts($data);
+  
+          return redirect('admin.products.view_products');
+      }
+  
+    public function index() {
+    }
+    public function category1()
+    {
+      
+        $products = Product::where('category_id', 1)->get();
+        // returns only 1
+        return view('categories.category1',compact('products'));
+    }
+
+    public function category2()
+    {
+        $products = Product::where('category_id', 2)->get();
+        return view('categories.category2',compact('products'));
+    }
+    public function category3()
+    {
+        $products = Product::where('category_id', 3)->get();
+        return view('categories.category3',compact('products'));
+    }
+    public function category4()
+    {
+        $products = Product::where('category_id', 4)->get();
+        return view('categories.category4',compact('products'));
+    }
+    public function category5()
+    {
+        $products = Product::where('category_id', 5)->get();
+        return view('categories.category5',compact('products'));
+    }
+    public function category6()
+    {
+        $products = Product::where('category_id', 6)->get();
+        return view('categories.category6',compact('products'));
+    }
+    public function category7()
+    {
+        $products = Product::where('category_id', 7)->get();
+        return view('categories.category7',compact('products'));
+    }
+    public function category8()
+    {
+        $products = Product::where('category_id', 8)->get();
+        return view('categories.category8',compact('products'));
+    }
+    public function category9()
+    {
+        $products = Product::where('category_id', 9)->get();
+        return view('categories.category9',compact('products'));
+    }
+    public function category10()
+    {
+        $products = Product::where('category_id', 10)->get();
+        return view('categories.category10',compact('products'));
+    }
+    public function category11()
+    {
+        $products = Product::where('category_id', 11)->get();
+        return view('categories.category11',compact('products'));
+    }
+    public function category12()
+    {
+        $products = Product::where('category_id', 12)->get();
+        return view('categories.category12',compact('products'));
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +145,6 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
  
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +155,7 @@ class ProductsController extends Controller
         $categories=Category::pluck('name','id');
         return view('product.create',compact('categories'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -42,31 +165,35 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $formInput=$request->except('product_pic_1');
-        //        validation
-                $this->validate($request,[
-                    
-                    'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
-                ]);
+       //        validation
+       $this->validate($request,[
+        'product_name'=>'required',
+        'product_description'=>'required',
+        'product_price'=>'required',
+        'product_pic_1'=>'image|mimes:png,jpg,jpeg|max:10000'
+    ]);
+    
         //        image upload
-                $query = DB::table('products')->orderBy('created_at', 'desc')->first();
+        
+                $query = DB::table('products')->orderBy('id', 'desc')->first();
                 if(!empty($query)){
                 $maxpid= $query->id;
                 $newpid= $maxpid + 1;
             }
-              
                 $image=$request->product_pic_1;
                 if($image){
                     if (!isset($newpid)) {
                         $newpid=1;
                     }
                     $imageName=$newpid . "_1";
-                    $image->move('images',$imageName);
-                    $formInput['product_pic_1']=$imageName;
+                    Image::make(Input::file('product_pic_1'))->resize(268, 268)->save('images/' . $imageName); 
+//                    $image->move('images',$imageName);
+                   
+ //                   $formInput['product_pic_1']=$imageName;
                 }
                 Product::create($formInput);
                 return redirect()->route('index');
             }
-
     /**
      * Display the specified resource.
      *
@@ -76,8 +203,10 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+        $product = Product::find( $id );
+   	return view( 'product/detail' )
+   		->with( 'product', $product );
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -88,7 +217,6 @@ class ProductsController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -100,7 +228,6 @@ class ProductsController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -110,5 +237,27 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function product($id)    
+    {
+
+    $query = DB::table('products')->orderBy('id', 'desc')->first();
+    if(!empty($query)){
+        $productDetails = Product::where('id', $id)->first();
+        if(Auth::check()){
+        $productUser = DB::table('products')->where('user_id', auth()->user()->id)->get();
+    }
+
+
+    $newProductClicks = $productDetails->clicks + 1;
+        DB::table('products')
+       ->where('id', $id)
+       ->update([
+           'clicks' => DB::raw($newProductClicks),
+       ]);
+
+        return view('product.detail')->with(compact('productDetails'))->with(compact('productUser'));
+    }
+
     }
 }
