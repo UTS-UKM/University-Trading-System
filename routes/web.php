@@ -28,7 +28,7 @@ Route::get('deleteCategories/{id}','CategoriesController@deleteCategories');
 Route::get('/admin/edit-categories','CategoriesController@editCategories');
 
 // Users Route (Admin)
-Route::get ('/admin/view-users','UsersController@viewUsers');
+Route::get ('/admin/view-user','UsersController@viewUsers');
 Route::get('deleteusers/{id}','UsersController@deleteusers');
 
 // Products Route (Admin)
@@ -54,6 +54,8 @@ Route::get('/category12','ProductsController@category12');
 
 Route::get('/about', 'PagesController@about');
 Route::get('/user/ViewRequests', 'SwappingRequestController@index');
+Route::get('/user/ViewProducts', 'ProductsController@userViewProducts');
+
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -83,6 +85,27 @@ Route::resource('category','CategoriesController');
 Route::resource('product','ProductsController')->except([
     'show'
 ]);;
-Route::get('product/{id}','ProductsController@product')->name('product');
+
+Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
+Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');
+Route::get('/admin/view-swapping-requests', 'SwappingRequestController@admin_swapping_request');
+Route::get('/admin/swappingRequest/approve/{id}', 'SwappingRequestController@adminApprove');
+Route::get('/admin/swappingRequest/reject/{id}', 'SwappingRequestController@adminReject');
+
+Route::get('/product/{id}','ProductsController@product')->name('product');
 Route::resource('category','CategoriesController');
 //Product details display
+
+
+
+
+// Favorite
+
+Route::get('/favourite/addToFavourite/{product_id}', 'FavouriteController@store');
+Route::get('/user/ViewFav/{id}', 'FavouriteController@index');
+/*
+Route::get('/products/favourites', 'ProductsController@index')->name('product.fav');
+Route::get('/products/{product}', 'ProductsController@show')->name('product.show');
+Route::post('/products/{product}/favourites', 'ProductsController@store')->name('product.fav.store');	
+Route::delete('/products/{product}/favourites', 'ProductsController@destroy')->name('product.fav.destroy');
+*/

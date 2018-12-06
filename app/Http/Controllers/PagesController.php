@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Category;
 use App\Product;
+use DB;
 class PagesController extends Controller
 {
     //
@@ -18,8 +19,25 @@ class PagesController extends Controller
         return view('pages.user_profile');
     }
     public function admin(){ 
+        $productname = Product::orderBy('clicks', 'desc')
+        ->limit(10)
+        ->pluck('product_name')
+        ;
+        $productFavourite=Product::orderBy('clicks', 'desc')
+        ->limit(10)
+        ->pluck('favourited')
+        ;
+
         $products=Product::orderBy('id', 'desc')->get();
-        return view('admin.index',compact('products'));
+
+        $click = Product::select(DB::raw("SUM(clicks) as count"))
+        ->orderBy('clicks', 'desc')
+        ->limit(10)
+        ->groupBy(DB::raw("product_name"))
+        ->get()->toArray();
+         $click = array_column($click, 'count');
+
+        return view('admin.index')->with(compact('products'))->with(compact('productFavourite'))->with(compact('productname'))->with('click',json_encode($click,JSON_NUMERIC_CHECK));
 
     }
     public function ViewRequests(){ 
