@@ -28,6 +28,7 @@ function resetMenu() {
     
 var year = <?php echo $productname; ?>;
 var data_click = <?php echo $click; ?>;
+var data_favourite = <?php echo $productFavourite; ?>;
 
 
 var barChartData = {
@@ -36,6 +37,11 @@ var barChartData = {
         label: 'Click',
         backgroundColor: "rgba(220,220,220,0.5)",
         data: data_click,
+        
+    },{
+        label: 'Favourited',
+        backgroundColor: "rgba(252,222,0,0.5)",
+        data: data_favourite,
         
     },]
 };

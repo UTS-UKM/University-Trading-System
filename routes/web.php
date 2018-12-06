@@ -18,6 +18,24 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
 });
 */
 Route::get('/', 'PagesController@index')->name('index');
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+// Categories Route (Admin)
+Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
+Route::get ('/admin/view-categories','CategoriesController@viewCategories');
+Route::get('deleteCategories/{id}','CategoriesController@deleteCategories');
+Route::get('/admin/edit-categories','CategoriesController@editCategories');
+
+// Users Route (Admin)
+Route::get ('/admin/view-user','UsersController@viewUsers');
+Route::get('deleteusers/{id}','UsersController@deleteusers');
+
+// Products Route (Admin)
+Route::get ('/admin/view-products','ProductsController@viewProducts');
+Route::get('/admin/edit-products','ProductsController@editProducts');
+Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
+
 
 Route::get('/category1','ProductsController@category1');
 Route::get('/category2','ProductsController@category2');
@@ -51,23 +69,8 @@ Auth::routes();
 //Route::get('/admin', function(){echo "Hello Admin";})->middleware('auth','admin');
 Route::get('/admin', 'PagesController@admin');
 Route::get('/customer', 'PagesController@index')->middleware('auth','customer');
-
 Route::get ('admin/dashboard','PagesController@dashboard');
 
-// Categories Route (Admin)
-Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
-Route::get ('/admin/view-categories','CategoriesController@viewCategories');
-
-// Products Route (Admin)
-Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
-Route::get ('/admin/view-products','ProductsController@viewProducts');
-Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
-Route::get('editproducts/{id}','ProductsController@editproducts');
-
-// Users Route (Admin)
-Route::get ('/admin/view-user','UsersController@viewUser');
-
-Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/admin', 'AdminController@index')->name('home');
 // Password reset link request routes...
 //Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
@@ -79,10 +82,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('product','ProductsController');
 Route::resource('category','CategoriesController');
 */
-
 Route::resource('product','ProductsController')->except([
     'show'
 ]);;
+<<<<<<< HEAD
+=======
 
 Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
 Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');
@@ -92,7 +96,16 @@ Route::get('/admin/swappingRequest/reject/{id}', 'SwappingRequestController@admi
 
 Route::get('/product/{id}','ProductsController@product')->name('product');
 Route::resource('category','CategoriesController');
+>>>>>>> master
 
+Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
+Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');
+Route::get('/admin/view-swapping-requests', 'SwappingRequestController@admin_swapping_request');
+Route::get('/admin/swappingRequest/approve/{id}', 'SwappingRequestController@adminApprove');
+Route::get('/admin/swappingRequest/reject/{id}', 'SwappingRequestController@adminReject');
+
+Route::get('/product/{id}','ProductsController@product')->name('product');
+Route::resource('category','CategoriesController');
 //Product details display
 
 
@@ -106,4 +119,5 @@ Route::get('/products/favourites', 'ProductsController@index')->name('product.fa
 Route::get('/products/{product}', 'ProductsController@show')->name('product.show');
 Route::post('/products/{product}/favourites', 'ProductsController@store')->name('product.fav.store');	
 Route::delete('/products/{product}/favourites', 'ProductsController@destroy')->name('product.fav.destroy');
+<<<<<<< HEAD
 */

@@ -18,46 +18,45 @@
 
 @section('content')
 
+ 
+
     <!--Action boxes-->
             <div class="quick-actions_homepage">
               <ul class="quick-actions">
-                <li class="bg_lo"> <a href="{{ url('admin/add-categories') }}"> <i class="icon-dashboard"></i>Add Category </a> </li>
-                <li class="bg_lo"> <a href="{{ url('admin/delete-categories') }}"> <i class="icon-dashboard"></i>Delete Category </a> </li>
-                <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
-                <li class="bg_lb"> <a href="tables.html"> <i class="icon-th"></i> Users</a> </li>
+                <li class="bg_lb span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Product</a> </li>
+                <li class="bg_lo span3"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
                 <li class="bg_ly span3"> <a href="{{ url('admin/') }}"> <i class="icon-th"></i>Admin Dashboard</a> </li>
               </ul>
             </div>
         <!--End-Action boxes-->  
 
-        <div style="height:-webkit-fill-available" class="col-md-12"
-  
-       <center> <h1 class="my-4">Categories</h1></center>
-     
-       <script>var numposts =5; var showpostdate = true; var showpostsummary = false; var numchars = 100; </script>
-
-       {{-- @foreach($categories as $key => $data)
-              {{$data->id}}
-              {{$data->name}}
-              <a href="{{url('editcategories')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></a>
-              <a href="{{url('deletecategories')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
-             --}}
-                <a href="" class="list-group-item">Electronic Devices</a>
-                <a href="#" class="list-group-item">Electronic Accessories</a>
-                <a href="#" class="list-group-item">TV & Home Appliances</a>
-                <a href="#" class="list-group-item">Health & Beauty</a>
-                <a href="#" class="list-group-item">Babies & Toys</a>
-                <a href="#" class="list-group-item">Groceries & Pets</a>
-                <a href="#" class="list-group-item">Home & Lifestyle</a>
-                <a href="#" class="list-group-item">Women's Fashion</a>
-                <a href="#" class="list-group-item">Men's Fashion</a>
-                <a href="#" class="list-group-item">Automotive & Motorcycles</a>
-                <a href="#" class="list-group-item">Fashion Accessories</a>
-                <a href="#" class="list-group-item">Sports & Travel</a>
    
-              </div>
-        
-      </div>
+  
+       <center> <h1 class="my-4">Categories</h1>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-condensed">
+              <thead>
+                <tr>
+                  <td><strong>ID</strong></td>
+                  <td><strong>Name</strong></td>
+                  <td>Edit</th>
+                  <td>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+    
+                  @foreach($categories as $key => $data)
+                <tr>
+                  <td>{{$data->id}}</td>
+                  <td>{{$data->name}}</td>
+                  <td><a href="{{ url('admin/edit-categories')}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> </a></td>
+                  <td><a href="{{url('deleteCategories')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></td>
+                  
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
 
       <!DOCTYPE html>
       <html>

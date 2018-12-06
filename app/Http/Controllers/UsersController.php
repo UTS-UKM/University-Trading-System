@@ -1,29 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use DB;
 
 class UsersController extends Controller
 {
+   
+    
+    public function viewUsers(){
+        $users=User::all();
+        return view('admin.users.view_users',compact('users'));
+    }
+
+
+    public function deleteusers($id){
+        $data = DB::table('users')->where('id',$id)->delete();
+        // session::flash('message','Products deleted successfully!!!');
+        return redirect()->back()->with('message','Users deleted successfully');
+      } 
+
+     public function index()
+    {
+        $users = user::where('id', auth()->users()->id)->get();
+        
+        return view('users.index',compact('users'));
+    }
+   
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public function index()
-    {
-        $users = user::where('id', auth()->user()->id)->get();
-        
-        return view('user.index',compact('users'));
-    }
 
-    public function viewUser(){
-        $user=User::all();
-        return view('user.view_user',compact('user'));
-    }
 
    public function edit($id)
     {

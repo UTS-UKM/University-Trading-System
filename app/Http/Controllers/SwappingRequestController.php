@@ -1,23 +1,17 @@
 <?php 
-
 namespace App\Http\Controllers;
-
-
 use App\Http\Controllers\Controller;
 use App\SwappingRequest;
 use Illuminate\Http\Request;
 use DB;
-
 class SwappingRequestController extends Controller
 {
     public function index(){
         $SwappingRequest =DB::table('swapping_request')->where('seller_id',auth()->user()->id)->get(); 
 
         return view('user.Requests')->with(compact('SwappingRequest'));
-
     }
     public function store(Request $request){
-
         $this->validate($request, [
                     'product_id' =>'required',
                     'offeredProduct_id'=>'required',
@@ -38,7 +32,6 @@ class SwappingRequestController extends Controller
             $requests = new SwappingRequest;
             $$requests->buyer_id = $data['buyer_id'];
             $$requests->save();
-
 	}
     public function admin_swapping_request(){ 
         $SwappingRequest =DB::table('swapping_request')->where('status', "!=", 'Rejected by seller')->get(); 

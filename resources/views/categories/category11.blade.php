@@ -9,7 +9,7 @@
         <div class="col-lg-5">
           <div class="card h-100">
                
-                <div><img class="col-lg-20" src="{{ asset('images/' . $product->product_pic_1) }}" alt="{{$product->product_pic_1}}" style="max-width: 80%;
+                <div><img class="col-lg-20" src="{{ asset('images/' . $product->id) . '_1' }}" alt="{{$product->id}}" style="max-width: 80%;
                   max-height: 80%;"></div>
                 <div class="card-body">
                     <h4 class="card-title">

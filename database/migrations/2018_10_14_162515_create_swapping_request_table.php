@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateSwappingRequestTable extends Migration
 {
     /**
@@ -30,11 +28,8 @@ class CreateSwappingRequestTable extends Migration
             $table->foreign('offeredProduct_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
-
         });
-
     }
-
     /**
      * Reverse the migrations.
      *

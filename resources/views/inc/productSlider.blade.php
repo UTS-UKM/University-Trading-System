@@ -17,7 +17,7 @@
                     <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel" data-type="multi">
                 
                         <div class="carousel-inner">
-                          @forelse($products->sortBy('created_at') as $product)
+                          @forelse($products->sortByDesc('created_at') as $product)
                             <div class="item active">
                                 <div class="row">
                                     <div class="col-md-3 col-sm-3 col-xs-12">
@@ -72,6 +72,11 @@
                         </div>
                     </div>
                 </div>
+              </div>
+
+
+
+    <div class="container" style="margin-bottom:50px;">
     
     </div>
 
@@ -149,6 +154,7 @@
                     </div>
                 </div>
     
+    </div>
                         
                     
 
@@ -156,13 +162,12 @@
 
 
 
-                </div>
-
 
 
 
     <div class="container" style="margin-bottom:50px;">
-                        <div class="row"style="margin-top:30px;">
+
+                        <div class="row"style="margin-top:30px;margin-bottom: 50px;">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <h3>Most Favourited Products</h3>
             </div>
@@ -174,7 +179,7 @@
         </div>
         
 
-                <div class="row" >
+                <div class="row" style="margin-bottom: 50px;" >
 
                     <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel" data-type="multi">
                 
@@ -233,7 +238,7 @@
                         </div>
                     </div>
                 </div>
-    
+   </div> 
                         
                     
 

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>University Trading Sytem</title>
+<title>University Trading System</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="{{ asset('css/backend_css/bootstrap.min.css') }}" />
@@ -59,9 +59,9 @@
       <div class="container-fluid">
         <div class="quick-actions_homepage">
           <ul class="quick-actions">
-           <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>
+{{--           <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>--}}
             <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
-            <li class="bg_lb"> <a href="{{ url('user/view-user') }}"> <i class="icon-th"></i> Users</a> </li>
+            <li class="bg_lb"> <a href="{{ url('admin/view-user') }}"> <i class="icon-th"></i> Users</a> </li>
             <li class="bg_lb"> <a href="{{ url('/admin/view-swapping-requests') }}"> <i class="icon-th"></i> Swapping Request</a> </li>
           </ul>
         </div>
@@ -87,8 +87,11 @@
                           <th><strong>ID</strong></th>
                           <th><strong>Name</strong></th>
                           <th><strong>Price</strong></th>
+                          <th><strong>Category</strong></th>
                           <th><strong>Description</strong></th>
+                          <th><strong>Favourited</strong></th>
                           <th><strong>Image</strong></th>
+                          
                          
                         </tr>
                       </thead>
@@ -98,8 +101,11 @@
                   
                   <th>{{$data->id}}</th>
                   <th>{{$data->product_name}}</th>
-                  <th>{{$data->product_price}}</th>     
+                  <th>{{$data->product_price}}</th>  
+                  <td>{{$data->category_id}}</td>
                   <th>{{$data->product_description}}</th>
+                  <th>{{$data->favourited}}</th>
+            
                   <th><img src="/images/{{$data->id}}_1"  style="width:200px;height:200px;"></th>
                   </tr>
                 @endforeach

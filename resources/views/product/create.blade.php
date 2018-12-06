@@ -12,7 +12,6 @@
                 input[type=text]:focus {
                 border: 3px solid #555;
             }
-
                 select {
                 width: 100%;
                 padding: 16px 20px;
@@ -33,7 +32,6 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-
                 }
 </style>
     <center><b><h1>Add Product</h1></b></center>
