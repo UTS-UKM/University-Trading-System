@@ -73,7 +73,9 @@
                     </div>
                 </div>
     
+    </div>
 
+    <div class="container" style="margin-bottom:50px;">
         <div class="row"style="margin-top:30px;">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <h3>Most Viewed Products</h3>
@@ -159,6 +161,7 @@
 
 
 
+    <div class="container" style="margin-bottom:50px;">
                         <div class="row"style="margin-top:30px;">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <h3>Most Favourited Products</h3>
