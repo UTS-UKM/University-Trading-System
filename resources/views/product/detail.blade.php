@@ -30,9 +30,6 @@
         
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<br>
-        <br>
-        <br>
         <!DOCTYPE html>
         <html>
         <head>
@@ -128,7 +125,7 @@
             <div class="col-lg-4">
                 <div class="carousel-inner">
                     <div class="item active">
-                    <img class="rounded float-left"  src="{{ asset('images/' . $productDetails->product_pic_1) }}" alt="{{$productDetails->product_pic_1}}" >
+                    <img class="rounded float-left"  src="{{ asset('images/' . $productDetails->id . '_1') }}" alt="{{$productDetails->id . '_1'}}" >
                 
                      </div>
                  
@@ -177,6 +174,7 @@
              </div>
 </div>
 
+                          @if (Auth::check())
 
                <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
@@ -192,11 +190,9 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label for="sel1">Select A Product</label>
-                          @if (Auth::check())
                           <?php
                           $user_id=Auth::user()->id;
                           ?>
-                          @endif
 
 
 {{--            {!! Form::open(['route' => array('/product/sendswappingrequest'), 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!} --}}
@@ -229,10 +225,6 @@
                               {{$productName}}
                             </option>
 
-                               @empty
-                              <h3>No products</h3>
-
-    @endforelse
                               <?php 
                             $offeredProduct = $products->id;
                             $wantedProduct = $productDetails->id;
@@ -251,10 +243,10 @@
                             
                           </select>
                         </div>
-                         <h4>Offered Item ID: <?php echo $offeredProduct ?></h4>
-                            <h4>Wanted Item ID: <?php echo $wantedProduct ?></h4>
-                            <h4>Buyer User ID: <?php echo $buyerID ?></h4>
-                            <h4>Seller User ID: <?php echo $sellerID ?></h4>
+                               @empty
+                              <h3>No products</h3>
+
+    @endforelse
 
 
             {{ Form::submit('Create', array('class' => 'btn btn-default')) }}
@@ -264,6 +256,7 @@
                         </div>
                         </div>
                       <div class="modal-footer">
+                        <a href="/product/create"class="btn btn-primary">Add a new product</a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                     </div>
@@ -273,6 +266,7 @@
 
                 {{-- END OF MODAL --}}
             
+                          @endif
                 
 
           

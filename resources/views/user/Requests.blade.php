@@ -15,11 +15,15 @@
     	@forelse($SwappingRequest as $result)
     <tr>
       <td>{{$result->seller_id}}</td>
-      <td>{{$result->offeredProduct_id}}</td>
-      <td>{{$result->product_id}}</td>
+      <td><a href="/product/{{$result->offeredProduct_id}}">{{$result->offeredProduct_id}}</a></td>
+      <td><a href="/product/{{$result->product_id}}">{{$result->product_id}}</a></td>
       <td>{{$result->created_at}}</td>
       <td>{{$result->status}}</td>
-      <td><button class="btn btn-primary">Approve</button><button style="margin-left:15px"class="btn btn-danger">reject</button></td>
+      <td>
+        @if(!($result->status=="Approved by Admin") && !($result->status=="Rejected by Admin"))
+      	<a href="/user/swappingRequest/approve/{{$result->id}}" class="btn btn-primary">Approve</a>
+      	<a href="/user/swappingRequest/reject/{{$result->id}}"style="margin-left:15px"class="btn btn-danger">reject</a></td>
+        @endif
     </tr>
     @empty
     	<h3>No Swapping Requests found</h3>

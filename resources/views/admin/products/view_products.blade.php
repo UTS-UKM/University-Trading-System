@@ -33,39 +33,35 @@
        <center> <h1 class="my-4">Products</h1></center>
   
        <div class="table-responsive">
-          <table class="table table-striped table-hover table-condensed">
-            <thead>
-              <tr>
-                <td><strong>ID</strong></td>
-                <td><strong>Name</strong></td>
-                <td><strong>Price (RM)</strong></td>
-                <td><strong>Status</strong></td>
-                <td><strong>Category</strong></td>
-                <td><strong>Description</strong></td>
-                <td><strong>Image</strong></td>
-                <td>Edit</th>
-                <td>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-  
-                @foreach($products as $key => $data)
-              <tr>
-                <td>{{$data->id}}</td>
-                <td>{{$data->product_name}}</td>
-                <td>{{$data->product_price}}</td>
-                <td>{{$data->product_status}}</td>
-                <td>{{$data->category_id}}</td>    
-                <td>{{$data->product_description}}</td>
-                <td><img src="/images/{{$data->product_pic_1}}"  style="width:200px;height:200px;"></td>
-                <td><a href="{{url('admin/edit-products') }}" class="btn btn-default btn-sm"> <i class="glyphicon glyphicon-edit"></i> </a> </td>
-                <td><a href="{{url('deleteproducts')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></td>
-                
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
+        <table class="table table-striped table-hover table-condensed">
+          <thead>
+            <tr>
+              <th><strong>ID</strong></th>
+              <th><strong>Name</strong></th>
+              <th><strong>Price</strong></th>
+              <th><strong>Description</strong></th>
+              <th><strong>Image</strong></th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+
+              @foreach($products as $key => $data)
+            <tr>
+              <th>{{$data->id}}</th>
+              <th>{{$data->product_name}}</th>
+              <th>{{$data->product_price}}</th>     
+              <th>{{$data->product_description}}</th>
+              <th><img src="/images/{{$data->id}}_1"  style="width:200px;height:200px;"></th>
+              <th><a href="{{url('editproducts')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></a></th>
+              <th><a href="{{url('deleteproducts')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></th>
+              
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
 
       <!DOCTYPE html>
       <html>

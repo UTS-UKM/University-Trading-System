@@ -14,6 +14,7 @@
 <link href="font-awesome/{{ asset('fonts/backend_fonts/css/font-awesome.css') }}" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
 
     @yield('content')
@@ -41,35 +42,15 @@
 <script src="{{ asset('js/backend_js/jquery.dataTables.min.js') }}"></script> 
 <script src="{{ asset('js/backend_js/matrix.tables.js') }}"></script> 
 
-<script type="text/javascript">
-  // This function is called from the pop-up menus to transfer to
-  // a different page. Ignore if the value returned is a null string:
-  function goPage (newURL) {
 
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
-      
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
-            document.location.href = newURL;
-          }
-      }
-  }
 
-// resets the menu selection upon entry to this page:
-function resetMenu() {
-   document.gomenu.selector.selectedIndex = 2;
-}
-</script>
+@include('inc.adminDashboard')
 </body>
 </html>
 
 {{-- end try --}}
 @section('content')
+
 
 
  
@@ -78,16 +59,25 @@ function resetMenu() {
       <div class="container-fluid">
         <div class="quick-actions_homepage">
           <ul class="quick-actions">
-           <li class="bg_lo span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>
-            <li class="bg_lg span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
-            <li class="bg_lb span3"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
+{{--           <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>--}}
+            <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
+            <li class="bg_lb"> <a href="{{ url('admin/view-user') }}"> <i class="icon-th"></i> Users</a> </li>
+            <li class="bg_lb"> <a href="{{ url('/admin/view-swapping-requests') }}"> <i class="icon-th"></i> Swapping Request</a> </li>
           </ul>
         </div>
-    <!--End-Action boxes-->    
+    <!--End-Action boxes-->  
+      
     
       </div>
+      <div>Overview</div>
+                <div >
+                    <canvas id="canvas" height="180" width="400"></canvas>
+                </div>
+            </div>
 
-  
+      <div style="height:-webkit-fill-available" class="col-md-12">
+
+             
       <center> <h1 class="my-4">Newest Products</h1></center>
  
       <div class="table-responsive">
@@ -99,6 +89,7 @@ function resetMenu() {
                           <th><strong>Price</strong></th>
                           <th><strong>Category</strong></th>
                           <th><strong>Description</strong></th>
+                          <th><strong>Favourited</strong></th>
                           <th><strong>Image</strong></th>
                           
                          
@@ -113,8 +104,9 @@ function resetMenu() {
                   <th>{{$data->product_price}}</th>  
                   <td>{{$data->category_id}}</td>
                   <th>{{$data->product_description}}</th>
-                  <th><img src="/images/{{$data->product_pic_1}}"  style="width:200px;height:200px;"></th>
+                  <th>{{$data->favourited}}</th>
             
+                  <th><img src="/images/{{$data->id}}_1"  style="width:200px;height:200px;"></th>
                   </tr>
                 @endforeach
                       </tbody>

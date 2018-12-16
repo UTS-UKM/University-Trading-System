@@ -45,6 +45,12 @@
       <?php 
       $data = DB::table('products')->orderBy('created_at', 'desc')->first();
       if(!empty($data)){
+      $data = DB::table('products')->orderBy('id', 'desc')->first();
+  if(empty($data)) {
+    $newpid=1;
+      echo "Product ID: " . $newpid;
+  }
+      elseif(!empty($data)){
       $maxpid= $data->id;
       $newpid= $maxpid + 1;
       echo "Product ID: " . $newpid;
