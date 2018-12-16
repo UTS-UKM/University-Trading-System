@@ -1,14 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
-
 class UsersController extends Controller
 {
-   
-    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     public function viewUsers(){
         $users=User::all();
         return view('admin.users.view_users',compact('users'));
@@ -20,27 +22,22 @@ class UsersController extends Controller
         // session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Users deleted successfully');
       } 
-
+      
      public function index()
     {
-        $users = user::where('id', auth()->users()->id)->get();
+        $users = user::where('id', auth()->user()->id)->get();
         
-        return view('users.index',compact('users'));
+        return view('user.index',compact('users'));
     }
-   
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
+    public function viewUser(){
+        $user=User::all();
+        return view('user.view_user',compact('user'));
+    }
    public function edit($id)
     {
         $users = User::where('user_id', auth()->user()->id)
                         ->where('id', $id)
                         ->first();
-
         return view('pages.user_profile', compact('id', 'name'));
     } 
      /**
@@ -61,8 +58,6 @@ class UsersController extends Controller
         ]);
         $data['id'] = $id; 
         $users->updateUser($data);
-
         return redirect('/user_profile');
     }
-
 }

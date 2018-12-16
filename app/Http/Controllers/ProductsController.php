@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -9,17 +10,10 @@ use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use DB;
 use Intervention\Image\ImageManagerStatic as Image;
+
+
 class ProductsController extends Controller
 {
-    // public function addProducts(Request $request){
-    //     if($request->isMethod('post')) {
-    //         $data = $request->all();
-    //         $products = new Product;
-    //         $$products->name = $data['product_name'];
-    //         $$products->save();
-    //     }
-    //     return view('admin.products.add_products');
-    // }
     
     public function viewProducts(){
         $products=Product::all();
@@ -28,25 +22,15 @@ class ProductsController extends Controller
 
     public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
-//        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Products deleted successfully');
       } 
       
-      public function editProducts($products_id)
-      {
-          $products = new Product();
-          $data = $this->validate($request, [
-              'id'=>'required',
-              'user_id'=>'required',
-              'product_name'=>'required',
-              'product_price'=>'required',
-              'product_description'=>'required',
-              'product_status'=>'required',
-          ]);
-          $data['id'] = $id; 
-          $products->editProducts($data);
-  
-          return redirect('admin.products.view_products');
+      public function editproducts(Request $request, $id=null){
+        $productDetails = Product::where('id',$id)->first();
+        $categories = DB::table('categories')->pluck('name', 'id');
+        return view ('admin/products/edit_products')
+        ->with(compact('productDetails'))
+        ->with(compact('categories'));
       }
   
     public function index() {
@@ -200,6 +184,21 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'product_name' =>'required',
+            'product_description'=>'required',
+            'product_price'=>'required',
+            'product_status'=>'required',
+            'name'=>'required',
+        ]);
+        $productDetails = Product::find($id);
+        $productDetails->product_name = $request ->input('product_name');
+        $productDetails->product_description = $request ->input('product_description');
+        $productDetails->product_price = $request ->input('product_price');
+        $productDetails->product_status = $request ->input('product_status');
+        $productDetails->category_id = $request ->input('name');
+        $productDetails ->save();
+        return redirect('/admin')->with('success', "Product Updated");
     }
     /**
      * Remove the specified resource from storage.

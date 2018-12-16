@@ -43,7 +43,7 @@
 
        
       <?php 
-      $data = DB::table('products')->orderBy('id', 'desc')->first();
+      $data = DB::table('products')->orderBy('created_at', 'desc')->first();
       if(!empty($data)){
       $maxpid= $data->id;
       $newpid= $maxpid + 1;
@@ -85,8 +85,6 @@
 
                  <?php $id=auth()->user()->id 
                    ?>  
-                   
-         
                 <input type="hidden" id="user_id" name="user_id" value="{{$id}}">
 
                 

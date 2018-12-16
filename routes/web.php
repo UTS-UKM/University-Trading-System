@@ -18,42 +18,20 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
 });
 */
 Route::get('/', 'PagesController@index')->name('index');
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-// Categories Route (Admin)
-Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
-Route::get ('/admin/view-categories','CategoriesController@viewCategories');
-Route::get('deleteCategories/{id}','CategoriesController@deleteCategories');
-Route::get('/admin/edit-categories','CategoriesController@editCategories');
-
-// Users Route (Admin)
-Route::get ('/admin/view-users','UsersController@viewUsers');
-Route::get('deleteusers/{id}','UsersController@deleteusers');
-
-// Products Route (Admin)
-Route::get ('/admin/view-products','ProductsController@viewProducts');
-Route::get('/admin/edit-products','ProductsController@editProducts');
-Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
-
-
 Route::get('/category1','ProductsController@category1');
-Route::get('/category2','ProductsController@category2');
-Route::get('/category3','ProductsController@category3');
-Route::get('/category4','ProductsController@category4');
-Route::get('/category5','ProductsController@category5');
-Route::get('/category6','ProductsController@category6');
-Route::get('/category7','ProductsController@category7');
-Route::get('/category8','ProductsController@category8');
-Route::get('/category9','ProductsController@category9');
-Route::get('/category10','ProductsController@category10');
-Route::get('/category11','ProductsController@category11');
-Route::get('/category12','ProductsController@category12');
-
-
-
+Route::get('/category2','CategoriesController@category2');
+Route::get('/category3','CategoriesController@category3');
+Route::get('/category4','CategoriesController@category4');
+Route::get('/category5','CategoriesController@category5');
+Route::get('/category6','CategoriesController@category6');
+Route::get('/category7','CategoriesController@category7');
+Route::get('/category8','CategoriesController@category8');
+Route::get('/category9','CategoriesController@category9');
+Route::get('/category10','CategoriesController@category10');
+Route::get('/category11','CategoriesController@category11');
+Route::get('/category12','CategoriesController@category12');
 Route::get('/about', 'PagesController@about');
-Route::get('/user/ViewRequests', 'SwappingRequestController@index');
+Route::get('/user/ViewRequests', 'PagesController@ViewRequests');
 Route::get('/user_profile', 'PagesController@user_profile');
 Route::get('/services', 'PagesController@services');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -69,6 +47,24 @@ Route::get('/admin', 'PagesController@admin');
 Route::get('/customer', 'PagesController@index')->middleware('auth','customer');
 Route::get ('admin/dashboard','PagesController@dashboard');
 
+// Categories Route (Admin)
+Route::match(['get','post'],'/admin/add-categories','CategoriesController@addCategories');
+Route::get ('/admin/view-categories','CategoriesController@viewCategories');
+Route::get('deleteCategories/{id}','CategoriesController@deleteCategories');
+Route::get('/admin/edit-categories','CategoriesController@editCategories');
+
+// Users Route (Admin)
+Route::match(['get','post'],'/admin/add-users','UsersController@addUsers');
+Route::get ('/admin/view-users','UsersController@viewUsers');
+Route::get('deleteusers/{id}','UsersController@deleteusers');
+
+// Products Route (Admin)
+Route::match(['get','post'],'/admin/add-products','ProductsController@addProducts');
+Route::get ('/admin/view-products','ProductsController@viewProducts');
+Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
+Route::get('editproducts/{id}','ProductsController@editproducts');
+
+
 //Route::get('/admin', 'AdminController@index')->name('home');
 // Password reset link request routes...
 //Route::get('passwords/email', 'Auth\ResetPasswordController@getEmail');
@@ -76,10 +72,6 @@ Route::get ('admin/dashboard','PagesController@dashboard');
 // Password reset routes...
 //Route::get('passwords/reset/{token}', 'Auth\ResetPasswordController@getReset');
 //Route::post('passwords/reset', 'Auth\ResetPasswordController@postReset');
-/*
-Route::resource('product','ProductsController');
-Route::resource('category','CategoriesController');
-*/
 Route::resource('product','ProductsController')->except([
     'show'
 ]);;
