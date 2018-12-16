@@ -78,7 +78,9 @@
 
     <div class="container" style="margin-bottom:50px;">
     
+    </div>
 
+    <div class="container" style="margin-bottom:50px;">
         <div class="row"style="margin-top:30px;">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <h3>Most Viewed Products</h3>
