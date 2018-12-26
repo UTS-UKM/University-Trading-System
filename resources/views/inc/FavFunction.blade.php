@@ -11,6 +11,11 @@
           border: none;
           background-color: transparent;
         }
+        #nofavheartbtn{
+          color:grey;
+          border: none;
+          background-color: transparent;
+        }
       </style>
           @if (Auth::check()) 
                     @if(!$product->favouritedBy($product_id))
@@ -38,8 +43,18 @@
                                     </span>
                                 @endif
 
-                            <button type="submit" id="heartbtn"class="btn btn-primary"><i class="fa fa-heart"></i></button>
+                            <button type="submit" id="nofavheartbtn"class="btn btn-primary"><i class="fa fa-heart"></i></button>
                           </form>
                         </span>
+                    @endif
+                    @if($product->favouritedBy($product_id))
+                    <?php
+                     $favourite_id = $product->getFavId($product_id); 
+                    ?>
+                    <span class="pull-right">
+                        <form action="/favourite/RemoveFromFav/{{$favourite_id}}">
+                    <button type="submit" id="heartbtn"class="btn btn-primary"><i class="fa fa-heart"></i></button>
+                  </form>
+                  </span>
                     @endif
                         @endif

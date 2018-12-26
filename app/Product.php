@@ -28,14 +28,16 @@ class Product extends Model
     {
          return $userProducts = DB::table('products')->where('user_id', auth()->id())->get();
     }
-        public function favourites()
-    {
-    return $this->morphToMany(User::class, 'favouriteables');
-    }
        public function favouritedBy($product_id)
        {
         $user_id = auth()->user()->id;
         return Favourite::where('user_id', '=', $user_id)->where('favouriteables_id', '=', $product_id)->exists();
+
+       }
+       public function getFavId($product_id){
+        $user_id = auth()->user()->id;
+        $fav = Favourite::where('user_id', '=', $user_id)->where('favouriteables_id', '=', $product_id)->first();
+        return $fav->id;
 
        }
  

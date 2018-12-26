@@ -110,6 +110,7 @@ Route::resource('category','CategoriesController');
 // Favorite
 
 Route::get('/favourite/addToFavourite/{product_id}', 'FavouriteController@store');
+Route::get('/favourite/RemoveFromFav/{favourite_id}', 'FavouriteController@delete');
 Route::get('/user/ViewFav/{id}', 'FavouriteController@index');
 /*
 Route::get('/products/favourites', 'ProductsController@index')->name('product.fav');
