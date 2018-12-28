@@ -28,7 +28,7 @@ Route::get('deleteCategories/{id}','CategoriesController@deleteCategories');
 Route::get('/admin/edit-categories','CategoriesController@editCategories');
 
 // Users Route (Admin)
-Route::get ('/admin/view-user','UsersController@viewUsers');
+Route::get ('/admin/view-users','UsersController@viewUsers');
 Route::get('deleteusers/{id}','UsersController@deleteusers');
 
 // Products Route (Admin)
