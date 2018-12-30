@@ -33,6 +33,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserImage::class);
     }
+    
 
     /**
      * The attributes that should be hidden for arrays.
@@ -42,4 +43,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+                    public function favouriteProducts()
+    {
+        return $this->morphedByMany(Product::class, 'favouriteables')
+                    ->withPivot(['created_at'])
+                    ->orderBy('pivot_created_at', 'desc');
+    }
+
 }
+

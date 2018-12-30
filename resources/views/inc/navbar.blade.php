@@ -61,8 +61,8 @@
           @endif
           <ul class="nav navbar-nav navbar-right">
             <li>
-          <form class="navbar-form" role="search">
-              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+          <form class="navbar-form" role="search" action="{{url('search')}}">>
+              <input type="text" class="form-control" placeholder="Search" name="searchData" id="searchData">
               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </form>
           </li>

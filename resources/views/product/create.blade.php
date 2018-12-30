@@ -12,7 +12,6 @@
                 input[type=text]:focus {
                 border: 3px solid #555;
             }
-
                 select {
                 width: 100%;
                 padding: 16px 20px;
@@ -33,7 +32,6 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-
                 }
 </style>
     <center><b><h1>Add Product</h1></b></center>
@@ -46,7 +44,11 @@
        
       <?php 
       $data = DB::table('products')->orderBy('id', 'desc')->first();
-      if(!empty($data)){
+  if(empty($data)) {
+    $newpid=1;
+      echo "Product ID: " . $newpid;
+  }
+      elseif(!empty($data)){
       $maxpid= $data->id;
       $newpid= $maxpid + 1;
       echo "Product ID: " . $newpid;
