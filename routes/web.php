@@ -34,6 +34,7 @@ Route::get('/category12','ProductsController@category12');
 
 
 
+
 Route::get('/about', 'PagesController@about');
 Route::get('/user/ViewRequests', 'SwappingRequestController@index');
 Route::get('/user_profile', 'PagesController@user_profile');
