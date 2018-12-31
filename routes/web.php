@@ -28,7 +28,7 @@ Route::get('deleteCategories/{id}','CategoriesController@deleteCategories');
 Route::get('/admin/edit-categories','CategoriesController@editCategories');
 
 // Users Route (Admin)
-Route::get ('/admin/view-user','UsersController@viewUsers');
+Route::get ('/admin/view-users','UsersController@viewUsers');
 Route::get('deleteusers/{id}','UsersController@deleteusers');
 
 // Products Route (Admin)
@@ -110,6 +110,7 @@ Route::resource('category','CategoriesController');
 // Favorite
 
 Route::get('/favourite/addToFavourite/{product_id}', 'FavouriteController@store');
+Route::get('/favourite/RemoveFromFav/{favourite_id}', 'FavouriteController@delete');
 Route::get('/user/ViewFav/{id}', 'FavouriteController@index');
 /*
 Route::get('/products/favourites', 'ProductsController@index')->name('product.fav');
