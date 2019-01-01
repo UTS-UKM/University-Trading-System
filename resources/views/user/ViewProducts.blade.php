@@ -19,6 +19,7 @@
       <td>{{$result->product_description}}</td>
       <td>{{$result->product_status}}</td>
       <td>{{$result->clicks}}</td>
+      <td><a href="{{url('/user/ViewProducts/ViewProductsStats')}}/{{$result->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"> </td>
       <td>
     </tr>
     @empty

@@ -101,6 +101,8 @@ Route::get('/admin/view-swapping-requests', 'SwappingRequestController@admin_swa
 Route::get('/admin/swappingRequest/approve/{id}', 'SwappingRequestController@adminApprove');
 Route::get('/admin/swappingRequest/reject/{id}', 'SwappingRequestController@adminReject');
 
+Route::get('/user/ViewProducts/ViewProductsStats/{id}', 'ProductsController@viewProductStats');
+
 Route::get('/product/{id}','ProductsController@product')->name('product');
 Route::resource('category','CategoriesController');
 //Product details display
