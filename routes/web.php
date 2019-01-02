@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,8 +89,10 @@ Route::resource('product','ProductsController')->except([
     'show'
 ]);;
 
-//Search Route
-Route::get('search','ProductsController@search');
+Route::get('/search', function (Request $request) {
+    $result = App\Product::search($request->search)->get();
+    return view('result', compact('result'));
+});
 
 Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
 Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');

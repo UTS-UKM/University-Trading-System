@@ -61,10 +61,10 @@
           @endif
           <ul class="nav navbar-nav navbar-right">
             <li>
-          <form class="navbar-form" role="search" action="{{url('search')}}">>
-              <input type="text" class="form-control" placeholder="Search" name="searchData" id="searchData">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </form>
+         <form method="GET" action="/search" class="form-inline mt-2 mt-md-0" style="padding-top: 8px;">
+          <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">
+          <button type="submit" class="btn btn-outline-success" type="submit">Search</button>
+</form>
           </li>
           <li>
           @if (Auth::check()) 

@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use DB;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
+
+     use Searchable;
+     
     protected $fillable=['product_name','category_id','user_id','product_price','product_description','product_pic_1'];
     //
 
