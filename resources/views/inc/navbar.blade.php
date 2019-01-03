@@ -51,7 +51,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
-          
+          <li><a href="/services">Service</a></li>
           @if (!Auth::check())
           <li class="signup-btn"><a href="/register">Sign Up</a></li>
           <li class="login-btn"><a href="/login">Log In</a></li>
@@ -61,10 +61,10 @@
           @endif
           <ul class="nav navbar-nav navbar-right">
             <li>
-          <form class="navbar-form" role="search">
-              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </form>
+         <form method="GET" action="/search" class="form-inline mt-2 mt-md-0" style="padding-top: 8px;">
+          <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">
+          <button type="submit" class="btn btn-outline-success" type="submit">Search</button>
+</form>
           </li>
           <li>
           @if (Auth::check()) 
@@ -76,8 +76,6 @@
             <div class="dropdown-content">
               <a href="{{ __('/user_profile') }}">{{Auth::user()->name}} </a>
               <a href="{{ url('/user/ViewRequests') }}">View Requests</a>
-              <a href="{{ url('/user/ViewProducts') }}">View Product</a>
-              <a href="/user/ViewFav/{{Auth::user()->id}}">Favourite List</a>
               <a href="{{ url('/logout') }}">Logout</a>
             </div>
           </div> 
@@ -93,8 +91,6 @@
        
       
     </div>
-    
-    <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '69b66d1b-874c-4679-8011-94cc14b4d349', f: true }); done = true; } }; })();</script>
   
     
   </nav>

@@ -161,6 +161,17 @@ class ProductsController extends Controller
         $products = Product::where('category_id', 12)->get();
         return view('categories.category12',compact('products'));
     }
+
+    public function search(Request $request){
+        $searchData= $request->searchData;
+
+        $data = DB::table('products')
+        ->where('product_name', 'like', '%' .$searchData. '%')
+        ->get();
+        return view('pages.search',[
+            'data' -> $data
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *

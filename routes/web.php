@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +54,7 @@ Route::get('/category12','ProductsController@category12');
 
 
 
+
 Route::get('/about', 'PagesController@about');
 Route::get('/user/ViewRequests', 'SwappingRequestController@index');
 Route::get('/user/ViewProducts', 'ProductsController@userViewProducts');
@@ -85,6 +88,11 @@ Route::resource('category','CategoriesController');
 Route::resource('product','ProductsController')->except([
     'show'
 ]);;
+
+Route::get('/search', function (Request $request) {
+    $result = App\Product::search($request->search)->get();
+    return view('result', compact('result'));
+});
 
 Route::get('/user/swappingRequest/approve/{id}', 'SwappingRequestController@approve');
 Route::get('/user/swappingRequest/reject/{id}', 'SwappingRequestController@reject');
@@ -120,3 +128,5 @@ Route::get('/products/{product}', 'ProductsController@show')->name('product.show
 Route::post('/products/{product}/favourites', 'ProductsController@store')->name('product.fav.store');	
 Route::delete('/products/{product}/favourites', 'ProductsController@destroy')->name('product.fav.destroy');
 */
+
+
