@@ -1,84 +1,111 @@
 @extends('layouts.app')
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/bootstrap.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/bootstrap-responsive.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/fullcalendar.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/matrix-style.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/matrix-media.css') }}" />
-  <link href="font-awesome/{{ asset('fonts/backend_fonts/css/font-awesome.css') }}" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-  </head>
 
 @section('content')
 
- 
 
-    <!--Action boxes-->
-            <div class="quick-actions_homepage">
-              <ul class="quick-actions">
-                <li class="bg_lg span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-th"></i>Back</a> </li>
-                <li class="bg_lo span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
-                <li class="bg_lb span3"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
-            
-              </ul>
+
+            <style>
+                input[type=text]:focus {
+                border: 3px solid #555;
+            }
+                select {
+                width: 100%;
+                padding: 16px 20px;
+                border: none;
+                border-radius: 4px;
+                background-color: #f1f1f1;
+                  } 
+                  
+            input[type=button], input[type=submit], input[type=reset] 
+            .button {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+                }
+</style>
+    <center><b><h1>Edit Product</h1></b></center>
+
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+
+
+
+
+
+
+
+            {!! Form::open(['action' => ['ProductsController@update', $productDetails->id], 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
+
+            <div class="form-group">
+                    {{ Form::label('category_id', 'Categories') }}
+                    {{ Form::select('name', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+
+                </div>
+
+            <div class="form-group">
+                {{ Form::label('product_name', 'Name') }}
+                {{ Form::text('product_name', $productDetails->product_name, array('class' => 'form-control','required'=>'','minlength'=>'5','placeholder' => 'Name')) }}
             </div>
-        <!--End-Action boxes-->  
 
-  
-       <center> <h1 class="my-4">Edit Product</h1></center>
-  
-       <div class="table-responsive">
-        <table class="table table-striped table-hover table-condensed">
-          <thead>
-            <tr>
-              <th><strong>ID</strong></th>
-              <th><strong>Name</strong></th>
-              <th><strong>Price</strong></th>
-              <th><strong>Description</strong></th>
-              <th><strong>Image</strong></th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
 
-      
-          </tbody>
-        </table>
-      </div>
+            <div class="form-group" >
+                {{ Form::label('product_description', 'Description' ) }}
+                {{ Form::textarea('product_description', $productDetails->product_description, array('class' => 'form-control','required'=>'','minlength'=>'5' )) }}
 
-      <!DOCTYPE html>
-      <html>
-      <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <style>
-      .footer {
-         position:fixed ;
-         left: 0;
-         bottom: 0;
-         width: 100%;
-         background-color: Black;
-         color: white;
-         text-align: center;
-      }
-      </style>
-      </head>
-      <body>
-      
-      
-      
-      <div class="footer">
-        <p>UNIVERSITY TRADING SYSTEMS</p>
-      </div>
-      
-      </body>
-      </html> 
-      
+
+
+            </div>
+            <div class="form-group">
+                {{ Form::label('product_price', 'Price') }}
+                {{ Form::text('product_price', $productDetails->product_price, array('class' => 'form-control','required'=>'','minlength'=>'1','placeholder' => 'RM')) }}
+            </div>
+            <div class="form-group">
+                    {{ Form::label('product_status', 'Status') }}
+                    <select name="product_status">
+                            <option value="available" >Available </option>
+                            <option value="unavailable">Unavailable</option>
+                        </select>
+
+                </div>
+
+
+
+
+
+                 <?php $id=auth()->user()->id 
+                   ?>  
+                <input type="hidden" id="user_id" name="user_id" value="{{$id}}">
+
+
+
+
+
+
+<center>
+            {{Form::hidden('_method', 'PUT')}}
+            {{ Form::submit('Create', array('class' => 'btn btn-default')) }}
+            {!! Form::close() !!}
+
+</center>
+
+        </div>
+    </div>
+
+    <style>
+}
+}
+</style>
+
+
+
 @endsection

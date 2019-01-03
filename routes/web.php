@@ -35,7 +35,7 @@ Route::get('deleteusers/{id}','UsersController@deleteusers');
 
 // Products Route (Admin)
 Route::get ('/admin/view-products','ProductsController@viewProducts');
-Route::get('/admin/edit-products','ProductsController@editProducts');
+Route::get('/admin/edit-products/{id}','ProductsController@editProducts');
 Route::get('deleteproducts/{id}','ProductsController@deleteproducts');
 
 
