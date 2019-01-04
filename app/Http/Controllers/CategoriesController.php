@@ -30,10 +30,16 @@ class CategoriesController extends ProductsController
 //        session::flash('message','Products deleted successfully!!!');
         return redirect()->back()->with('message','Category deleted successfully');
       } 
-      public function editCategories(){
-        $categories =Category::all();
-        return view('admin.categories.edit_categories ',compact('categories'));
+      public function editCategories(Request $request, $id=null){
+        $categoryDetails =Category::where('id',$id)->first();
+        $categories = DB::table('categories')->pluck('name', 'id');
+        return view('admin/categories/edit_categories')
+        ->with(compact('categoryDetails'))
+        ->with(compact('categories'));
       } 
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -89,6 +95,14 @@ class CategoriesController extends ProductsController
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'categories_name' =>'required',
+          
+         ]);
+        $categoryDetails = Product::find($id);
+        $categoryDetails->categories_name = $request ->input('categories_name');
+        $categoryDetails ->save();
+         return redirect('/admin')->with('success', "Category Updated");
     }
     /**
      * Remove the specified resource from storage.

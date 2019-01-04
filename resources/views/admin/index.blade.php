@@ -60,9 +60,10 @@
         <div class="quick-actions_homepage">
           <ul class="quick-actions">
 {{--           <li class="bg_lo"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-dashboard"></i>Categories </a> </li>--}}
-            <li class="bg_lg"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
-            <li class="bg_lb"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
-            <li class="bg_lb"> <a href="{{ url('/admin/view-swapping-requests') }}"> <i class="icon-th"></i> Swapping Request</a> </li>
+            <li class="bg_lg span3"> <a href="{{ url('admin/view-products') }}"> <i class="icon-signal"></i> Products</a> </li>
+            <li class="bg_lb span3"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
+            <li class="bg_ly span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-th"></i> Categories</a> </li>
+            <li class="bg_lo span3"> <a href="{{ url('/admin/view-swapping-requests') }}"> <i class="icon-th"></i> Swapping Request</a> </li>
           </ul>
         </div>
     <!--End-Action boxes-->  
