@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use App\Category;
 use App\Product;
+use App\Click;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use DB;
@@ -44,7 +45,28 @@ class ProductsController extends Controller
         return view('user.ViewProducts')->with(compact('product'))->with(compact('products'))->with('click',json_encode($click,JSON_NUMERIC_CHECK));
 
     }
+    public function viewProductStats($id)    {
+        $date = Click::select(DB::raw("DATE(created_at) as date"))
+        ->where('product_id', $id)
+        ->where('created_at', '>=', date("Y-m-d H:i:s", strtotime('-168 hours', time())))
+        ->orderBy('date')
+        ->groupBy('date')
+        ->pluck('date');
+        
+       // $date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time)->format('Y-m-d');
 
+        $click = Click::select(DB::raw("COUNT(product_id) as count"), DB::raw("DATE(created_at) as date"))
+        ->where('product_id', $id)
+        ->where('created_at', '>=', date("Y-m-d H:i:s", strtotime('-168 hours', time())))
+        //->orderBy('date')
+        ->groupBy('date')
+        ->get()->toArray();
+        $click = array_column($click, 'count');
+
+        return view('user.ViewProductStats')->with(compact('date'))->with('click',json_encode($click,JSON_NUMERIC_CHECK));
+
+
+    }
     public function deleteproducts($id){
         $data = DB::table('products')->where('id',$id)->delete();
         return redirect()->back()->with('message','Products deleted successfully');
@@ -57,6 +79,11 @@ class ProductsController extends Controller
         ->with(compact('productDetails'))
         ->with(compact('categories'));
       }
+        //$menus = DB::table('products')->where('category_id','!=',$data->category)->get();
+        return view ('admin/products/edit_products')
+        ->with(compact('productDetails'))
+        ->with(compact('categories'));
+      } 
   
     public function index() {
     }
@@ -122,6 +149,17 @@ class ProductsController extends Controller
     {
         $products = Product::where('category_id', 12)->get();
         return view('categories.category12',compact('products'));
+    }
+
+    public function search(Request $request){
+        $searchData= $request->searchData;
+
+        $data = DB::table('products')
+        ->where('product_name', 'like', '%' .$searchData. '%')
+        ->get();
+        return view('pages.search',[
+            'data' -> $data
+        ]);
     }
     /**
      * Display a listing of the resource.
@@ -254,6 +292,10 @@ class ProductsController extends Controller
        ->update([
            'clicks' => DB::raw($newProductClicks),
        ]);
+
+       $click = new Click;
+       $click->product_id = $id;
+       $click -> save();
 
         return view('product.detail')->with(compact('productDetails'))->with(compact('productUser'));
     }

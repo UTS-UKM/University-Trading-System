@@ -54,7 +54,7 @@
               <th>{{$data->product_price}}</th>     
               <th>{{$data->product_description}}</th>
               <th><img src="/images/{{$data->id}}_1"  style="width:200px;height:200px;"></th>
-              <th><a href="{{url('editproducts')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></a></th>
+              <th><a href="{{url('admin/edit-products')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></a></th>
               <th><a href="{{url('deleteproducts')}}/{{$data->id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-trash"></i></a></th>
               
             </tr>

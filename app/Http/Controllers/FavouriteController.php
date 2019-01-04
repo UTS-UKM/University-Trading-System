@@ -40,5 +40,10 @@ class FavouriteController extends Controller
 
        return redirect('/');
 	}
+  public function delete($id){
+    $fav = Favourite::findOrFail($id);
+    $fav->delete();
+       return redirect('/');
+  }
     
 }
