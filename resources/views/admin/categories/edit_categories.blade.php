@@ -1,85 +1,78 @@
 @extends('layouts.app')
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/bootstrap.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/bootstrap-responsive.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/fullcalendar.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/matrix-style.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/backend_css/matrix-media.css') }}" />
-  <link href="font-awesome/{{ asset('fonts/backend_fonts/css/font-awesome.css') }}" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-  </head>
 
 @section('content')
-
-
-   
-  
-       <center> <h1 class="my-4">Edit Categories</h1>
-
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-condensed">
-              <thead>
-                <tr>
-                  <td><strong>ID</strong></td>
-                  <td><strong>Name</strong></td>
-                 
-                </tr>
-              </thead>
-              <tbody>
-    
-                  @foreach($categories as $key => $data)
-                <tr>
-                  <div contenteditable>
-                  <td>{{$data->id}}</td>
-                  <td>{{$data->name}}</td>
+	
+            
+         
+            <style>
+                input[type=text]:focus {
+                border: 3px solid #555;
+            }
+                select {
+                width: 100%;
+                padding: 16px 20px;
+                border: none;
+                border-radius: 4px;
+                background-color: #f1f1f1;
+                  } 
                   
-                  </div>
-                </tr>
-                @endforeach
-              </tbody>
-           
-          
+            input[type=button], input[type=submit], input[type=reset] 
+            .button {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+                }
+</style>
+    <center><b><h1>Edit Category</h1></b></center>
+ 
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
 
 
-  <div style="margin-top:10px;"class="col-md-6 offset-md-4">
-        <button type="submit" class="btn btn-primary">
-            {{ __('Update') }}
-        </button>
-    </div> </table>
-</div>
+       
+      
 
-      <!DOCTYPE html>
-      <html>
-      <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <style>
-      .footer {
-         position:fixed ;
-         left: 0;
-         bottom: 0;
-         width: 100%;
-         background-color: Black;
-         color: white;
-         text-align: center;
-      }
-      </style>
-      </head>
-      <body>
+
+            
+            {!! Form::open(['action' => ['CategoriesController@update', $categoryDetails->id], 'method' => 'POST', 'files' => true, 'data-parsley-validate'=>'']) !!}
       
-      
-      
-      <div class="footer">
-        <p>UNIVERSITY TRADING SYSTEMS</p>
-      </div>
-      
-      </body>
-      </html> 
-      
+            <div class="form-group">
+                    {{ Form::label('category_id', 'Categories') }}
+                    {{ Form::select('name', $categories, null, ['class' => 'form-control','placeholder'=>'Select Category']) }}
+
+                </div>
+                
+            <div class="form-group">
+                {{ Form::label('categories_name', 'Name') }}
+                {{ Form::text('categories_name', $categoryDetails->categories_name, array('class' => 'form-control','required'=>'','minlength'=>'5','placeholder' => 'Name')) }}
+            </div>
+ 
+            
+<center>
+            {{Form::hidden('_method', 'PUT')}}
+            {{ Form::submit('Update', array('class' => 'btn btn-default')) }}
+            {!! Form::close() !!}
+
+</center>
+
+        </div>
+    </div>
+
+    <style>
+}
+}
+</style>
+
+
+
 @endsection

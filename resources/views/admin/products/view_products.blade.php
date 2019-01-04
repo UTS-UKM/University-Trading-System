@@ -18,17 +18,6 @@
 
 @section('content')
 
- 
-
-    <!--Action boxes-->
-            <div class="quick-actions_homepage">
-              <ul class="quick-actions">
-                <li class="bg_lo span3"> <a href="{{ url('admin/view-categories') }}"> <i class="icon-signal"></i> Category</a> </li>
-                <li class="bg_lb span3"> <a href="{{ url('admin/view-users') }}"> <i class="icon-th"></i> Users</a> </li>
-                <li class="bg_ly span3"> <a href="{{ url('admin/') }}"> <i class="icon-th"></i>Admin Dashboard</a> </li>
-              </ul>
-            </div>
-        <!--End-Action boxes-->  
   
        <center> <h1 class="my-4">Products</h1></center>
   
