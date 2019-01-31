@@ -19,7 +19,7 @@ A laravel-based php university trading system.
 You can change database creds in .env file.
 * Server: localhost
 * DB name: UTS
-During signing up and login, the system will check for the email to match UKM university email 'xxxxx@siswa.ukm.edu.my' you can change that from 'app/Providers/AppServiceProvider.php'
+* During signing up and login, the system will check for the email to match UKM university email 'xxxxx@siswa.ukm.edu.my' you can change that from 'app/Providers/AppServiceProvider.php'
 * For admin priviliges, sign up as a normal user and change role -> admin in phpmyadmin
 
 > This is a university project built during our study in UKM for a Software Engineering bechelor degree.
